@@ -62,7 +62,100 @@ Die typischen Anwendungsfälle (Anlegen, Ändern, Löschen) können zu einem ein
 == Funktionale Anforderungen
 
 === Muss-Kriterien
-Was das zu erstellende Programm auf alle Fälle leisten muss.
+[options="header", cols="2h, 1, 3, 12"]
+|===
+|ID
+|Version
+|Name
+|Beschreibung
+
+|[[F1]]<<F1>>
+|v0.1
+|Authentifizierung
+a|
+Nutzer, die ein Konto haben, müssen in der Lage sein, sich bei der Anwendung anzumelden. Dafür wird der Nutzername und das Passwort benötigt.
+
+|[[F2]]<<F2>>
+|v0.1
+|Logout
+a|
+Der Nutzer muss sich jederzeit abmelden können.
+
+|[[F3]]<<F3>>
+|v0.1
+|Nutzerrollen
+a|
+Die Anwendung muss verschiedene Nutzerrollen (Chef, Apotheker, Arztpraxis, Zustellfahrer, TODO) mit entsprechenden Berechtigungen unterstützen.
+
+|[[F4]]<<F4>>
+|v0.1
+|Selbstbedienungskasse
+a|
+Nicht-authentifizierte Nutzer müssen in der Lage sein, die Selbstbedienungskasse als Kunden zu benutzen.
+
+|[[F5]]<<F5>>
+|v0.1
+|Registrierung
+a|
+Nicht-authentifizierte Nutzer müssen in der Lage sein, sich bei der Anwendung mit den folgenden Informaitonen zu registrieren:
+
+- Name
+- Vorname
+- Nutzername
+- Rolle
+- Passwort
+
+Neu erstellte Konten müssen durch den Chef genehmigt werden, bevor der Nutzer sich einloggen kann.
+
+|[[F6]]<<F6>>
+|v0.1
+|Verkauf von Waren
+a|
+Die Apotheker müssen in der Lage sein, Waren zu verkaufen. Die Kunden müssen nicht rezeptpflichtige Waren auch über die SB-Kasse kaufen können.
+
+|[[F7]]<<F7>>
+|v0.1
+|Kundenrechnung ausstellen
+a|
+Nach einem erfolgreich abgeschlossenen Kauf soll der Apotheker bzw. die SB-Kasse eine Kundenrechnung ausstellen.
+
+|[[F8]]<<F8>>
+|v0.1
+|Eigene Bilanz erfassen
+a|
+Das System muss die Medikamentenbestände erfassen.
+
+|[[F9]]<<F9>>
+|v0.1
+|Verfallende Medikamente einsehen
+a|
+Der Chef muss in der Lage sein, eine Liste der Medikamente auszudrucken, deren Verfallsdatum in der nächsten Woche erreicht wird oder das schon überschritten ist
+
+|[[F10]]<<F10>>
+|v0.1
+|Zahlungsarten
+a|
+Kunden müssen in der Lage sein, die Waren entweder bar zu bezahlen oder von der Krankenkasse (gegen Zuzahlung, 10% des Preises, jedoch mindestens 5 EUR und maximal 10 EUR pro Arzneimittel) bezahlen zu lassen.
+
+|[[F11]]<<F11>>
+|v0.1
+|Bestellzettel
+a|
+Bei Bestellungen von Mixturen oder nicht vorrätigen Medikamenten werden den Kunden Bestellzettel mit einer eindeutigen Identifikationsnummer ausgegeben. Die Waren sind einen Tag nach Bestellung abzuholen.
+
+|[[F12]]<<F12>>
+|v0.1
+|Monatliche Abrechnung
+a|
+Der Chef muss in der Lage sein, Abrechnungen für Krankenkassen und Arztpraxen auszustellen.
+
+|[[F13]]<<F13>>
+|v0.1
+|Tägliche Nachbestellung
+a|
+Die Anwendung muss täglich eine Liste von nachzubestellenden Medikamenten erzeugen.
+
+|===
 
 === Kann-Kriterien
 Anforderungen die das Programm leisten können soll, aber für den korrekten Betrieb entbehrlich sind.
