@@ -38,26 +38,69 @@ Dokumentieren Sie ihre Top-Level-Architektur mit Hilfe eines Komponentendiagramm
 == Anwendungsfälle
 
 === Akteure
-
-Akteure sind die Benutzer des Software-Systems oder Nachbarsysteme, welche darauf zugreifen. Dokumentieren Sie die Akteure in einer Tabelle. Diese Tabelle gibt einen Überblick über die Akteure und beschreibt sie kurz. Die Tabelle hat also mindestens zwei Spalten (Akteur Name und Kommentar).
-Weitere relevante Spalten können bei Bedarf ergänzt werden.
-
+Die folgende Tabelle dokumentiert die Akteure des Apothekensystems basierend auf der Aufgabenstellung.
 // See http://asciidoctor.org/docs/user-manual/#tables
-[options="header"]
-[cols="1,4"]
+[cols="1,3", options="header"]
 |===
-|Name |Beschreibung
-|...  |...
+|Name des Akteurs |Beschreibung
+
+|Kunde |Holt Medikamente an der Kasse ab, kann rezeptfreie Produkte selbst auswählen.
+|Arzt |Bestellt Spezialpräparate im Labor, hat Zugang zum Medikamentenschrank.
+|Arzthelferin |Verlässliche Arzthelferinnen haben Zugang zur Apotheke für die Arztpraxis.
+|Apothekenmitarbeiter |Bedient Kunden, verwaltet Lager, führt Laborarbeiten durch.
+|Kassensystem / Scanner |Erfasst Barcode, löst Bestellungen aus, erstellt Rechnungen.
+|Zentralkasse |Empfängt monatliche Abrechnungen der Kassenpatienten.
+|Apotheken-Computer |Zentrale Steuerung für Nachbestellungen, Bilanz, Ablaufkontrolle.
+|Labor |Bereitet individuelle Salben und Mischungen nach Arztanfrage.
+|Altersheim (zukünftig) |Empfänger von Medikamenten im geplanten Auslieferservice.
+|Lieferservice / Bote |Bringt Medikamente zu Altenheim oder immobilen Patienten.
+|Patient (nicht mobil) |Empfängt Medikamente über den Lieferservice, z. B. im Altersheim.
 |===
+
 
 === Überblick Anwendungsfalldiagramm
-Anwendungsfall-Diagramm, das alle Anwendungsfälle und alle Akteure darstellt
-
+image::usecase.png[]
 === Anwendungsfallbeschreibungen
-Dieser Unterabschnitt beschreibt die Anwendungsfälle. In dieser Beschreibung müssen noch nicht alle Sonderfälle und Varianten berücksichtigt werden. Schwerpunkt ist es, die wichtigsten Anwendungsfälle des Systems zu finden. Wichtig sind solche Anwendungsfälle, die für den Auftraggeber, den Nutzer den größten Nutzen bringen.
-Für komplexere Anwendungsfälle ein UML-Sequenzdiagramm ergänzen.
-Einfache Anwendungsfälle mit einem Absatz beschreiben.
-Die typischen Anwendungsfälle (Anlegen, Ändern, Löschen) können zu einem einzigen zusammengefasst werden.
+7.3 Anwendungsfallbeschreibungen
+Im Folgenden werden die wichtigsten Anwendungsfälle des Apothekensystems beschrieben. Einfache Anwendungsfälle werden kurz dargestellt, komplexere in mehreren Schritten (mit Konsequenz Diagramm erklärt).
+Überblick
+Im Mittelpunkt des Systems steht die Apotheke. Sie bietet eine Vielzahl von Funktionen, die von verschiedenen Akteuren genutzt werden. Das Diagramm zeigt insbesondere:
+- Einkauf und Abgabe von Medikamenten durch Kunden, einschließlich rezeptfreier und verschreibungspflichtiger Arzneimittel.
+- Erweiterte medizinische Prozesse wie das Anfordern und Herstellen von Spezialpräparaten durch medizinisches Personal.
+- Interne Verwaltung wie die Nachbestellung, Abrechnung und das Erkennen von verfallenen Medikamenten.
+- Externe Abläufe wie die Medikamentenauslieferung an nicht mobile Patienten.
+
+Wichtige Anwendungsfälle:
+
+Medikament kaufen (Kunde)
+Der Kunde wählt rezeptfreie oder rezeptpflichtige Medikamente aus. An der Kasse wird der Strichcode gescannt, der Preis berechnet und die Medikamente bezahlt. Für Kassenpatienten erfolgt die Abgabe mit Zuzahlung und späterer Abrechnung mit der Zentralkasse.
+Rezept einlösen (Kunde)
+Der Kunde übergibt das Rezept an den Apothekenmitarbeiter. Falls das Medikament verfügbar ist, wird es sofort ausgegeben. Ist es nicht vorrätig, erhält der Kunde einen Bestellzettel mit eindeutige
+Spezialpräparat anfordern (Arzt)
+
+
+image::../../../PlantUML-Test/sequence_1.png[width=651]
+Der Arzt fordert im Labor eine individuelle Mischung an (z. B. Salbe, Pulver). Diese wird vom Apothekenmitarbeiter im Labor hergestellt und ist am Folgetag abholbereit.
+Zugang über PIN und Entnahme (Arzt / Arzthelferin)
+1.	Der Arzt oder eine berechtigte Arzthelferin gibt eine praxisbezogene PIN ein, um Zugang zur Apotheke zu erhalten.
+2. Die Tür öffnet sich, sofern keine andere Praxis gleichzeitig Zugriff hat.
+3. Beim Verlassen werden Medikamente gescannt, damit sie korrekt zugeordnet werden.
+4. Die Abrechnung mit der Arztpraxis erfolgt monatlich.
+
+image::../../../PlantUML-Test/sequence_2.png[width=651]
+Medikamente nachbestellen (Computer, Scanner)
+Beim Scannen eines Medikaments wird es automatisch zur Nachbestellung markiert. Die Bestellung wird täglich vom Apotheken-Computer verwaltet und ausgelöst.
+Verfallene Medikamente erkennen (Computer)
+Der Computer erstellt wöchentlich eine Liste aller Medikamente, deren Verfallsdatum erreicht ist. Diese Medikamente werden aussortiert.
+Abrechnung mit Zentralkasse (Computer / Kasse)
+Kassenpatienten zahlen nur den Zuzahlungsbetrag. Die restliche Summe wird über die monatliche Sammelabrechnung mit der Zentralkasse verrechnet.
+Medikamente ausliefern (Lieferdienst)
+Der Lieferdienst bringt bestellte Medikamente zum Altersheim oder an Patienten, die nicht selbst zur Apotheke kommen.
+Medikamente empfangen (Patient nicht mobil)
+Ein bewegungseingeschränkter Patient erhält Medikamente durch den Lieferservice direkt nach Hause oder ins Heim.
+
+
+
 
 == Funktionale Anforderungen
 
