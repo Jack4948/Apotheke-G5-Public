@@ -1,4 +1,4 @@
-:project_name: Name des Projekts
+:project_name: Apotheke
 :toc: left
 :numbered:
 = Pflichtenheft __{project_name}__
@@ -11,7 +11,7 @@
 |===
 
 == Inhaltsverzeichnis
-Dieses Dokument benötigt ein Inhaltsverzeichnis. Es existieren mehrere Einbindungsmöglichkeiten.
+Dieses Dokument benötigt ein Inhaltsverzeichnis. Es existieren mehrere Einbindungsmöglichkeiten. aaaaaa
 
 == Zusammenfassung
 Eine kurze Beschreibung des Dokuments. Wenige Absätze.
