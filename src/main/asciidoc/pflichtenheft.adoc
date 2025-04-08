@@ -7,22 +7,43 @@
 [cols="1, 1, 1, 1, 4"]
 |===
 |Version | Status      | Bearbeitungsdatum   | Autoren(en) |  Vermerk
-|0.1     | In Arbeit   | 01.04.2023          | Autor       | Initiale Version
+|0.1     | In Arbeit   | 03.04.2025          | Hamza, Anton, Anne, Eqbal        | Initiale Version
 |===
 
 == Inhaltsverzeichnis
 Dieses Dokument benötigt ein Inhaltsverzeichnis. Es existieren mehrere Einbindungsmöglichkeiten. aaaaaa
 
 == Zusammenfassung
-Eine kurze Beschreibung des Dokuments. Wenige Absätze.
+Dieses Dokument beschreibt die Anforderungen und Funktionen der webbasierten Software für eine Apotheke. Die Software unterstützt den Verkauf von Medikamenten, die Verwaltung von Lagerbeständen, die Verarbeitung von Rezepten und die Abrechnung mit Krankenkassen. Ziel ist eine sichere, effiziente und benutzerfreundliche Lösung zur digitalen Verwaltung aller Apothekenprozesse.
+
 
 == Aufgabenstellung und Zielsetzung
-Text aus Aufgabenstellung kopieren und ggfs. präzisieren.
-Insbesondere ergänzen, welche Ziele mit dem Abschluss des Projektes erreicht werden sollen.
+Aufgabenstellung: 
+
+Entwicklung einer modernen Webanwendung, die die betrieblichen Abläufe der Apotheke digitalisiert und automatisiert.
+
+Zielsetzung:
+
+Die Webanwendung soll die Apotheke des Unterbrunner Ärztehauses digital transformieren und effizienter gestalten. Ziel ist es, alle Prozesse der Medikamentenvergabe, Lagerverwaltung, Rezeptverarbeitung und Abrechnung zu zentralisieren, zu vereinfachen und abzusichern. Dazu gehören:
+
+Optimierung des Verkaufsprozesses: Schneller und genauer Verkauf durch Scannen der Medikamenten-Barcodes mit automatischer Berechnung von Preisen, Zuzahlungen und Erstellung von Quittungen.
+
+Automatisierte Lagerverwaltung: Alphabetische Sortierung, Verfallsüberwachung, tägliche und automatische Nachbestellung.
+
+Rezept- und Bestellmanagement: Ausgabe von Bestellzetteln mit eindeutiger ID für individuelle Mischungen und nicht-vorrätige Medikamente.
+
+Monatliche Abrechnung: Vollautomatische, präzise Abrechnung mit Krankenkassen und Arztpraxen unter Berücksichtigung von Zuzahlungsregeln.
+
+Zugriffsverwaltung: Sicherer Zugang für medizinisches Personal durch PIN-Verfahren mit Protokollierung der Entnahmen und gleichzeitiger Zugriffsbeschränkung.
+
+Lieferdienstintegration: Entwicklung eines Moduls für Medikamentenauslieferung an Altenheime und bewegungseingeschränkte Personen, inkl. Lieferstatus, Quittierung und Verwaltung der Adressen.
+
+Transparente Dokumentation und Sicherheit: Nachvollziehbare Protokollierung aller Prozesse, Zugriffsschutz, Datenverschlüsselung und rollenbasierte Benutzerverwaltung.
+
+Das System soll modular aufgebaut und flexibel erweiterbar sein. Die Oberfläche soll intuitiv bedienbar sein, um das Personal nicht zu überfordern, sondern gezielt zu entlasten.
 
 == Produktnutzung
-In welchem Kontext soll das System später genutzt werden? Welche Rahmenbedingungen gelten?
-Zusätzlich kurze Einleitung für fachfremde Personen
+Die Webanwendung wird täglich von Apothekenpersonal, Ärzten und autorisierten Helfern genutzt. Sie dient als zentrale Plattform für Medikamentenverkauf, Rezeptverarbeitung, Lagerkontrolle und Abrechnung. Zudem wird sie durch Lieferdienstmitarbeiter für den Versandprozess verwendet.
 
 == Interessensgruppen (Stakeholder)
 Welche realen und juristischen Personen(-gruppen) haben Einfluss auf die Anforderungen im Projekt?
