@@ -158,7 +158,32 @@ Die Anwendung muss täglich eine Liste von nachzubestellenden Medikamenten erzeu
 |===
 
 === Kann-Kriterien
-Anforderungen die das Programm leisten können soll, aber für den korrekten Betrieb entbehrlich sind.
+[options="header", cols="2h, 1, 3, 12"]
+|===
+|ID
+|Version
+|Name
+|Beschreibung
+
+|[[F14]]<<F14>>
+|v0.1
+|Lieferung bestellen
+a|
+Der Kunde soll in der Lage sein, die bestellten Medikamente liefern zu lassen.
+
+|[[F15]]<<F15>>
+|v0.1
+|Auszuliefernde Medikamente anzeigen lassen
+a|
+Das System soll Medikamente anzeigen, die am gegebenen Tag auszuliefern sind. (TODO: Akteur TBD).
+
+|[[F16]]<<F16>>
+|v0.1
+|Route erstellen
+a|
+Das System soll täglich einen Routenplan für den Zustellfahrer erzeugen.
+
+|===
 
 == Nicht-Funktionale Anforderungen
 
