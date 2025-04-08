@@ -46,8 +46,26 @@ Das System soll modular aufgebaut und flexibel erweiterbar sein. Die Oberfläche
 Die Webanwendung wird täglich von Apothekenpersonal, Ärzten und autorisierten Helfern genutzt. Sie dient als zentrale Plattform für Medikamentenverkauf, Rezeptverarbeitung, Lagerkontrolle und Abrechnung. Zudem wird sie durch Lieferdienstmitarbeiter für den Versandprozess verwendet.
 
 == Interessensgruppen (Stakeholder)
-Welche realen und juristischen Personen(-gruppen) haben Einfluss auf die Anforderungen im Projekt?
+[options="header"]
+[cols="1, 4"]
+|===
+|Stakeholder | Interesse
+|Apothekenleitung     | Effizienter Betrieb, Kontrolle über Lager und Verkauf  
+|Apotheker		|	Schnelle Verkaufsabwicklung, korrekte Dokumentation
 
+|Ärzte			|	Zugriff auf Medikamente, einfache PIN-Verwaltung
+
+|Arzthelferinnen		|	Medikamentenentnahme für Patienten
+
+|IT-Administrator	|	Systemwartung, Datensicherheit, Benutzerverwaltung
+
+|Patienten		|	Schnelle und sichere Versorgung mit Medikamenten
+
+|Krankenkassen		|	Korrekte Abrechnung von Kassenleistungen
+
+|Lieferdienstpersonal	|	Zuverlässige Auslieferung und Dokumentation
+
+|===
 == Systemgrenze und Top-Level-Architektur
 
 === Kontextdiagramm
