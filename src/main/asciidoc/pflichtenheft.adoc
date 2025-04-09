@@ -1,6 +1,7 @@
 :project_name: Apotheke
 :toc: left
 :numbered:
+:toc-title: Inhaltsverzeichnis
 = Pflichtenheft __{project_name}__
 
 [options="header"]
@@ -9,9 +10,6 @@
 |Version | Status      | Bearbeitungsdatum   | Autoren(en) |  Vermerk
 |0.1     | In Arbeit   | 03.04.2025          | Hamza, Anton, Anne, Eqbal        | Initiale Version
 |===
-
-== Inhaltsverzeichnis
-Dieses Dokument benötigt ein Inhaltsverzeichnis. Es existieren mehrere Einbindungsmöglichkeiten. aaaaaa
 
 == Zusammenfassung
 Dieses Dokument beschreibt die Anforderungen und Funktionen der webbasierten Software für eine Apotheke. Die Software unterstützt den Verkauf von Medikamenten, die Verwaltung von Lagerbeständen, die Verarbeitung von Rezepten und die Abrechnung mit Krankenkassen. Ziel ist eine sichere, effiziente und benutzerfreundliche Lösung zur digitalen Verwaltung aller Apothekenprozesse.
