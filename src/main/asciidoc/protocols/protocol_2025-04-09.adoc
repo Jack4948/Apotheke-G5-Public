@@ -1,0 +1,64 @@
+= Protokoll Gruppe Apotheke
+
+Treffen am 09.04.2025
+
+Ort:      Bibliothek +
+Beginn:   11:00 Uhr +
+Ende:     12:00 Uhr
+
+__Schriftführer:__ Anne
+
+__Teilnehmer:__ Anton, Eqbal, Hamza, Anne
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+
+== Bemerkungen
+Gucken, ob alle arbeitsfähig sing. Projektüberblick verschaffen. Abgleichen erster Arbeitsschritte.
+
+== Aktueller Stand
+*Wir arbeiten am Pflichtenheft. Erfassen Anforderungen und Analysemodelle.*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Name |Aufgabe |Status |Bemerkung
+|Hamza   |Inhaltsverzeichnis, 5.1 Kontextdiagramm, 5.2 Top-Level-Architektur     |IN PROCESS  |...
+|Eqbal |6.1 Akteure, 6.2 Anwendungsfalldiagramm, 6.3 Anwendugsfallbeschreibung | IN PROCESS |...
+|Anton |7.1 Muss-Kriterien, 7.2 Kann-Kriterien |DONE v0.1 |...
+|Anne |8.1 Qualitätsziele, 8.2 Konkrete Nicht-Funktionale Anforderungen |DONE v0.1 |...
+|===
+
+=== Fortschritt Individuellen Aufgaben:
+*Gästebuch*
+[option="headers"]
+|===
+|Name |Status |Bemerkung
+|Hamza |IN PROCESS |TODO: Erweiterung
+|Eqbal |DONE |...
+|Anton |IN PROCESS |TODO: Erweiterung
+|Anne |DONE |...
+|===
+
+*Videoshop*
+[option="headers"]
+|===
+|Name |Status |Bemerkung
+|Hamza |IN PROCESS |TODO: Erweiterung
+|Eqbal |IN PROCESS |TODO: Erweiterung
+|Anton |IN PROCESS |TODO: Erweiterung
+|Anne |IN PROCESS |TODO: Erweiterung
+|===
+
+== TODO bis nächste Meeting
+- Alle machen Klassendiagramm, dann zusammen vergleichen und absprechen
+- Wer mach GUI?
+
+== TODO für Meilenstein 1 
+- entwerfen Akzeptanztest für alle Anforderungen
+- GUI-Prototyp
+- Fertigstellen individueller Aufgaben (videoshop)
+
+=== Fragen
+- Wie bzw. wie umfangreich soll GUI-Prototyp aussehen?
+- Wie wollen wir "Chef" Rolle implementieren?
