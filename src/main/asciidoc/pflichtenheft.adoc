@@ -98,40 +98,32 @@ Achten Sie darauf, dass deren Erfüllung (mindestens theoretisch) messbar sein m
 |Name
 |Description
 
-|[[NF1]]<<NF1>>
-|v1.0
-|Sicherheit - Korrekter Praxiszugang (PIN)
-a|
-Der Zugang zur Apotheke über die Praxistür darf nur nach Eingabe einer gültigen, zugeordneten und aktiven Praxis-PIN gewährt werden. Ungültige, fremde oder inaktive PINs müssen den Zugang verweigern. Gleichzeitiger Zugang für mehr als eine Praxis muss verhindert werden.
-////
-*Prüfen:* Durchführung von Testfällen mit gültigen, ungültigen, fremden, abgelaufenen PINs sowie Versuchen gleichzeitigen Zugriffs. Die Erfolgsquote für korrekte Autorisierung/Ablehnung muss 100% sein. 
-////
 
-|[[NF2]]<<NF2>>
+|[[NF1]]<<NF1>>
 |v1.0
 |Korrektheit - Zuzahlungsberechnung
 a|
 Die Berechnung der Zuzahlung für Kassenpatienten muss exakt gemäß den Regeln erfolgen: 10% des Preises, mindestens 5 EUR, maximal 10 EUR pro Arzneimittel.
 
-|[[NF3]]<<NF3>>
+|[[NF2]]<<NF2>>
 |v1.0
 |Korrektheit - Konsistente Bestandsführung
 a|
 Jede relevante Bestandsänderung (Verkauf, Entnahme durch Arztpraxis, Aussonderung, Wareneingang) muss sich sofort und korrekt im Systembestand niederschlagen.
 
-|[[NF4]]<<NF4>>
+|[[NF3]]<<NF3>>
 |v1.0
 |Performance - Reaktionszeit Kasse/Entnahme
 a|
 Die Anzeige der Artikelinformationen nach dem Einscannen eines Barcodes an der Kasse oder am Praxisausgang muss für den Benutzer gefühlt unmittelbar, technisch messbar in 95% der Fälle in unter 1,5 Sekunden erfolgen.
 
-|[[NF5]]<<NF5>>
+|[[NF4]]<<NF4>>
 |v1.0
 |Sicherheit - Passwort-Speicherung
 a|
 Passwörter für Benutzerkonten dürfen im System ausschließlich als gesalteter Hash-Wert unter Verwendung eines anerkannten, sicheren Hashing-Algorithmus (z.B. bcrypt, Argon2) gespeichert werden.
 
-|[[NF6]]<<NF6>>
+|[[NF5]]<<NF5>>
 |v0.1
 |Nutzbarkeit - Uptime
 a|
