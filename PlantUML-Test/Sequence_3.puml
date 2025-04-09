@@ -1,0 +1,12 @@
+@startuml
+actor Arzt
+participant Apothekenmitarbeiter
+participant Labor
+participant "Apotheken-Computer"
+
+Arzt -> Apothekenmitarbeiter : Spezialpräparat anfordern
+Apothekenmitarbeiter -> "Apotheken-Computer" : Auftrag erfassen
+"Apotheken-Computer" -> Labor : Anforderung übermitteln
+Labor -> Labor : Präparat herstellen
+Labor -> Apothekenmitarbeiter : Präparat zur Abholung bereit
+@enduml
