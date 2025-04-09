@@ -85,7 +85,7 @@ Der Nutzer muss sich jederzeit abmelden können.
 |v0.1
 |Nutzerrollen
 a|
-Die Anwendung muss verschiedene Nutzerrollen (Chef, Apotheker, Arztpraxis, Zustellfahrer, TODO) mit entsprechenden Berechtigungen unterstützen.
+Die Anwendung muss verschiedene Nutzerrollen (Apothekenmitarbeiter, Arztpraxis, Lieferdienst) mit entsprechenden Berechtigungen unterstützen.
 
 |[[F4]]<<F4>>
 |v0.1
@@ -105,19 +105,19 @@ Nicht-authentifizierte Nutzer müssen in der Lage sein, sich bei der Anwendung m
 - Rolle
 - Passwort
 
-Neu erstellte Konten müssen durch den Chef genehmigt werden, bevor der Nutzer sich einloggen kann.
+Neu erstellte Konten müssen durch die Apothekenmitarbeiter genehmigt werden, bevor der Nutzer sich einloggen kann.
 
 |[[F6]]<<F6>>
 |v0.1
 |Verkauf von Waren
 a|
-Die Apotheker müssen in der Lage sein, Waren zu verkaufen. Die Kunden müssen nicht rezeptpflichtige Waren auch über die SB-Kasse kaufen können.
+Die Apothekenmitarbeiter müssen in der Lage sein, Waren zu verkaufen. Die Kunden müssen nicht rezeptpflichtige Waren auch über die SB-Kasse kaufen können.
 
 |[[F7]]<<F7>>
 |v0.1
 |Kundenrechnung ausstellen
 a|
-Nach einem erfolgreich abgeschlossenen Kauf soll der Apotheker bzw. die SB-Kasse eine Kundenrechnung ausstellen.
+Nach einem erfolgreich abgeschlossenen Kauf soll der Apothekenmitarbeiter bzw. die SB-Kasse eine Kundenrechnung ausstellen.
 
 |[[F8]]<<F8>>
 |v0.1
@@ -129,7 +129,7 @@ Das System muss die Medikamentenbestände erfassen.
 |v0.1
 |Verfallende Medikamente einsehen
 a|
-Der Chef muss in der Lage sein, eine Liste der Medikamente auszudrucken, deren Verfallsdatum in der nächsten Woche erreicht wird oder das schon überschritten ist
+Das System muss eine Liste der Medikamente auszudrucken, deren Verfallsdatum in der nächsten Woche erreicht wird oder das schon überschritten ist
 
 |[[F10]]<<F10>>
 |v0.1
@@ -147,7 +147,7 @@ Bei Bestellungen von Mixturen oder nicht vorrätigen Medikamenten werden den Kun
 |v0.1
 |Monatliche Abrechnung
 a|
-Der Chef muss in der Lage sein, Abrechnungen für Krankenkassen und Arztpraxen auszustellen.
+Das System soll Abrechnungen für Krankenkassen und Arztpraxen auszustellen.
 
 |[[F13]]<<F13>>
 |v0.1
@@ -181,7 +181,7 @@ Das System soll Medikamente anzeigen, die am gegebenen Tag auszuliefern sind. (T
 |v0.1
 |Route erstellen
 a|
-Das System soll täglich einen Routenplan für den Zustellfahrer erzeugen.
+Das System soll täglich einen Routenplan für den Lieferdienst erzeugen.
 
 |===
 
