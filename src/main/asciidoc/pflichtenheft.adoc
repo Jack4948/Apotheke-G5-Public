@@ -71,12 +71,66 @@ Anforderungen die das Programm leisten können soll, aber für den korrekten Bet
 
 === Qualitätsziele
 
-Dokumentieren Sie in einer Tabelle die Qualitätsziele, welche das System erreichen soll, sowie deren Priorität.
+////
+Dokumentieren Sie in einer Tabelle die Qualitätsziele, welche das System erreichen soll, sowie deren Priorität. 
+////
+
+[cols="1,1,3", options="header"]
+|===
+| Qualitätsziel         | Priorität | Beschreibung / Begründung
+| Korrektheit | Hoch      | Fehler bei der Preisberechnung, Zuzahlung, Bestandsführung oder Abrechnung können finanzielle Verluste oder falsche Medikamentenabgaben zur Folge haben. Datenintegrität ist essenziell.
+| Sicherheit            | Hoch      | Schutz vor unbefugtem Zugriff auf Medikamente (PIN-System), Schutz von Abrechnungsdaten und potenziell sensiblen Bestelldaten ist zwingend erforderlich.
+| Nutzbarkeit         | Hoch      | Das System wird täglich von verschiedenen Mitarbeitern (Verkauf, Labor, Ärzte) genutzt. Eine effiziente und fehlerarme Bedienung ist für den reibungslosen Betriebsablauf kritisch.
+| Performance | Mittel    | Schnelle Reaktionen bei Standardvorgängen (Kasse, Bestandsabfrage) sind wichtig für die Nutzerakzeptanz und den Workflow, aber leichte Verzögerungen bei komplexen Berichten könnten tolerierbar sein.
+| Wartbarkeit / Erweiterbarkeit | Mittel    | Das System sollte für Fehlerbehebungen zugänglich sein und zukünftige Anpassungen (z.B. Lieferservice-Integration) ermöglichen, um langfristig nutzbar zu bleiben.
+|===
 
 === Konkrete Nicht-Funktionale Anforderungen
-
+////
 Beschreiben Sie Nicht-Funktionale Anforderungen, welche dazu dienen, die zuvor definierten Qualitätsziele zu erreichen.
 Achten Sie darauf, dass deren Erfüllung (mindestens theoretisch) messbar sein muss.
+////
+
+[options="header", cols="1h, 1, 4, 7"]
+|===
+|ID
+|Version
+|Name
+|Description
+
+
+|[[NF1]]<<NF1>>
+|v1.0
+|Korrektheit - Zuzahlungsberechnung
+a|
+Die Berechnung der Zuzahlung für Kassenpatienten muss exakt gemäß den Regeln erfolgen: 10% des Preises, mindestens 5 EUR, maximal 10 EUR pro Arzneimittel.
+
+|[[NF2]]<<NF2>>
+|v1.0
+|Korrektheit - Konsistente Bestandsführung
+a|
+Jede relevante Bestandsänderung (Verkauf, Entnahme durch Arztpraxis, Aussonderung, Wareneingang) muss sich sofort und korrekt im Systembestand niederschlagen.
+
+|[[NF3]]<<NF3>>
+|v1.0
+|Performance - Reaktionszeit Kasse/Entnahme
+a|
+Die Anzeige der Artikelinformationen nach dem Einscannen eines Barcodes an der Kasse oder am Praxisausgang muss für den Benutzer gefühlt unmittelbar, technisch messbar in 95% der Fälle in unter 1,5 Sekunden erfolgen.
+
+|[[NF4]]<<NF4>>
+|v1.0
+|Sicherheit - Passwort-Speicherung
+a|
+Passwörter für Benutzerkonten dürfen im System ausschließlich als gesalteter Hash-Wert unter Verwendung eines anerkannten, sicheren Hashing-Algorithmus (z.B. bcrypt, Argon2) gespeichert werden.
+
+|[[NF5]]<<NF5>>
+|v0.1
+|Nutzbarkeit - Uptime
+a|
+Das System soll von 7 Uhr bis 21 Uhr mit 99%-iger Wahrscheinlichkeit verfügbar sein
+
+|===
+
 
 == GUI Prototyp
 
