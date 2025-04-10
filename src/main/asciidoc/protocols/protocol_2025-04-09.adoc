@@ -57,6 +57,7 @@ Gucken, ob alle arbeitsfähig sing. Projektüberblick verschaffen. Abgleichen er
 == TODO für Meilenstein 1 
 - entwerfen Akzeptanztest für alle Anforderungen
 - GUI-Prototyp
+- Klassendiagramm
 - Fertigstellen individueller Aufgaben (videoshop)
 
 === Fragen
