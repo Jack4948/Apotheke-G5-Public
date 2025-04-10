@@ -115,41 +115,67 @@ Die Apothekenmitarbeiter müssen in der Lage sein, Waren zu verkaufen. Die Kunde
 
 |[[F7]]<<F7>>
 |v0.1
+|Strichcode scannen
+a|
+Kunden, Apothekenmitarbeiter und Ärzte müssen Strichcodes scannen bzw. eingeben können. Auf diese Weise wird der Posten auf die Kundenrechnung übernommen.
+
+|[[F8]]<<F8>>
+|v0.1
+|Mixtur bestellen
+a|
+Die Kunden und Ärzte müssen in der Lage sein, spezielle Pulver, Salben und Tinkturen zu bestellen, indem sie die Zutaten und deren Mengen angeben.
+
+|[[F9]]<<F9>>
+|v0.1
+|Mixturpreis berechnen
+a|
+Das System muss den Preis von Mixturen automatisch berechnen.
+
+**Formel:** Menge × Preis pro Gramm + 10% Marge
+
+|[[F10]]<<F10>>
+|v0.1
 |Kundenrechnung ausstellen
 a|
 Nach einem erfolgreich abgeschlossenen Kauf soll der Apothekenmitarbeiter bzw. die SB-Kasse eine Kundenrechnung ausstellen.
 
-|[[F8]]<<F8>>
+|[[F11]]<<F11>>
 |v0.1
 |Eigene Bilanz erfassen
 a|
 Das System muss die Medikamentenbestände erfassen.
 
-|[[F9]]<<F9>>
+|[[F12]]<<F12>>
 |v0.1
 |Verfallende Medikamente einsehen
 a|
 Das System muss eine Liste der Medikamente auszudrucken, deren Verfallsdatum in der nächsten Woche erreicht wird oder das schon überschritten ist
 
-|[[F10]]<<F10>>
+|[[F13]]<<F13>>
 |v0.1
 |Zahlungsarten
 a|
 Kunden müssen in der Lage sein, die Waren entweder bar zu bezahlen oder von der Krankenkasse (gegen Zuzahlung, 10% des Preises, jedoch mindestens 5 EUR und maximal 10 EUR pro Arzneimittel) bezahlen zu lassen.
 
-|[[F11]]<<F11>>
+|[[F14]]<<F14>>
 |v0.1
 |Bestellzettel
 a|
 Bei Bestellungen von Mixturen oder nicht vorrätigen Medikamenten werden den Kunden Bestellzettel mit einer eindeutigen Identifikationsnummer ausgegeben. Die Waren sind einen Tag nach Bestellung abzuholen.
 
-|[[F12]]<<F12>>
+|[[F15]]<<F15>>
+|v0.1
+|Bestellungen verwalten
+a|
+Die Apothekenmitarbeiter müssen in der Lage sein, Bestellungen einzusehen und als "abholbereit" zu markieren.
+
+|[[F16]]<<F16>>
 |v0.1
 |Monatliche Abrechnung
 a|
 Das System soll Abrechnungen für Krankenkassen und Arztpraxen auszustellen.
 
-|[[F13]]<<F13>>
+|[[F17]]<<F17>>
 |v0.1
 |Tägliche Nachbestellung
 a|
@@ -165,19 +191,19 @@ Die Anwendung muss täglich eine Liste von nachzubestellenden Medikamenten erzeu
 |Name
 |Beschreibung
 
-|[[F14]]<<F14>>
+|[[F18]]<<F18>>
 |v0.1
 |Lieferung bestellen
 a|
 Der Kunde soll in der Lage sein, die bestellten Medikamente liefern zu lassen.
 
-|[[F15]]<<F15>>
+|[[F19]]<<F19>>
 |v0.1
 |Auszuliefernde Medikamente anzeigen lassen
 a|
 Das System soll Medikamente anzeigen, die am gegebenen Tag auszuliefern sind. (TODO: Akteur TBD).
 
-|[[F16]]<<F16>>
+|[[F20]]<<F20>>
 |v0.1
 |Route erstellen
 a|
