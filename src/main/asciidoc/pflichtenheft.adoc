@@ -44,17 +44,19 @@ Die folgende Tabelle dokumentiert die Akteure des Apothekensystems basierend auf
 |===
 |*Name des Akteurs* |*Beschreibung*
 
-|**Kunde   **    |Holt Medikamente an der Kasse ab, kann rezeptfreie Produkte selbst auswählen.
-|**Arzt  **  |Bestellt Spezialpräparate im Labor, hat Zugang zum Medikamentenschrank.
-|*Arzthelferin* |Verlässliche Arzthelferinnen haben Zugang zur Apotheke für die Arztpraxis.
-|*Apothekenmitarbeiter* |Bedient Kunden, verwaltet Lager, führt Laborarbeiten durch.
-|*Kassensystem* / Scanner |Erfasst Barcode, löst Bestellungen aus, erstellt Rechnungen.
-|*Zentralkasse*  |Empfängt monatliche Abrechnungen der Kassenpatienten.
-|*Apotheken-Computer* |Zentrale Steuerung für Nachbestellungen, Bilanz, Ablaufkontrolle.
-|*Labor* |Bereitet individuelle Salben und Mischungen nach Arztanfrage.
-|*Altersheim (zukünftig)* |Empfänger von Medikamenten im geplanten Auslieferservice.
-|*Lieferservice / Bote*   |Bringt Medikamente zu Altenheim oder immobilen Patienten.
-|*Patient (nicht mobil)*  |Empfängt Medikamente über den Lieferservice, z. B. im Altersheim.
+| Kunde    |1-Holt Medikamente an der Kasse ab. +
+               2-kann rezeptfreie Produkte selbst auswählen.
+|Arzt   |1-Bestellt Spezialpräparate im Labor. +
+              2-hat Zugang zum Medikamentenschrank.
+|Arzthelferin |Verlässliche Arzthelferinnen haben Zugang zur Apotheke für die Arztpraxis.
+|Apothekenmitarbeiter |1-Bedient Kunden. +
+2- verwaltet Lager 3-führt Laborarbeiten durch.
+|Zentralkasse  |Empfängt monatliche Abrechnungen der Kassenpatienten.
+|Apothekerleiter |1-Zentrale Steuerung für Nachbestellungen +
+2-Bilanz. +
+3-Ablaufkontrolle.
+|Lieferdienst  |Bringt Medikamente zu Altenheim oder immobilen Patienten.
+
 |===
 
 
@@ -64,66 +66,59 @@ Die folgende Tabelle dokumentiert die Akteure des Apothekensystems basierend auf
 === Überblick Anwendungsfalldiagramm
 image::../../../PlantUML-Test/usecase.png[]
 
-
 === Anwendungsfallbeschreibungen
 
-Im Mittelpunkt des Systems steht die Apotheke. Sie bietet eine Vielzahl von Funktionen, die von verschiedenen Akteuren genutzt werden.
-Das Diagramm zeigt insbesondere:
+Im Mittelpunkt des Systems steht die Apotheke. Sie bietet eine Vielzahl von Funktionen, die von verschiedenen Akteuren genutzt werden. +
+Das Diagramm zeigt insbesondere: +
+1 -Einkauf und Abgabe von Medikamenten durch Kunden, einschließlich rezeptfreier und verschreibungspflichtiger Arzneimittel. +
 
-1 -Einkauf und Abgabe von Medikamenten durch Kunden, einschließlich rezeptfreier und verschreibungspflichtiger Arzneimittel.
+2 -Erweiterte medizinische Prozesse wie das Anfordern und Herstellen von Spezialpräparaten durch medizinisches Personal. +
 
-2 -Erweiterte medizinische Prozesse wie das Anfordern und Herstellen von Spezialpräparaten durch medizinisches Personal.
+3 -Interne Verwaltung wie die Nachbestellung, Abrechnung und das Erkennen von verfallenen Medikamenten. +
 
-3 -Interne Verwaltung wie die Nachbestellung, Abrechnung und das Erkennen von verfallenen Medikamenten.
-
-
-4 - Externe Abläufe wie die Medikamentenauslieferung an nicht mobile Patienten.
+4 - Externe Abläufe wie die Medikamentenauslieferung an nicht mobile Patienten. +
 
 *Wichtige Anwendungsfälle:*
-
 [cols="1,4", options="header"]
 |===
 |ID | UC001
 |Name | Rezept einlösen
-|Beschreibung | Der Kunde gibt ein Rezept beim Apothekenmitarbeiter ab. Das Medikament wird ausgegeben oder vorgemerkt, falls nicht vorrätig.
+|Beschreibung | Der Kunde gibt ein ärztliches Rezept beim Apothekenmitarbeiter ab. Das Medikament wird direkt ausgegeben oder – falls nicht vorrätig – für eine spätere Abholung vorgemerkt.
 |Rollen | Kunde, Apothekenmitarbeiter, Apotheken-Computer
-|Auslöser | Kunde übergibt ein Rezept
-|Voraussetzungen | Rezept ist gültig und Medikament existiert im System
+|Auslöser | Kunde übergibt ein gültiges Rezept an die Apotheke
+|Voraussetzungen | Das Rezept ist gültig und das Medikament ist im System hinterlegt
 |Grundlegende Schritte |
-. Kunde übergibt Rezept
-. Apothekenmitarbeiter scannt Rezept
-. System prüft Medikamentenverfügbarkeit
-. Wenn vorhanden: Medikament wird ausgegeben
-. Wenn nicht vorhanden: Medikament wird vorgemerkt und später ausgeliefert
+1. Kunde übergibt das Rezept an den Apothekenmitarbeiter +
+2. Apothekenmitarbeiter scannt das Rezept oder gibt es manuell ein +
+3. System prüft die Verfügbarkeit des Medikaments +
+4. Falls vorhanden: Medikament wird direkt ausgegeben +
+5. Falls nicht vorhanden: Kunde erhält einen Bestellzettel mit ID +
+6. Bei Kassenpatienten: Zuzahlung wird berechnet +
+7. System speichert die Ausgabe für die spätere Abrechnung mit der Zentralkasse
 
-. Zuzahlung wird berechnet (bei Kassenpatienten)
-. Daten werden für Abrechnung gespeichert
-
-|Funktionale Anforderungen | [F000]
+|Funktionale Anforderungen | [F000], [F000]
 |===
 
-
-=== Anwendungsfallbeschreibung: Medikamente nachbestellen
 
 [cols="1,4", options="header"]
 |===
 |ID | UC002
 |Name | Medikamente nachbestellen
-|Beschreibung | Scanner erkennt, dass ein Medikament bald leer ist, und markiert es zur Nachbestellung.
+|Beschreibung | Beim Scannen eines Medikaments erkennt das System, dass der Bestand niedrig ist. Die Nachbestellung wird automatisch vorgemerkt und vom Apotheken-Computer ausgelöst.
 |Rollen | Apothekenmitarbeiter, Scanner, Apotheken-Computer
-|Auslöser | Medikament wird gescannt
-|Voraussetzungen | Medikament im System vorhanden
+|Auslöser | Ein Medikament wird gescannt
+|Voraussetzungen | Das Medikament ist im System hinterlegt und hat einen definierten Mindestbestand
 |Grundlegende Schritte |
-. Medikament wird gescannt
-. System erkennt niedrigen Bestand
-. Bestellung wird automatisch vorgemerkt
-. Apotheken-Computer löst Bestellung aus
+1. Apothekenmitarbeiter scannt ein Medikament +
+2. System erkennt, dass der Lagerbestand unter dem Mindestwert liegt +
+3. Medikament wird zur Nachbestellung vorgemerkt +
+4. Apotheken-Computer übernimmt und löst automatisch eine Bestellung beim Lieferanten aus +
+5. Bestellung wird im System dokumentiert
 
-|Funktionale Anforderungen | [F000]
+|Funktionale Anforderungen | [F000], [F000]
 |===
-image::../../../PlantUML-Test/sequence_2.png[]
 
-=== Anwendungsfallbeschreibung: Zugang über PIN
+image::../../../PlantUML-Test/sequence_2.png[]
 
 [cols="1,4", options="header"]
 |===
@@ -131,114 +126,118 @@ image::../../../PlantUML-Test/sequence_2.png[]
 |Name | Zugang über PIN
 |Beschreibung | Arzt oder Arzthelferin gibt eine praxisbezogene PIN ein, um Zugang zur Apotheke zu erhalten. Die Tür öffnet sich nur, wenn keine andere Praxis gleichzeitig Zugriff hat.
 |Rollen | Arzt, Arzthelferin, Türsystem, Apotheken-Computer
-|Auslöser | Medizinisches Personal benötigt Zugang zu Medikamenten.
-|Voraussetzungen | Gültige PIN, kein gleichzeitiger Zugriff durch andere Praxis
+|Auslöser | Medizinisches Personal benötigt Zugang zu Medikamentenschrank oder Lager
+|Voraussetzungen | Gültige PIN vorhanden, keine andere Praxis greift gleichzeitig zu
 |Grundlegende Schritte |
-. Arzt/Arzthelferin gibt PIN ein
-. System prüft Berechtigung
-. Tür öffnet sich
-. Medikamente werden entnommen
-. System registriert Zugriff
+1. Arzt oder Arzthelferin gibt PIN in das Zugangssystem ein +
+2. System überprüft die Berechtigung und gleichzeitige Zugriffe +
+3. Bei erfolgreicher Prüfung öffnet sich die Tür zur Apotheke +
+4. Medikamente werden entnommen +
+5. System registriert den Zugriff und ordnet die Entnahme der richtigen Praxis zu
 
-|Funktionale Anforderungen | [F00], [F00]
+|Funktionale Anforderungen | [F000], [F000]
 |===
+
 image::../../../PlantUML-Test/Sequence_1.png[]
 
-
-=== Anwendungsfallbeschreibung: Verfallene Medikamente erkennen
 
 [cols="1,4", options="header"]
 |===
 |ID | UC004
 |Name | Verfallene Medikamente erkennen
-|Beschreibung | Das System prüft regelmäßig, ob Medikamente abgelaufen sind.
-|Rollen | Apotheken-Computer
-|Auslöser | Wöchentliche Prüfung durch System
-|Voraussetzungen | Lagerdaten und Verfallsdaten vorhanden
+|Beschreibung | Das System prüft in regelmäßigen Abständen, ob sich abgelaufene Medikamente im Bestand befinden, erstellt eine Liste und informiert den Apothekenmitarbeiter.
+|Rollen | Apotheken-Computer, Apothekenmitarbeiter
+|Auslöser | Automatisierte wöchentliche Systemprüfung
+|Voraussetzungen | Lagerdaten und Verfallsdaten der Medikamente sind im System erfasst
 |Grundlegende Schritte |
-. Apotheken-Computer startet Prüfung
-. Liste abgelaufener Medikamente wird erstellt
-. Apothekenmitarbeiter erhält Bericht
-. Medikamente werden aussortiert.
-|Funktionale Anforderungen | [F000]
+1. Apotheken-Computer startet automatisch die Prüfung aller Medikamentenbestände +
+2. System vergleicht das aktuelle Datum mit den Verfallsdaten +
+3. Eine Liste aller abgelaufenen Medikamente wird erstellt +
+4. Apothekenmitarbeiter erhält die Liste zur weiteren Bearbeitung +
+5. Verfallene Medikamente werden aus dem Lager entfernt
+
+|Funktionale Anforderungen | [F000], [F000]
 |===
 
-=== Anwendungsfallbeschreibung: Abrechnung mit Zentralkasse
 
 [cols="1,4", options="header"]
 |===
 |ID | UC005
 |Name | Abrechnung mit Zentralkasse
-|Beschreibung | Die Zentralkasse erhält monatlich eine Sammelabrechnung.
-|Rollen | Kassensystem, Zentralkasse, Apotheken-Computer
-|Auslöser | Monatsende erreicht
-|Voraussetzungen | Beleg-Daten vorhanden
+|Beschreibung | Die Apotheke erstellt am Monatsende automatisch eine Sammelabrechnung aller Kassenpatienten. Diese wird an die Zentralkasse übermittelt, die die Zahlungen bestätigt.
+|Rollen | Kassensystem, Zentralkasse, Apothekerleiter
+|Auslöser | Monatsende wird vom System erkannt
+|Voraussetzungen | Alle Kassenvorgänge und Patientendaten wurden korrekt erfasst
 |Grundlegende Schritte |
-. Apotheke speichert alle Kassenvorgänge
-. Monatliche Sammelabrechnung wird generiert
-. Daten werden an Zentralkasse übertragen
-. Zentralkasse bestätigt Zahlung
+1. Kassensystem sammelt alle Kassenvorgänge über den Monat +
+2. Am Monatsende wird automatisch eine Sammelabrechnung erstellt +
+3. Die Abrechnungsdaten werden digital an die Zentralkasse übermittelt +
+4. Zentralkasse prüft die Daten und bestätigt die Zahlung +
+5. Bestätigung wird im System archiviert
 
-|Funktionale Anforderungen | [F00], [F00]
+|Funktionale Anforderungen | [F000], [F00]
 |===
-=== Anwendungsfallbeschreibung: Spezialpräparat anfordern
+
 
 [cols="1,4", options="header"]
 |===
 |ID | UC006
 |Name | Spezialpräparat anfordern
-|Beschreibung | Der Arzt fordert ein spezielles Medikament an. Der Apothekenmitarbeiter erfasst die Bestellung, das Labor stellt das Präparat her und meldet die Abholbereitschaft.
-|Rollen | Arzt, Apothekenmitarbeiter, Labor, Apotheken-Computer
-|Auslöser | Arzt fordert ein Spezialpräparat an
+|Beschreibung | Der Arzt fordert ein spezielles Präparat (z. B. eine individuelle Salbe) an. Der Apothekenmitarbeiter nimmt den Auftrag auf und stellt das Präparat im Laborbereich der Apotheke selbst her.
+|Rollen | Arzt, Apothekenmitarbeiter, Apothekerleiter
+|Auslöser | Arzt benötigt ein individuelles Spezialpräparat
 |Voraussetzungen | Arzt ist berechtigt, Spezialpräparate zu bestellen
 |Grundlegende Schritte |
-. Arzt fordert Spezialpräparat an
-. Apothekenmitarbeiter erfasst Auftrag
-. Auftrag wird an Apotheken-Computer weitergeleitet
-. Apotheken-Computer übermittelt Anforderung ans Labor
-. Labor stellt das Präparat her
-. Labor informiert über Abholbereitschaft
-. Apothekenmitarbeiter erhält Rückmeldung
+1. Arzt fordert ein Spezialpräparat an (mündlich oder digital) +
+2. Apothekenmitarbeiter erfasst die Anforderung im System +
+3. Der Auftrag wird intern dokumentiert und verarbeitet +
+4. Apothekenmitarbeiter stellt das Präparat im Laborbereich her +
+5. System meldet die Fertigstellung +
+6. Arzt wird über die Abholbereitschaft informiert
 
 |Funktionale Anforderungen | [F00], [F00]
 |===
-image::../../../PlantUML-Test/Sequence_3.png[]
 
-=== Anwendungsfallbeschreibung: Medikamente ausliefern
+
+image::../../../PlantUML-Test/Sequence_3.png[]
 
 [cols="1,4", options="header"]
 |===
 |ID | UC007
 |Name | Medikamente ausliefern
-|Beschreibung | Der Lieferdienst bringt Medikamente an Patienten oder Altersheime.
-|Rollen | Lieferdienst, Patient, Apotheken-Computer
-|Auslöser | Bestellung zur Lieferung liegt vor
-|Voraussetzungen | Adresse, Medikamente verfügbar
+|Beschreibung | Der Lieferdienst bringt bestellte Medikamente an nicht mobile Patienten oder an Altenheime. Die Lieferung erfolgt nach Planung und Verpackung durch die Apotheke.
+|Rollen | Lieferdienst, Patient, Apothekenmitarbeiter
+|Auslöser | Eine Medikamentenbestellung zur Auslieferung liegt vor
+|Voraussetzungen | Medikamente sind verfügbar und eine gültige Lieferadresse ist im System gespeichert
 |Grundlegende Schritte |
-. Bestellung im System
-. Lieferung wird geplant
-. Medikamente verpackt
-. Lieferdienst bringt Medikamente aus
+1. Bestellung wird vom Apothekenmitarbeiter im System registriert +
+2. Lieferung wird im System geplant (Route, Adresse) +
+3. Medikamente werden für den Versand vorbereitet und verpackt +
+4. Lieferdienst übernimmt die Sendung und liefert an die Zieladresse +
+5. Patient erhält Medikamente
+
 |Funktionale Anforderungen | [F00], [F00]
 |===
+
 [cols="1,4", options="header"]
 |===
 |ID | UC008
 |Name | Medikament kaufen
-|Beschreibung | Der Kunde wählt rezeptfreie oder rezeptpflichtige Medikamente und bezahlt diese an der Kasse. Das Kassensystem verarbeitet die Zahlung und scannt die Produkte.
+|Beschreibung | Der Kunde kauft rezeptfreie oder rezeptpflichtige Medikamente an der Kasse. Das Kassensystem scannt die Produkte, berechnet den Preis und verarbeitet die Zahlung. Bei Kassenpatienten erfolgt eine automatische Abrechnung mit der Zentralkasse.
 |Rollen | Kunde, Kassensystem / Scanner, Zentralkasse
-|Auslöser | Kunde legt Medikamente an der Kasse vor
-|Voraussetzungen | Medikamente verfügbar im System
+|Auslöser | Kunde legt Medikamente zur Bezahlung vor
+|Voraussetzungen | Medikamente sind im System vorhanden und vorrätig
 |Grundlegende Schritte |
-. Kunde legt Medikamente an der Kasse vor
-. Kassensystem scannt Barcode der Medikamente
-. System berechnet Preis
-. Kunde bezahlt (Bar oder mit Karte)
-. Bei Kassenpatienten: Zuzahlung, Rest wird mit Zentralkasse abgerechnet
-. Quittung wird erstellt
+1. Kunde wählt Medikamente aus und geht zur Kasse +
+2. Kassensystem scannt die Barcodes der Medikamente +
+3. System berechnet Gesamtpreis +
+4. Kunde bezahlt (bar oder mit Karte) +
+5. Bei Kassenpatienten: Zuzahlung wird kassiert, Rest an Zentralkasse gemeldet +
+6. Quittung wird erstellt und übergeben
 
-|Funktionale Anforderungen | [F000], [F000]
+|Funktionale Anforderungen | [F00], [F00]
 |===
+
 
 == Funktionale Anforderungen
 

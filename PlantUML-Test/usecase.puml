@@ -7,7 +7,7 @@ actor Arzt
 actor Arzthelferin
 actor Apothekenmitarbeiter
 actor Lieferdienst
-actor Systems
+actor Apothekerleiter
 
 rectangle Apotheke {
   (Rezeptfreie Produkte auswählen) as R1
@@ -17,7 +17,7 @@ rectangle Apotheke {
   (Spezialpräparat anfordern) as R5
   (Medikamente entnehmen) as R6
   (Zugang über PIN) as R7
-  '(Laborpräparate herstellen) as R8
+  (Laborpräparate herstellen) as R8
   (Barcode scannen) as R9
   (Medikamente nachbestellen) as R10
   (Rechnung erstellen) as R11
@@ -38,14 +38,14 @@ Arzt --> R6
 Arzt --> R7
 Arzthelferin --> R6
 Arzthelferin --> R7
-'Apothekenmitarbeiter --> R8
+Apothekenmitarbeiter --> R8
 Apothekenmitarbeiter --> R9
 Apothekenmitarbeiter --> R10
 Apothekenmitarbeiter --> R11
 Apothekenmitarbeiter --> R13
- Systems  --> R10
-Systems --> R12
-Systems--> R13
+ Apothekerleiter  --> R10
+Apothekerleiter --> R12
+Apothekerleiter--> R13
 'Kasse --> R12
 Lieferdienst --> R14
 'Patient --> R15
