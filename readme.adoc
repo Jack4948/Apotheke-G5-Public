@@ -1,6 +1,6 @@
 image:../../actions/workflows/build.yml/badge.svg["CI Build", link="../../actions"]
 
-= Apotheke
+== Apotheke
 
 // Bitte passen Sie die folgenden Informationen und den Projektnamen an Ihre Aufgabenstellung an!
 // Beschreiben Sie kurz, was Ihr Projekt macht und welche Ziele es verfolgt (Aufgabenstellung).
