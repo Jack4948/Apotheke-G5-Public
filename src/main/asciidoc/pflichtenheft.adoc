@@ -1,39 +1,100 @@
-:project_name: Name des Projekts
+:project_name: Apotheke-Software
 :toc: left
 :numbered:
+:toc-title: Inhaltsverzeichnis
 = Pflichtenheft __{project_name}__
 
 [options="header"]
 [cols="1, 1, 1, 1, 4"]
 |===
 |Version | Status      | Bearbeitungsdatum   | Autoren(en) |  Vermerk
-|0.1     | In Arbeit   | 01.04.2023          | Autor       | Initiale Version
+|0.1     | In Arbeit   | 03.04.2025          | Hamza, Anton, Anne, Eqbal        | Initiale Version
+|0.9    | In Arbeit | 14.04.2025 | Hamza, Anton, Anne, Eqbal | Nachtrag Versionierung
 |===
 
-== Inhaltsverzeichnis
-Dieses Dokument benötigt ein Inhaltsverzeichnis. Es existieren mehrere Einbindungsmöglichkeiten.
-
 == Zusammenfassung
-Eine kurze Beschreibung des Dokuments. Wenige Absätze.
+* Dieses Dokument beschreibt die Anforderungen und Funktionen der webbasierten Software für eine Apotheke. 
+* Die Software unterstützt den Verkauf von Medikamenten, die Verwaltung von Lagerbeständen, die Verarbeitung von Rezepten und die Abrechnung mit Krankenkassen. Ziel ist eine sichere, effiziente und benutzerfreundliche Lösung zur digitalen Verwaltung aller Apothekenprozesse.
+
 
 == Aufgabenstellung und Zielsetzung
-Text aus Aufgabenstellung kopieren und ggfs. präzisieren.
-Insbesondere ergänzen, welche Ziele mit dem Abschluss des Projektes erreicht werden sollen.
+
+* Dem großen Unterbrunner Ärztehaus wird eine Apotheke angegliedert. Es handelt sich um 
+einen Verkaufsraum mit drei Kassen und einer Selbstbedienungsabteilung für nicht 
+rezeptpflichtige Waren (Pflaster, medizinische Badezusätze, Gesundheitstees aller Art, 
+Pflegesalben etc.).
+
+
+* Daneben gibt es ein kleines chemisches Labor, wo auf Anforderung 
+der Ärzte spezielle Pulver, Salben und Tinkturen bereitet werden können (abzuholen einen 
+Tag nach Bestellung).  
+
+
+* Bei Bestellungen von Mixturen oder nicht vorrätigen Medikamenten werden den Kunden 
+Bestellzettel mit einer eindeutigen Identifikationsnummer ausgegeben (das Rezept 
+verbleibt in der Apotheke).
+
+* Die  Apothekenschränke  sind  wie  üblich  alphabetisch  sortiert.  An  jeder  
+Medikamentenpackung ist ein Strichcode angebracht, welcher das Medikament und die  
+Packungsgröße eindeutig identifiziert. Bei Verkauf eines Medikaments wird der Code an 
+der Kasse eingelesen.
+Auf diese Weise wird der Posten auf die Kundenrechnung und 
+gleichzeitig in die tägliche Nachbestellung übernommen.
+
+* Medikamente werden entweder wie andere Waren bar bezahlt oder an Kassenpatienten 
+gegen Entrichtung der Zuzahlung (10% des Preises, jedoch mindestens 5 EUR und 
+maximal 10 EUR pro Arzneimittel) abgegeben. Kassenleistungen werden von den 
+Apotheken mit einer Zentralkasse monatlich abgerechnet.
+
+* Mit Hilfe der neuen Apotheke ersparen sich die Praxen auch die Bewirtschaftung eigener 
+Medizinvorräte: Neben den Mitarbeitern der Apotheke haben auch die Ärzte und einige 
+besonders zuverlässige Arzthelferinnen jederzeit Zugang zum Medikamentenschrank. Für 
+diesen Zweck gibt es eine Tür zur Apotheke, die vom Ärztehaus aus durch Eingabe einer 
+praxisspezifischen PIN geöffnet werden kann. Auf der anderen Seite der Tür befindet sich 
+ein Lesegerät, an dem beim Verlassen der Strichcode der entnommenen Medikamente 
+erfasst wird. Zwecks eindeutiger Zuordnung der Medikamente und um den Betrieb der 
+Apotheke nicht übermäßig zu stören, hat zu einem Zeitpunkt höchstens eine Praxis 
+Zugang zur Apotheke. Die Ärzte haben erklärt, dass dies keine wesentliche Einschränkung 
+darstellt. Die Abrechnung mit den einzelnen Arztpraxen erfolgt monatlich.  
+
+* Alle Lesegeräte sind an den Computer der Apotheke angeschlossen, über den die 
+automatische Nachbestellung von Medikamenten, die eigene Bilanz und die Abrechnung 
+mit den Ersatzkassen läuft. Außerdem wird an diesem Computer wöchentlich eine Liste 
+der Medikamente ausgedruckt, deren Verfallsdatum in der nächsten Woche erreicht wird 
+oder das schon überschritten ist. Diese werden wöchentlich ausgesondert.   
+
+* Die Einführung eines weiteren Dienstes - die Auslieferung von Medikamenten an das 
+nahegelegene Altersheim und andere bewegungseingeschränkte Patienten wird derzeit 
+diskutiert.   
 
 == Produktnutzung
-In welchem Kontext soll das System später genutzt werden? Welche Rahmenbedingungen gelten?
-Zusätzlich kurze Einleitung für fachfremde Personen
+* Die Webanwendung wird täglich von Apothekenpersonal, Ärzten und autorisierten Helfern genutzt. Sie dient als zentrale Plattform für Medikamentenverkauf, Rezeptverarbeitung, Lagerkontrolle und Abrechnung. Zudem wird sie durch Lieferdienstmitarbeiter für den Versandprozess verwendet.
 
 == Interessensgruppen (Stakeholder)
-Welche realen und juristischen Personen(-gruppen) haben Einfluss auf die Anforderungen im Projekt?
+[options="header"]
+[cols="1, 4"]
+|===
+|Stakeholder | Interesse
+|Apothekenleitung     | Effizienter Betrieb, Kontrolle über Lager und Verkauf  
+|Apothekenmitarbeiter	|	Schnelle Verkaufsabwicklung, korrekte Dokumentation
 
+|Arzt			|	Zugriff auf Medikamente, einfache PIN-Verwaltung
+
+|Arzthelferin		|	Medikamentenentnahme für Patienten
+
+|Patienten		|	Schnelle und sichere Versorgung mit Medikamenten
+
+|krankenkasse		|	Korrekte Abrechnung von Kassenleistungen
+
+|Lieferdienst	|	Zuverlässige Auslieferung und Dokumentation
+
+|===
 == Systemgrenze und Top-Level-Architektur
 
 === Kontextdiagramm
-Das Kontextdiagramm zeigt das geplante Software-System in seiner Umgebung. Zur Umgebung gehören alle Nutzergruppen des Systems und Nachbarsysteme. Die Grafik kann auch informell gehalten sein. Überlegen Sie sich dann geeignete Symbole. Die Grafik kann beispielsweise mit Visio erstellt werden. Wenn nötig, erläutern Sie diese Grafik.
-
+image::models/images/kontextdiagramm1.png[]
 === Top-Level-Architektur
-Dokumentieren Sie ihre Top-Level-Architektur mit Hilfe eines Komponentendiagramm.
+image::models/images/Top-Level-Architektur1.png[]
 
 == Anwendungsfälle
 
