@@ -64,7 +64,7 @@ Die folgende Tabelle dokumentiert die Akteure des Apothekensystems basierend auf
 
 
 === Überblick Anwendungsfalldiagramm
-image::../../../PlantUML-Test/usecase.png[]
+image::models/analysis/use-cases/usecase.png[]
 
 === Anwendungsfallbeschreibungen
 
@@ -118,7 +118,7 @@ Das Diagramm zeigt insbesondere: +
 |Funktionale Anforderungen | [F000], [F000]
 |===
 
-image::../../../PlantUML-Test/sequence_2.png[]
+image::models/analysis/use-cases/sequence_2.png[]
 
 [cols="1,4", options="header"]
 |===
@@ -138,7 +138,7 @@ image::../../../PlantUML-Test/sequence_2.png[]
 |Funktionale Anforderungen | [F000], [F000]
 |===
 
-image::../../../PlantUML-Test/Sequence_1.png[]
+image::models/analysis/use-cases/sequence_1.png[]
 
 
 [cols="1,4", options="header"]
@@ -199,7 +199,7 @@ image::../../../PlantUML-Test/Sequence_1.png[]
 |===
 
 
-image::../../../PlantUML-Test/Sequence_3.png[]
+image::models/analysis/use-cases/sequence_3.png[]
 
 [cols="1,4", options="header"]
 |===
