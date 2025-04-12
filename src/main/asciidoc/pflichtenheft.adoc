@@ -9,6 +9,7 @@
 |===
 |Version | Status      | Bearbeitungsdatum   | Autoren(en) |  Vermerk
 |0.1     | In Arbeit   | 03.04.2025          | Hamza, Anton, Anne, Eqbal        | Initiale Version
+|0.9    | In Arbeit | 14.04.2025 | Hamza, Anton, Anne, Eqbal | Nachtrag Versionierung
 |===
 
 == Zusammenfassung
