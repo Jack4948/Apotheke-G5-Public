@@ -91,9 +91,9 @@ diskutiert.
 == Systemgrenze und Top-Level-Architektur
 
 === Kontextdiagramm
-image::models/images/Kontextdiagramm.png[]
+image::models/images/kontextdiagramm1.png[]
 === Top-Level-Architektur
-image::models/images/Top-Level-Architektur.png[]
+image::models/images/Top-Level-Architektur1.png[]
 
 == Anwendungsfälle
 
