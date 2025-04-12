@@ -106,7 +106,7 @@ Das Diagramm zeigt insbesondere:
 6. Bei Kassenpatienten: Zuzahlung wird berechnet +
 7. System speichert die Ausgabe für die spätere Abrechnung mit der Zentralkasse
 
-|Funktionale Anforderungen | [F000], [F000]
+|Funktionale Anforderungen | <<F4>>, <<F6>>, <<F7>>, <<F13>>, <<F14>>, <<F15>>
 |===
 
 
@@ -125,7 +125,7 @@ Das Diagramm zeigt insbesondere:
 4. Apotheken-Computer übernimmt und löst automatisch eine Bestellung beim Lieferanten aus +
 5. Bestellung wird im System dokumentiert
 
-|Funktionale Anforderungen | [F000], [F000]
+|Funktionale Anforderungen | <<F17>>
 |===
 
 image::models/analysis/use-cases/sequence_2.png[]
@@ -145,7 +145,7 @@ image::models/analysis/use-cases/sequence_2.png[]
 4. Medikamente werden entnommen +
 5. System registriert den Zugriff und ordnet die Entnahme der richtigen Praxis zu
 
-|Funktionale Anforderungen | [F000], [F000]
+|Funktionale Anforderungen | <<F1>>, <<F2>>, <<F7>>, <<F16>>
 |===
 
 image::models/analysis/use-cases/sequence_1.png[]
@@ -166,7 +166,7 @@ image::models/analysis/use-cases/sequence_1.png[]
 4. Apothekenmitarbeiter erhält die Liste zur weiteren Bearbeitung +
 5. Verfallene Medikamente werden aus dem Lager entfernt
 
-|Funktionale Anforderungen | [F000], [F000]
+|Funktionale Anforderungen | <<F11>>, <<F12>>
 |===
 
 
@@ -183,7 +183,7 @@ image::models/analysis/use-cases/sequence_1.png[]
 2. Am Monatsende wird automatisch eine Sammelabrechnung erstellt +
 3. Die Abrechnung wird an die Krankenkasse übermittelt
 
-|Funktionale Anforderungen | [F000], [F00]
+|Funktionale Anforderungen | <<F16>>
 |===
 
 
@@ -193,7 +193,7 @@ image::models/analysis/use-cases/sequence_1.png[]
 |Name | Spezialpräparat anfordern
 |Beschreibung | Der Arzt oder der Kunde fordert ein spezielles Präparat (z. B. eine individuelle Salbe) an. Der Apothekenmitarbeiter nimmt den Auftrag auf und stellt das Präparat im Laborbereich der Apotheke selbst her.
 |Rollen | Arzt, Apothekenmitarbeiter, Apothekenleiter
-|Auslöser | Arzt benötigt ein individuelles Spezialpräparat
+|Auslöser | Arzt oder Kunde benötigt ein individuelles Spezialpräparat
 |Voraussetzungen | Arzt ist berechtigt, Spezialpräparate zu bestellen
 |Grundlegende Schritte |
 1. Arzt oder Kunde fordert ein Spezialpräparat (eine Mixtur) an +
@@ -202,7 +202,7 @@ image::models/analysis/use-cases/sequence_1.png[]
 4. Apothekenmitarbeiter stellt das Präparat im Laborbereich her +
 5. Apothekenmitarbeiter markiert die Bestellung als "abholbereit"
 
-|Funktionale Anforderungen | [F00], [F00]
+|Funktionale Anforderungen | <<F8>>, <<F9>>, <<F14>>, <<F15>>
 |===
 
 
@@ -223,7 +223,7 @@ image::models/analysis/use-cases/sequence_3.png[]
 4. Lieferdienst übernimmt die Sendung und liefert an die Zieladresse +
 5. Patient erhält Medikamente
 
-|Funktionale Anforderungen | [F00], [F00]
+|Funktionale Anforderungen | <<F18>>, <<F19>>, <<F20>>
 |===
 
 [cols="1,4", options="header"]
@@ -242,7 +242,7 @@ image::models/analysis/use-cases/sequence_3.png[]
 5. Bei Kassenpatienten: Zuzahlung wird kassiert, Rest an Zentralkasse gemeldet +
 6. Kundenrechnung wird erstellt und übergeben
 
-|Funktionale Anforderungen | [F00], [F00]
+|Funktionale Anforderungen | <<F6>>, <<F10>>
 |===
 
 
