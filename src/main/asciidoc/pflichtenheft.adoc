@@ -188,12 +188,11 @@ image::models/analysis/use-cases/sequence_1.png[]
 |Auslöser | Arzt benötigt ein individuelles Spezialpräparat
 |Voraussetzungen | Arzt ist berechtigt, Spezialpräparate zu bestellen
 |Grundlegende Schritte |
-1. Arzt fordert ein Spezialpräparat an (mündlich oder digital) +
+1. Arzt oder Kunde fordert ein Spezialpräparat (eine Mixtur) an +
 2. Apothekenmitarbeiter erfasst die Anforderung im System +
-3. Der Auftrag wird intern dokumentiert und verarbeitet +
+3. Apothekenmitarbeiter stellt für den Arzt/den Kunden ein Bestellzettel aus.
 4. Apothekenmitarbeiter stellt das Präparat im Laborbereich her +
-5. System meldet die Fertigstellung +
-6. Arzt wird über die Abholbereitschaft informiert
+5. Apothekenmitarbeiter markiert die Bestellung als "abholbereit"
 
 |Funktionale Anforderungen | [F00], [F00]
 |===
