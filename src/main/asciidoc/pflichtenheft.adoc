@@ -242,10 +242,154 @@ image::../../../PlantUML-Test/Sequence_3.png[]
 == Funktionale Anforderungen
 
 === Muss-Kriterien
-Was das zu erstellende Programm auf alle Fälle leisten muss.
+[options="header", cols="2h, 1, 3, 12"]
+|===
+|ID
+|Version
+|Name
+|Beschreibung
+
+|[[F1]]<<F1>>
+|v0.1
+|Authentifizierung
+a|
+Nutzer, die ein Konto haben, müssen in der Lage sein, sich bei der Anwendung anzumelden. Dafür wird der Nutzername und das Passwort benötigt.
+
+|[[F2]]<<F2>>
+|v0.1
+|Logout
+a|
+Der Nutzer muss sich jederzeit abmelden können.
+
+|[[F3]]<<F3>>
+|v0.1
+|Nutzerrollen
+a|
+Die Anwendung muss verschiedene Nutzerrollen (Apothekenmitarbeiter, Arztpraxis, Lieferdienst) mit entsprechenden Berechtigungen unterstützen.
+
+|[[F4]]<<F4>>
+|v0.1
+|Selbstbedienungskasse
+a|
+Nicht-authentifizierte Nutzer müssen in der Lage sein, die Selbstbedienungskasse als Kunden zu benutzen.
+
+|[[F5]]<<F5>>
+|v0.1
+|Registrierung
+a|
+Nicht-authentifizierte Nutzer müssen in der Lage sein, sich bei der Anwendung mit den folgenden Informaitonen zu registrieren:
+
+- Name
+- Vorname
+- Nutzername
+- Rolle
+- Passwort
+
+Neu erstellte Konten müssen durch die Apothekenmitarbeiter genehmigt werden, bevor der Nutzer sich einloggen kann.
+
+|[[F6]]<<F6>>
+|v0.1
+|Verkauf von Waren
+a|
+Die Apothekenmitarbeiter müssen in der Lage sein, Waren zu verkaufen. Die Kunden müssen nicht rezeptpflichtige Waren auch über die SB-Kasse kaufen können.
+
+|[[F7]]<<F7>>
+|v0.1
+|Strichcode scannen
+a|
+Kunden, Apothekenmitarbeiter und Ärzte müssen Strichcodes scannen bzw. eingeben können. Auf diese Weise wird der Posten auf die Kundenrechnung übernommen.
+
+|[[F8]]<<F8>>
+|v0.1
+|Mixtur bestellen
+a|
+Die Kunden und Ärzte müssen in der Lage sein, spezielle Pulver, Salben und Tinkturen zu bestellen, indem sie die Zutaten und deren Mengen angeben.
+
+|[[F9]]<<F9>>
+|v0.1
+|Mixturpreis berechnen
+a|
+Das System muss den Preis von Mixturen automatisch berechnen.
+
+**Formel:** Menge × Preis pro Gramm + 10% Marge
+
+|[[F10]]<<F10>>
+|v0.1
+|Kundenrechnung ausstellen
+a|
+Nach einem erfolgreich abgeschlossenen Kauf soll der Apothekenmitarbeiter bzw. die SB-Kasse eine Kundenrechnung ausstellen.
+
+|[[F11]]<<F11>>
+|v0.1
+|Eigene Bilanz erfassen
+a|
+Das System muss die Medikamentenbestände erfassen.
+
+|[[F12]]<<F12>>
+|v0.1
+|Verfallende Medikamente einsehen
+a|
+Das System muss eine Liste der Medikamente auszudrucken, deren Verfallsdatum in der nächsten Woche erreicht wird oder das schon überschritten ist
+
+|[[F13]]<<F13>>
+|v0.1
+|Zahlungsarten
+a|
+Kunden müssen in der Lage sein, die Waren entweder bar zu bezahlen oder von der Krankenkasse (gegen Zuzahlung, 10% des Preises, jedoch mindestens 5 EUR und maximal 10 EUR pro Arzneimittel) bezahlen zu lassen.
+
+|[[F14]]<<F14>>
+|v0.1
+|Bestellzettel
+a|
+Bei Bestellungen von Mixturen oder nicht vorrätigen Medikamenten werden den Kunden Bestellzettel mit einer eindeutigen Identifikationsnummer ausgegeben. Die Waren sind einen Tag nach Bestellung abzuholen.
+
+|[[F15]]<<F15>>
+|v0.1
+|Bestellungen verwalten
+a|
+Die Apothekenmitarbeiter müssen in der Lage sein, Bestellungen einzusehen und als "abholbereit" zu markieren.
+
+|[[F16]]<<F16>>
+|v0.1
+|Monatliche Abrechnung
+a|
+Das System soll Abrechnungen für Krankenkassen und Arztpraxen auszustellen.
+
+|[[F17]]<<F17>>
+|v0.1
+|Tägliche Nachbestellung
+a|
+Die Anwendung muss täglich eine Liste von nachzubestellenden Medikamenten erzeugen.
+
+|===
 
 === Kann-Kriterien
-Anforderungen die das Programm leisten können soll, aber für den korrekten Betrieb entbehrlich sind.
+[options="header", cols="2h, 1, 3, 12"]
+|===
+|ID
+|Version
+|Name
+|Beschreibung
+
+|[[F18]]<<F18>>
+|v0.1
+|Lieferung bestellen
+a|
+Der Kunde soll in der Lage sein, die bestellten Medikamente liefern zu lassen.
+
+|[[F19]]<<F19>>
+|v0.1
+|Auszuliefernde Medikamente anzeigen lassen
+a|
+Das System soll Medikamente anzeigen, die am gegebenen Tag auszuliefern sind. (TODO: Akteur TBD).
+
+|[[F20]]<<F20>>
+|v0.1
+|Route erstellen
+a|
+Das System soll täglich einen Routenplan für den Lieferdienst erzeugen.
+
+|===
 
 == Nicht-Funktionale Anforderungen
 
