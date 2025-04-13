@@ -109,6 +109,7 @@ Das Diagramm zeigt insbesondere:
 |Funktionale Anforderungen | <<F4>>, <<F6>>, <<F7>>, <<F13>>, <<F14>>, <<F15>>
 |===
 
+image::models/analysis/use-cases/sequence_2.png[]
 
 [cols="1,4", options="header"]
 |===
@@ -127,8 +128,6 @@ Das Diagramm zeigt insbesondere:
 
 |Funktionale Anforderungen | <<F17>>
 |===
-
-image::models/analysis/use-cases/sequence_2.png[]
 
 [cols="1,4", options="header"]
 |===
