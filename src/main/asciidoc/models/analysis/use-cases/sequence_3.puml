@@ -1,11 +1,19 @@
-@startuml
-actor Arzt
+@startuml UC006
+actor "Arzt oder Kunde"
 participant Apothekenmitarbeiter
-participant "Apotheken-Computer"
+participant System
 
-Arzt -> Apothekenmitarbeiter : Spezialpräparat anfordern
-Apothekenmitarbeiter -> "Apotheken-Computer" : Auftrag erfassen
-"Apotheken-Computer" -> "Apotheken-Computer" : Auftrag dokumentieren
+"Arzt oder Kunde" -> Apothekenmitarbeiter : Spezialpräparat (Mixtur) anfordern
+Apothekenmitarbeiter -> System : Bestellung erfassen
+System -> System : Bestellung dokumentieren
+System -> Apothekenmitarbeiter : Bestellzettel ausstellen
+Apothekenmitarbeiter -> "Arzt oder Kunde" : Bestellzettel mit ID ausgeben
+
 Apothekenmitarbeiter -> Apothekenmitarbeiter : Präparat im Laborbereich herstellen
-Apothekenmitarbeiter -> Arzt : Präparat abholbereit melden
+Apothekenmitarbeiter -> System : Bestellung als "abholbereit" markieren
+
+== Am nächsten Tag ==
+
+"Arzt oder Kunde" -> Apothekenmitarbeiter : Bestellung abholen
+Apothekenmitarbeiter -> "Arzt oder Kunde" : Präparat und Kundenrechnung ausgeben
 @enduml
