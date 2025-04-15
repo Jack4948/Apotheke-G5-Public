@@ -13,12 +13,12 @@ __Teilnehmer:__ Anton, Eqbal, Hamza, Anne, Bhargav
 
 
 == Bemerkungen
-Abgleichen Klassendiagram. Ideensamlung GUI. Ablgleichen individuelle Aufgaben. Fester Termin Montags 10-11 Uhr. Bei Bedarf Mittwoch.
+Abgleichen Klassendiagram. Ideensamlung GUI. Ablgleichen individuelle Aufgaben. *Fester Termin Montags 10-11 Uhr.* Bei Bedarf Mittwoch.
 
 == Aktueller Stand
 Wir benutzen Englisch für den Code. 
-*Klassendiagramm*
-Benutzer kürzen: Wir haben für jede Praxis ein Benutzer mit PIN als Passwort. 
+*Klassendiagramm:*
+Klasse Benutzer kürzen - Wir haben für jede Praxis ein Benutzer mit PIN als Passwort. 
 
 
 // Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
@@ -36,10 +36,10 @@ Benutzer kürzen: Wir haben für jede Praxis ein Benutzer mit PIN als Passwort.
 [option="headers"]
 |===
 |Name |Aufgabe |Status |Bemerkung
-|Hamza | GUI |DONE v0.1 |...
-|Eqbal |Klassendiagram, Akzeptanztest |DONE v0.1 |...
-|Anton |Klassendiagram, Zusammenführung Anforderungen & Use Cases |DONE v0.1 |...
-|Anne | GUI |DONE v0.1 |...
+|Hamza | GUI |IN PROGRESS |...
+|Eqbal |Klassendiagram, Akzeptanztest |IN PROGRESS |...
+|Anton |Klassendiagram, Zusammenführung Anforderungen & Use Cases |IN PROGRESS |...
+|Anne | GUI |IN PROGRESS |...
 |Bhargav | ... | ...| ...
 |===
 
