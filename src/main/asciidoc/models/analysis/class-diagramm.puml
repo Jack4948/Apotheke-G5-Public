@@ -1,12 +1,12 @@
 @startuml Class Diagram
 abstract class Order {
-  id : int
-  date : Date
-  paymentMethod : PaymentMethod
+  id: int
+  date: Date
+  paymentMethod: PaymentMethod
 
-  {abstract} generateReceipt() : String
-  generateOrderForm() : String
-  {abstract} calculateTotal() : Money
+  {abstract} generateReceipt(): String
+  generateOrderForm(): String
+  {abstract} calculateTotal(): Money
 }
 
 class LabOrder extends Order {}
@@ -18,21 +18,21 @@ enum PaymentMethod {
 }
 
 class OrderItem {
-  quantity : int
+  quantity: int
 }
 
 class Medication {
-  barcode : String
-  name : String
-  packaging : String
-  price : Money
+  barcode: String
+  name: String
+  packaging: String
+  price: Money
 }
 
 MedicationOrder "1" *-- "1..*" OrderItem
 OrderItem "0..*" --> "1" Medication
 
 class MixtureItem {
-  quantity : int
+  quantity: int
 }
 
 class MixtureIngredient {
@@ -44,13 +44,13 @@ LabOrder "1" *-- "1..*" MixtureItem
 MixtureItem "0..*" --> "1" MixtureIngredient
 
 class User {
-  id : int
-  name : String
-  userName : String
-  passwordHash : String
-  address : Optional<String>
-  role : UserRole
-  enabled : boolean
+  id: int
+  name: String
+  userName: String
+  passwordHash: String
+  address: String
+  role: UserRole
+  enabled: boolean
 }
 
 enum UserRole {
