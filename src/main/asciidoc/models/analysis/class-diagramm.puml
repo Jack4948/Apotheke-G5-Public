@@ -24,6 +24,7 @@ class OrderItem {
 class Medication {
   barcode: String
   packaging: String
+  needsPrescription: boolean
 }
 
 MedicationOrder "1" *-- "1..*" OrderItem
@@ -35,6 +36,7 @@ class MixtureItem {
 
 class MixtureIngredient {
   id: int
+  needsPrescription: boolean
 }
 LabOrder "1" *-- "1..*" MixtureItem
 MixtureItem "0..*" --> "1" MixtureIngredient
