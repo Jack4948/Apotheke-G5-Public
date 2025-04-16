@@ -544,16 +544,34 @@ Für jeden Dialog:
 == Datenmodell
 
 === Überblick: Klassendiagramm
-UML-Analyseklassendiagramm
+image::./models/analysis/class-diagram.png[]
 
 === Klassen und Enumerationen
 Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Klassen/Enumerationen dar. Jede Klasse und Enumeration wird in Form eines Glossars textuell beschrieben. Zusätzlich werden eventuellen Konsistenz- und Formatierungsregeln aufgeführt.
 
 // See http://asciidoctor.org/docs/user-manual/#tables
-[options="header"]
+[options="header", cols="1,7"]
 |===
-|Klasse/Enumeration |Beschreibung |
-|…                  |…            |
+|Klasse/Enumeration|Beschreibung
+
+|User|Ein authentifizierter Nutzer der Anwendung. Kunden müssen sich nicht authentifizieren und sind somit keine User.
+
+|UserRole|Rolle des Nutzers (legt seine Berechtigungen fest).
+
+|Order|Eine abstrakte Bestellungs-Klasse. Die Ware kann entweder sofort an den Kunden abgegeben werden oder am nächsten Tag.
+
+|PaymentMethod|Zahlungsmethode: entweder Krankenkasse (gegen Zuzahlung) oder Bar
+
+|MedicationOrder|Eine Bestellung von vorverpackten Medikamenten. Abzuholen entweder sofort oder am nächsten Tag.
+
+|LabOrder|Eine Bestellung einer Mixtur. Enthält die Zutaten und deren Mengen in Gramm.
+
+|MixtureItem und OrderItem|Bestellpositionen
+
+|Medication|Verpacktes Medikament, wird direkt an Kunden verkauft.
+
+|MixtureIngredient|Ein Medikament, das als Zutat für Mixturen (Spezialpräparate) verwendet wird. Kann nicht direkt an Kunden verkauft werden.
+
 |===
 
 == Akzeptanztestfälle
