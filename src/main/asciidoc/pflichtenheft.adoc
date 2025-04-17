@@ -121,7 +121,7 @@ Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Kl
 |Vorbedingung(en)      a|Der Kunde hat ein gültiges Rezept und steht am Apothekenschalter.
 |Ablauf      a|
 Der Kunde übergibt ein Rezept mit folgendem Inhalt: +
-- *Patient:* Max Müller +
+- *Patient:* Max ....+
 - *Geburtsdatum:* 01.02.1980 +
 - *Medikament:* Ibuprofen 400mg, 20 Tabletten +
 Der Apothekenmitarbeiter scannt das Rezept. +
@@ -156,7 +156,7 @@ Das Medikament wird automatisch zur Nachbestellung vorgemerkt und vom System bes
 |Use Case      | [[UC003]] <<UC003>> Zugang über PIN
 |Vorbedingung(en)      a|Arzthelferin steht vor dem Zugangssystem mit gültiger PIN.
 |Ablauf      a|
-Arzthelferin *Sarah* gibt die PIN *8234#* ein. +
+Arzthelferin *Frau....* gibt die PIN *#.....* ein. +
 Das System prüft die Berechtigung und ob ein anderer Zugriff aktiv ist. +
 Tür öffnet sich. Medikamente *Insulin und Verbandmaterial* werden entnommen.
 |Ergebnis(se)     a|
@@ -201,7 +201,7 @@ Das System erstellt automatisch eine Sammelabrechnung für alle Kassenpatienten 
 |Vorbedingung(en)      a|Kunde möchte eine individuelle Salbe bestellen
 |Ablauf      a|
 Kunde bestellt *Heilsalbe mit 20g Zinkoxid*. +
-Apothekenmitarbeiter erfasst die Bestellung, erstellt einen Bestellzettel mit ID 57321. +
+Apothekenmitarbeiter erfasst die Bestellung, erstellt einen Bestellzettel mit ID *#...*. +
 Die Mixtur wird im Labor hergestellt und im System als "abholbereit" markiert.
 |Ergebnis(se)     a|
 - Bestellung dokumentiert +
@@ -216,7 +216,7 @@ Die Mixtur wird im Labor hergestellt und im System als "abholbereit" markiert.
 |Use Case      |[[UC007]] <<UC007>> Medikamente ausliefern
 |Vorbedingung(en)      a|Bestellung mit Adresse liegt vor
 |Ablauf      a|
-Lieferdienst übernimmt Bestellung *#4711* für *Herrn Meyer, Halle,Zapfenstr.3*. +
+Lieferdienst übernimmt Bestellung *#....* für *Herrn ...., Halle,...Straße..*. +
 Route wird geplant, Medikamente verpackt und ausgeliefert.
 |Ergebnis(se)     a|
 - Medikamente ausgeliefert +
