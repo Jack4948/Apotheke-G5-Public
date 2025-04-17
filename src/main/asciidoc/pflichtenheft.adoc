@@ -158,7 +158,7 @@ Das Medikament wird automatisch zur Nachbestellung vorgemerkt und vom System bes
 |Vorbedingung(en)      a|Arzthelferin steht vor dem Zugangssystem mit gültiger PIN.
 |Ablauf      a|
 Arzthelferin  gibt die Username und Password  ein. +
-_Name:_ TestCustomer +
+-_Name:_ TestCustomer +
 - _Passwort:_ 123 +
 Das System prüft die Berechtigung und ob ein anderer Zugriff aktiv ist. +
 Tür öffnet sich. Medikamente *Insulin und Verbandmaterial* werden entnommen.
@@ -219,8 +219,7 @@ Die Mixtur wird im Labor hergestellt und im System als "abholbereit" markiert.
 |Use Case      |[[UC007]] <<UC007>> Medikamente ausliefern
 |Vorbedingung(en)      a|Bestellung mit Adresse liegt vor
 |Ablauf      a|
-Lieferdienst übernimmt Bestellung für  *Herrn Hans* +
-*Adreße..*. +
+Lieferdienst übernimmt Bestellung für  *Kunden* +
 Route wird geplant, Medikamente verpackt und ausgeliefert.
 |Ergebnis(se)     a|
 - Medikamente ausgeliefert +
