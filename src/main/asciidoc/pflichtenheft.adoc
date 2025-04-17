@@ -121,7 +121,7 @@ Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Kl
 |Vorbedingung(en)      a|Der Kunde hat ein gültiges Rezept und steht am Apothekenschalter.
 |Ablauf      a|
 Der Kunde übergibt ein Rezept mit folgendem Inhalt: +
-- *Patient:* Max ....+
+- *Patient:* Max Meier +
 - *Geburtsdatum:* 01.02.1980 +
 - *Medikament:* Ibuprofen 400mg, 20 Tabletten +
 Der Apothekenmitarbeiter scannt das Rezept. +
@@ -153,10 +153,13 @@ Das Medikament wird automatisch zur Nachbestellung vorgemerkt und vom System bes
 |===
 |ID            |[[AT0003]]<<AT0003>>
 |Funktionale Anforderung |[[F1]] <<F1>>,[[F2]] <<F2>>,[[F7]] <<F7>>,[[F16]] <<F16>>
-|Use Case      | [[UC003]] <<UC003>> Zugang über PIN
+|Use Case      | [[UC003]] <<UC003>> Zugang mit Username und Password
+
 |Vorbedingung(en)      a|Arzthelferin steht vor dem Zugangssystem mit gültiger PIN.
 |Ablauf      a|
-Arzthelferin *Frau....* gibt die PIN *#.....* ein. +
+Arzthelferin  gibt die Username und Password  ein. +
+_Name:_ TestCustomer +
+- _Passwort:_ 123 +
 Das System prüft die Berechtigung und ob ein anderer Zugriff aktiv ist. +
 Tür öffnet sich. Medikamente *Insulin und Verbandmaterial* werden entnommen.
 |Ergebnis(se)     a|
@@ -216,7 +219,8 @@ Die Mixtur wird im Labor hergestellt und im System als "abholbereit" markiert.
 |Use Case      |[[UC007]] <<UC007>> Medikamente ausliefern
 |Vorbedingung(en)      a|Bestellung mit Adresse liegt vor
 |Ablauf      a|
-Lieferdienst übernimmt Bestellung *#....* für *Herrn ...., Halle,...Straße..*. +
+Lieferdienst übernimmt Bestellung für  *Herrn Hans* +
+*Adreße..*. +
 Route wird geplant, Medikamente verpackt und ausgeliefert.
 |Ergebnis(se)     a|
 - Medikamente ausgeliefert +
