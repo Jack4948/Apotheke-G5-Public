@@ -92,9 +92,9 @@ diskutiert.
 == Systemgrenze und Top-Level-Architektur
 
 === Kontextdiagramm
-image::models/images/kontextdiagramm1.png[]
+image::models/images/UpdatedKontextdiagramm.png[]
 === Top-Level-Architektur
-image::models/images/Top-Level-Architektur1.png[]
+image::models/images/UbdatedTopLevelArchitektur.png[]
 
 == Anwendungsfälle
 
@@ -525,21 +525,32 @@ Das System soll von 7 Uhr bis 21 Uhr mit 99%-iger Wahrscheinlichkeit verfügbar 
 
 == GUI Prototyp
 
-In diesem Kapitel soll ein Entwurf der Navigationsmöglichkeiten und Dialoge des Systems erstellt werden.
-Idealerweise entsteht auch ein grafischer Prototyp, welcher dem Kunden zeigt, wie sein System visuell umgesetzt werden soll.
-Konkrete Absprachen - beispielsweise ob der grafische Prototyp oder die Dialoglandkarte höhere Priorität hat - sind mit dem Kunden zu treffen.
+Die nachfolgenden GUI-Renderer sollen zeigen, wie das fertige System aussehen könnte.
 
-=== Überblick: Dialoglandkarte
-Erstellen Sie ein Übersichtsdiagramm, das das Zusammenspiel Ihrer Masken zur Laufzeit darstellt. Also mit welchen Aktionen zwischen den Masken navigiert wird.
-//Die nachfolgende Abbildung zeigt eine an die Pinnwand gezeichnete Dialoglandkarte. Ihre Karte sollte zusätzlich die Buttons/Funktionen darstellen, mit deren Hilfe Sie zwischen den Masken navigieren.
+=== Anmelden
 
-=== Dialogbeschreibung
-Für jeden Dialog:
+image::models/images/Login.png[]
 
-1. Kurze textuelle Dialogbeschreibung eingefügt: Was soll der jeweilige Dialog? Was kann man damit tun? Überblick?
-2. Maskenentwürfe (Screenshot, Mockup)
-3. Maskenelemente (Ein/Ausgabefelder, Aktionen wie Buttons, Listen, …)
-4. Evtl. Maskendetails, spezielle Widgets
+=== Registrieren
+image::models/images/Registrieren.png[]
+
+=== Startseite (Kasse)
+image::models/images/Startseite.png[]
+
+=== Medikamente
+image::models/images/Medikamente.png[]
+
+=== Verfallende Medikamente
+image::models/images/Verfallende_Medikamente.png[]
+
+=== Labor
+image::models/images/Labor.png[]
+
+=== Herstellung in Labor
+image::models/images/HerstellungMediLabor.png[]
+
+=== Bezahlen
+image::models/images/Bazahlen.png[]
 
 == Datenmodell
 
