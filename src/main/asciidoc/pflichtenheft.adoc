@@ -121,17 +121,17 @@ Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Kl
 |Vorbedingung(en)      a|Der Kunde hat ein gültiges Rezept und steht am Apothekenschalter.
 |Ablauf      a|
 Der Kunde übergibt ein Rezept mit folgendem Inhalt: +
-- *Patient:* Max Meier +
-- *Geburtsdatum:* 01.02.1980 +
-- *Medikament:* Ibuprofen 400mg, 20 Tabletten +
-Der Apothekenmitarbeiter überprüft das Rezept. +
-Das System prüft die Verfügbarkeit: +
-- Wenn vorrätig: Ausgabe direkt an den Kunden. +
-- Wenn nicht: Ein Bestellzettel mit ID wird erstellt.
+ - *Patient:* Max Meier +
+ - *Geburtsdatum:* 01.02.1980 +
+ - *Medikament:* Ibuprofen 400mg, 20 Tabletten +
+  Der Apothekenmitarbeiter überprüft das Rezept. +
+  Das System prüft die Verfügbarkeit: +
+ - Wenn vorrätig: Ausgabe direkt an den Kunden. +
+ - Wenn nicht: Ein Bestellzettel mit ID wird erstellt.
 |Ergebnis(se)     a|
-- Medikament wurde ausgegeben oder vorgemerkt +
-- Zuzahlung bei Kassenpatienten berechnet +
-- Ausgabe im System gespeichert zur späteren Abrechnung mit der Krankenkasse
+ - Medikament wurde ausgegeben oder vorgemerkt +
+ - Zuzahlung bei Kassenpatienten berechnet +
+ - Ausgabe im System gespeichert zur späteren Abrechnung mit der Krankenkasse
 |===
 
 [cols="1h, 4"]
@@ -155,11 +155,11 @@ Das Medikament wird automatisch zur Nachbestellung vorgemerkt und vom System bes
 |Funktionale Anforderung |[[F1]] <<F1>>,[[F2]] <<F2>>,[[F7]] <<F7>>,[[F16]] <<F16>>
 |Use Case      | [[UC003]] <<UC003>> Zugang mit Username und Password
 
-|Vorbedingung(en)      a|Arzthelferin steht vor dem Zugangssystem mit gültiger PIN.
+|Vorbedingung(en)      a|Eine registrierte Arzthelferin befindet sich am Eingang zur Apotheke.
 |Ablauf      a|
 Arzthelferin  gibt die Username und Password  ein. +
--_Name:_ TestCustomer +
-- _Passwort:_ 123 +
+ -  Name: TestCustomer +
+ - Passwort: 123 +
 Das System prüft die Berechtigung und ob ein anderer Zugriff aktiv ist. +
 Tür öffnet sich. Medikamente *Insulin und Verbandmaterial* werden entnommen.
 |Ergebnis(se)     a|
