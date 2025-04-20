@@ -124,7 +124,7 @@ Der Kunde übergibt ein Rezept mit folgendem Inhalt: +
 - *Patient:* Max Meier +
 - *Geburtsdatum:* 01.02.1980 +
 - *Medikament:* Ibuprofen 400mg, 20 Tabletten +
-Der Apothekenmitarbeiter scannt das Rezept. +
+Der Apothekenmitarbeiter überprüft das Rezept. +
 Das System prüft die Verfügbarkeit: +
 - Wenn vorrätig: Ausgabe direkt an den Kunden. +
 - Wenn nicht: Ein Bestellzettel mit ID wird erstellt.
@@ -229,19 +229,28 @@ Route wird geplant, Medikamente verpackt und ausgeliefert.
 [cols="1h, 4"]
 |===
 |ID            |[[AT0008]]<<AT0008>>
-|Funktionale Anforderung |<<F6>>, [[F10]] <<F10>>
+|Funktionale Anforderung |<<F6>>,[[F10]] <<F10>>,
 |Use Case      |[[UC008]] <<UC008>> Medikament kaufen
-|Vorbedingung(en)      a|Kunde steht an SB-Kasse mit Medikamenten
+|Vorbedingung(en)      a|Ein Kunde steht mit einem Medikament an der SB-Kasse oder an der regulären Kasse.
 |Ablauf      a|
-Kunde scannt *Aspirin 100mg* an der SB-Kasse. +
-System berechnet Preis: 4,99 €. Kunde bezahlt mit carte. +
-Quittung wird automatisch erstellt.
-|Ergebnis(se)     a|
-- Kauf erfolgreich +
-- Rechnung erzeugt +
-- System aktualisiert Lager und Statistik
-|===
+- Der Kunde legt *Aspirin 100mg* zur Bezahlung vor. +
+- Fall A: Der Kunde nutzt die *SB-Kasse*. +
+- Fall B: Der Kunde geht zur *normalen Kasse*. +
 
+Der Apothekenmitarbeiter (bei Fall B) oder das System (bei Fall A) scannt den Strichcode. +
+
+Zahlungsoptionen: +
+- *Barzahlung:* Der Kunde zahlt den vollen Betrag in bar (z. B. 4,99 €). +
+- *Kassenpatient:* Der Kunde zahlt nur die gesetzliche Zuzahlung (z. B. 5 €). Der Restbetrag wird mit der Zentralkasse abgerechnet.
+
+Anschließend wird automatisch eine Quittung erstellt.
+|Ergebnis(se)     a|
+- Zahlung abgeschlossen +
+- Quittung ausgestellt +
+- Medikament wurde ausgegeben +
+- Lagerbestand wurde aktualisiert +
+- Daten zur Abrechnung mit der Krankenkasse wurden gespeichert
+|===
 
 
 == Glossar
