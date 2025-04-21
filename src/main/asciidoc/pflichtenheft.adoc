@@ -8,8 +8,9 @@
 [cols="1, 1, 1, 1, 4"]
 |===
 |Version | Status      | Bearbeitungsdatum   | Autoren(en) |  Vermerk
-|0.1     | In Arbeit   | 03.04.2025          | Hamza, Anton, Anne, Eqbal        | Initiale Version
-|0.9    | In Arbeit | 14.04.2025 | Hamza, Anton, Anne, Eqbal | Nachtrag Versionierung
+|0.1     | In Arbeit   | 03.04.2025          | Hamza Boujeddaine, Anton Liaposhchenko, Anne Panzer, Eqbal Al-Qadami       | Initiale Version
+|0.9    | In Arbeit | 14.04.2025 | Hamza Boujeddaine, Anton Liaposhchenko, Anne Panzer, Eqbal Al-Qadami | Nachtrag Versionierung
+|1.0    | Meilenstein | 23.04.2025          | Hamza Boujeddaine, Anton Liaposhchenko, Anne Panzer, Eqbal Al-Qadami, Lakhani, Bhargav Ghanshyambhai        | Pflichtenheft
 |===
 
 == Zusammenfassung
@@ -75,7 +76,7 @@ diskutiert.
 [cols="1, 4"]
 |===
 |Stakeholder | Interesse
-|Apothekenleitung     | Effizienter Betrieb, Kontrolle über Lager und Verkauf  
+|Apothekenleiter     | Effizienter Betrieb, Kontrolle über Lager und Verkauf  
 |Apothekenmitarbeiter	|	Schnelle Verkaufsabwicklung, korrekte Dokumentation
 
 |Arzt			|	Zugriff auf Medikamente, einfache PIN-Verwaltung
@@ -551,6 +552,12 @@ image::models/images/HerstellungMediLabor.png[]
 
 === Bezahlen
 image::models/images/Bazahlen.png[]
+
+=== Bestellungen
+image::models/images/Bestellungen.png[]
+
+=== Abrechnungen
+image::models/images/Abrechnungen.png[]
 
 == Datenmodell
 
