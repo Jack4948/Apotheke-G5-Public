@@ -583,10 +583,50 @@ Szenarium beschreibt). Für jedes Szenarium sollte es einen Akzeptanztestfall ge
 Jeder Testfall soll mit einer ID versehen werde, um später zwischen den Dokumenten (z.B. im Test-Plan) referenzieren zu können.
 
 == Glossar
-Sämtliche Begriffe, die innerhalb des Projektes verwendet werden und deren gemeinsames Verständnis aller beteiligten
-Stakeholder essenziell ist, sollten hier aufgeführt werden.
-Insbesondere Begriffe der zu implementierenden Domäne wurden bereits beschrieben, jedoch gibt es meist mehr Begriffe, die einer Beschreibung bedürfen. +
-Beispiel: Was bedeutet "Kunde"? Ein Nutzer des Systems? Der Kunde des Projektes (Auftraggeber)?
+
+
+== Technische Begriffe (alphabetisch sortiert)
+
+Begriff | Beschreibung
+--------|-------------
+.editorconfig | Datei zur Definition einheitlicher Code-Formatierung für verschiedene Entwicklungsumgebungen.
+Asciidoc | Ein leichtgewichtiges Markup-Format zur Erstellung technischer Dokumentation (ähnlich wie Markdown).
+Branch | Paralleler Entwicklungszweig in Git, oft für neue Features oder Fixes verwendet.
+Git | Versionskontrollsystem zur Zusammenarbeit am Code mit mehreren Entwicklern.
+GitHub | Webplattform zur Verwaltung von Git-Repositories. Wird hier zur Teamkoordination genutzt.
+HTML/CSS | Technologien zur Strukturierung und Gestaltung der Benutzeroberfläche.
+JUnit | Java-Testframework für automatisierte Unit- und Integrationstests.
+Maven | Build-Management-Tool für Java-Projekte. Steuert Abhängigkeiten, Kompilierung und Projektstruktur.
+Merge | Zusammenführen von Änderungen aus einem Branch in einen anderen.
+Milestone | Projektmeilenstein, bei dem wichtige Zwischenziele erreicht und überprüft werden.
+pom.xml | Maven-Konfigurationsdatei. Enthält Abhängigkeiten und Build-Anweisungen.
+Pull Request | Anfrage zur Code-Übernahme von einem Branch in einen anderen mit Review-Möglichkeit.
+README.md | Projektbeschreibung auf GitHub mit ersten Informationen zum Setup und zum Projektziel.
+resources/ | Beinhaltet statische Dateien wie CSS, Bilder und HTML-Templates (Thymeleaf).
+Salespoint | Ein Framework der TU Dresden, das für Anwendungen im Bereich Verkauf, Inventar und Bestellmanagement konzipiert ist.
+SCRUM | Agile Projektmanagement-Methode mit definierten Rollen, Artefakten und Prozessen.
+Spring Boot | Java Framework zur Erstellung von modernen, produktionsbereiten Webanwendungen mit minimalem Setup.
+Sprint | Iterativer Zeitraum (z. B. 1–2 Wochen), in dem definierte Aufgaben umgesetzt werden.
+src/main/java | Ordner mit dem Hauptcode der Java-Anwendung. Enthält alle Kernklassen und Logik.
+src/test/java | Ordner für automatisierte Tests (z. B. mit JUnit). Dient zur Qualitätssicherung des Codes.
+Thymeleaf | Java-Template-Engine zur dynamischen Darstellung von HTML-Seiten im Backend.
+
+== Fachbegriffe der Domäne (alphabetisch sortiert)
+
+Begriff | Beschreibung
+--------|-------------
+Apotheker | Benutzer mit erweiterten Rechten, z. B. zur Bearbeitung von Produkten, Rezepten und Benutzerrollen.
+Benutzerkonto | Persönlicher Zugang für Kunden oder Apotheker, ggf. mit Rollen und Berechtigungen.
+Bestellung | Prozess, bei dem ein Kunde Artikel in den Warenkorb legt und den Kauf abschließt.
+Inventar | Gesamter Lagerbestand der Apotheke, der durch Verkäufe und Lieferungen verändert wird.
+Kunde | Eine Person, die Produkte in der Apotheke kauft oder bestellt. In der Anwendung oft gleichbedeutend mit Endnutzer.
+Lieferant | Quelle bzw. Anbieter von Produkten, der von der Apotheke verwaltet wird.
+Produkt | Ein Artikel, der im System geführt und verkauft wird. Kann ein rezeptfreies oder rezeptpflichtiges Medikament sein.
+Produktkatalog | Gesamtliste aller im System verfügbaren Produkte.
+Rezept | Medizinisches Dokument, das bestimmte verschreibungspflichtige Produkte enthält.
+Verwaltung | Bereich der Anwendung für administrative Aufgaben wie Benutzer-, Produkt- oder Lagerverwaltung.
+Warenkorb | Temporäre Sammlung ausgewählter Produkte durch den Kunden vor Abschluss der Bestellung.
+?
 
 == Offene Punkte
 Offene Punkte werden entweder direkt in der Spezifikation notiert. Wenn das Pflichtenheft zum finalen Review vorgelegt wird, sollte es keine offenen Punkte mehr geben.
