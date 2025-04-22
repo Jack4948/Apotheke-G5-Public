@@ -339,7 +339,7 @@ Die Anwendung muss verschiedene Nutzerrollen (Apothekenleiter, Apothekenmitarbei
 |v0.1
 |Selbstbedienungskasse
 a|
-Nicht-authentifizierte Nutzer müssen in der Lage sein, die Selbstbedienungskasse als Kunden zu benutzen.
+Nicht-authentifizierte Nutzer müssen in der Lage sein, die Selbstbedienungskasse als Kunden zu benutzen. An der SB-Kasse werden nur nicht-rezeptflichtige waren verkauft.
 
 |[[F5]]<<F5>>
 |v0.1
@@ -359,7 +359,9 @@ Neu erstellte Konten müssen durch die Apothekenmitarbeiter genehmigt werden, be
 |v0.1
 |Verkauf von Waren
 a|
-Die Apothekenmitarbeiter müssen in der Lage sein, Waren zu verkaufen. Die Kunden müssen nicht rezeptpflichtige Waren auch über die SB-Kasse kaufen können.
+Die Apothekenmitarbeiter müssen in der Lage sein, (auch rezeptflichtige) Waren zu verkaufen.
+
+Es wird zwischen verpackten Medikamenten und Mixturzutaten (auch Rezepturbestandteile) unterschieden. Die Mixturzutaten können nicht direkt an Kunden verkauft werden.
 
 |[[F7]]<<F7>>
 |v0.1
@@ -389,7 +391,7 @@ Nach einem erfolgreich abgeschlossenen Kauf soll der Apothekenmitarbeiter bzw. d
 
 |[[F11]]<<F11>>
 |v0.1
-|Eigene Bilanz erfassen
+|Lagerbestände erfassen
 a|
 Das System muss die Medikamentenbestände erfassen.
 
@@ -416,6 +418,8 @@ Bei Bestellungen von Mixturen oder nicht vorrätigen Medikamenten werden den Kun
 |Bestellungen verwalten
 a|
 Die Apothekenmitarbeiter müssen in der Lage sein, Bestellungen einzusehen und als "abholbereit" zu markieren.
+
+Es gibt Bestellungen, die sofort an den Kunden abgegeben werden, und Bestellungen, die am nächsten Tag abzuholen sind (nicht vorrätige Medikamente und Mixturen).
 
 |[[F16]]<<F16>>
 |v0.1
@@ -562,16 +566,34 @@ image::models/images/Abrechnungen.png[]
 == Datenmodell
 
 === Überblick: Klassendiagramm
-UML-Analyseklassendiagramm
+image::./models/analysis/class-diagram.png[]
 
 === Klassen und Enumerationen
 Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Klassen/Enumerationen dar. Jede Klasse und Enumeration wird in Form eines Glossars textuell beschrieben. Zusätzlich werden eventuellen Konsistenz- und Formatierungsregeln aufgeführt.
 
 // See http://asciidoctor.org/docs/user-manual/#tables
-[options="header"]
+[options="header", cols="1,7"]
 |===
-|Klasse/Enumeration |Beschreibung |
-|…                  |…            |
+|Klasse/Enumeration|Beschreibung
+
+|User|Ein authentifizierter Nutzer der Anwendung. Kunden müssen sich nicht authentifizieren und sind somit keine User.
+
+|UserRole|Rolle des Nutzers (legt seine Berechtigungen fest).
+
+|Order|Eine abstrakte Bestellungs-Klasse. Die Ware kann entweder sofort an den Kunden abgegeben werden oder am nächsten Tag.
+
+|PaymentMethod|Zahlungsmethode: entweder Krankenkasse (gegen Zuzahlung) oder Bar
+
+|MedicationOrder|Eine Bestellung von vorverpackten Medikamenten. Abzuholen entweder sofort oder am nächsten Tag.
+
+|LabOrder|Eine Bestellung einer Mixtur. Enthält die Zutaten und deren Mengen in Gramm.
+
+|MixtureItem und OrderItem|Bestellpositionen
+
+|Medication|Verpacktes Medikament, wird direkt an Kunden verkauft.
+
+|MixtureIngredient|Ein Medikament, das als Zutat für Mixturen (Spezialpräparate) verwendet wird. Kann nicht direkt an Kunden verkauft werden.
+
 |===
 
 == Akzeptanztestfälle
