@@ -535,33 +535,57 @@ Die nachfolgenden GUI-Renderer sollen zeigen, wie das fertige System aussehen k�
 === Anmelden
 
 image::models/images/Login.png[]
+Die Login-Maske ist der Einstiegspunkt für autorisierte Benutzer (Personal, Chef). Sie enthält Eingabefelder für **Benutzername** und **Passwort**. Ein Klick auf den **"Anmelden"**-Button validiert die Eingaben gegen die im System hinterlegten Benutzerdaten. Bei Erfolg wird der Benutzer zum Dashboard oder seiner Startansicht weitergeleitet. Optional ist ein Link für zur Registrierung vorhanden. Fehlermeldungen werden bei ungültigen Eingaben angezeigt.
+
 
 === Registrieren
 image::models/images/Registrieren.png[]
+Diese Maske ermöglicht die Beantragung eines neuen Benutzerkontos (primär für Personal). Sie enthält ein Formular mit Feldern für **Vorname**, **Nachname**, **E-mail**, gewünschter **Benutzername**, **Passwort** und Passwort-Bestätigung. Eventuell kann hier bereits eine **Rolle** ausgewählt werden. Mit dem **"Registrien"**-Button werden die Daten zur Prüfung übermittelt.
+
 
 === Startseite (Kasse)
 image::models/images/Startseite.png[]
+Dies ist die Hauptansicht für den Verkaufsprozess am HV-Tisch (Point-of-Sale). Sie ist in mehrere Bereiche unterteilt:
+
+* Artikeleingabe: Ein Feld zur Eingabe von Barcodes (per Scanner) oder Artikelnummern mit einem Button zum Hinzufügen zum Warenkorb. Optional werden hier Details zum zuletzt gescannten Artikel angezeigt.
+* Warenkorb: Eine Liste der aktuell im Warenkorb befindlichen Artikel mit **Name**, **Menge**, und **Einzelpreis**.
+* **Gesamtsumme:** Deutliche Anzeige des fälligen Gesamtbetrags, ggf. inklusive der automatisch berechneten **Zuzahlung**.
 
 === Medikamente
 image::models/images/Medikamente.png[]
+Diese Ansicht dient als **Inventarübersicht** und Produktkatalog. Sie zeigt eine tabellarische Auflistung aller geführten Artikel (Medikamente, Freiwahl). Wichtige Spalten sind **Name**, **Barcode**, aktueller **Lagerbestand** und nächstes **Verfallsdatum**. Eine **Drucken** ermöglicht ein ausdrucken der Liste. Durch Klick auf eine Zeile gelangt man zur Detailansicht des Produkts. Für berechtigte Benutzer (Admin/Chef) gibt es Aktionen zum **Anlegen/Bearbeiten** von Produkten.
+
 
 === Verfallende Medikamente
 image::models/images/Verfallende_Medikamente.png[]
+Dieser Berichtsbildschirm zeigt die Liste der Medikamente an, deren **Verfallsdatum** bald erreicht wird oder bereits überschritten ist. Die Liste ist typischerweise eine Tabelle mit **Produktname**, **Anzahl**, **Verfallsdatum** und **Barcode**. Hauptaktion ist das **Drucken** der Liste für die physische Aussonderung der Ware.
 
 === Labor
 image::models/images/Labor.png[]
+Die Labor-Ansicht dient als **Arbeitsliste** und Übersicht für die im Labor anzufertigenden Mixturen. Sie zeigt eine Tabelle aller **Laborbestellungen** mit relevanten Informationen wie **Bestell-Nr.**, **Art**, **Bestelldatum**, und aktuellem **Status**.
 
 === Herstellung in Labor
 image::models/images/HerstellungMediLabor.png[]
+Diese Detailansicht zeigt alle Informationen zu einer spezifischen Laborbestellung und unterstützt den Herstellungsprozess. Sie enthält:
+
+* Rezepturdetails: Eine Auflistung der benötigten **Bestandteile** mit **Name**, benötigter **Menge** und **Einheit**. Idealerweise wird der aktuelle Lagerbestand jeder Zutat angezeigt (mit Warnung bei Unterbestand).
+* Aktionen: Buttons, um den Status zu ändern. Das Mischen löst die Reduzierung des Lagerbestands der Zutaten aus.
 
 === Bezahlen
 image::models/images/Bazahlen.png[]
+Diese Ansicht (oder dieser Bereich innerhalb der Kassenansicht) finalisiert den Verkaufsvorgang. Sie zeigt den endgültigen Zahlbetrag (inkl. Zuzahlung) prominent an. Dem Benutzer werden Buttons für die verfügbaren **Zahlungsarten** angeboten. Ein Klick auf die gewählte Zahlungsart bestätigt die Transaktion, schließt den Verkauf ab. "Beleg ausdrucken" löst den Bondruck aus. "Abbrechen" führt zurück zur leeren Kassenmaske.
+
 
 === Bestellungen
 image::models/images/Bestellungen.png[]
+Diese Übersicht dient der Anzeige und Verwaltung vergangener Transaktionen, einschließlich normaler Verkäufe (Order) und Laborbestellungen (LaborBestellung). Sie enthält eine Tabelle mit den Daten der Bestellung.
 
 === Abrechnungen
 image::models/images/Abrechnungen.png[]
+Diese Ansicht ist für den Chef/Admin zur Erstellung der monatlichen Abrechnungen vorgesehen. Sie bietet Auswahlmöglichkeiten für den **Abrechnungszeitraum**. Nach Auswahl der Parameter kann der Benutzer die Abrechnung **ausdrucken**.
+
+Quellen und ähnliche Inhalte
+
 
 == Datenmodell
 
