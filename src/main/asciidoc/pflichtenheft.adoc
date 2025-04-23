@@ -803,15 +803,15 @@ Das Glossar dient als zentrale Begriffsübersicht für alle projektrelevanten Fa
 | Customer
 | Endnutzer, der Medikamente kauft oder bestellt.
 
+| 
 | LabOrder
-| Lab Order
 | Bestellung für eine Mixtur. Enthält Zutaten mit Mengenangaben.
 
 | Lieferdienst
 | Delivery Service
 | Liefert bestellte Medikamente an Kunden.
 
-| Medication
+| 
 | Medication
 | Beschreibung siehe <<Klasse-Enumeration>>
 
@@ -823,8 +823,8 @@ Das Glossar dient als zentrale Begriffsübersicht für alle projektrelevanten Fa
 | MixtureIngredient
 | Beschreibung siehe <<Klasse-Enumeration>>
 
+| 
 | MixtureItem / OrderItem
-| Order Item
 | Beschreibung siehe <<Klasse-Enumeration>>
 
 | 
@@ -843,16 +843,16 @@ Das Glossar dient als zentrale Begriffsübersicht für alle projektrelevanten Fa
 | Over-the-Counter Product
 | Produkte, die ohne ärztliches Rezept erhältlich sind.
 
-| 
 | Spezialpräparat
+| Special preparation
 | Individuell hergestellte Mischung nach ärztlicher Anweisung.
 
-| User
+| 
 | User
 | Beschreibung siehe <<Klasse-Enumeration>>
 
+| 
 | UserRole
-| User Role
 | Beschreibung siehe <<Klasse-Enumeration>>
 
 
