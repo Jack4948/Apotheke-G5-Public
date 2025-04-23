@@ -492,7 +492,7 @@ Achten Sie darauf, dass deren Erfüllung (mindestens theoretisch) messbar sein m
 |ID
 |Version
 |Name
-|Description
+|Beschreibung
 
 
 |[[NF1]]<<NF1>>
