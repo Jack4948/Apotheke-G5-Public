@@ -769,7 +769,7 @@ Das Glossar dient als zentrale Begriffsübersicht für alle projektrelevanten Fa
 [options="header"]
 [cols="1, 1, 4"]
 |=== 
-| Begriff (DE) | Term (EN) | Beschreibung (DE) 
+| Begriff (DE) | Term (EN) | Beschreibung  
 
 | Apothekerleiter
 | Head Pharmacist
@@ -815,20 +815,20 @@ Das Glossar dient als zentrale Begriffsübersicht für alle projektrelevanten Fa
 | Medication
 | Beschreibung siehe <<Klasse-Enumeration>>
 
+| 
 | MedicationOrder
-| Medication Order
 | Beschreibung siehe <<Klasse-Enumeration>>
 
+| 
 | MixtureIngredient
-| Mixture Ingredient
 | Beschreibung siehe <<Klasse-Enumeration>>
 
 | MixtureItem / OrderItem
 | Order Item
 | Beschreibung siehe <<Klasse-Enumeration>>
 
+| 
 | PaymentMethod
-| Payment Method
 | Beschreibung siehe <<Klasse-Enumeration>>
 
 | PIN-Verwaltung
@@ -843,8 +843,8 @@ Das Glossar dient als zentrale Begriffsübersicht für alle projektrelevanten Fa
 | Over-the-Counter Product
 | Produkte, die ohne ärztliches Rezept erhältlich sind.
 
+| 
 | Spezialpräparat
-| Special Preparation
 | Individuell hergestellte Mischung nach ärztlicher Anweisung.
 
 | User
