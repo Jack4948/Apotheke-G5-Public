@@ -1,0 +1,63 @@
+= Protokoll Gruppe Apotheke
+
+Treffen am 22.04.2025
+
+Ort:      HG C/3/16 +
+Beginn:   12:30 Uhr +
+Ende:     13:30 Uhr
+
+__Schriftführer:__ Anne
+
+__Teilnehmer:__ Anton, Eqbal, Hamza, Anne
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+
+== Bemerkungen
+Abgleichen Fortschritt Meilenstein 1.
+
+== Aktueller Stand
+*Wir arbeiten an der ersten fertigen Version des Pflichtenhefts.*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Name |Aufgabe |Status |Bemerkung
+|Hamza   |GUI    |DONE |...
+|Eqbal |Anwendungsfallbeschreibung |DONE |...
+|Anton |Zusammenführen, FA bearbeiten |DONE |...
+|Anne |GUI Beschreiben |DONE |...
+|Bhargav |Glossar |DONE |...
+|===
+
+=== Fortschritt Individuellen Aufgaben:
+
+*Videoshop*
+[option="headers"]
+|===
+|Name |Status |Bemerkung
+|Hamza |DONE |
+|Eqbal |DONE |TODO: Erweiterung
+|Anton |DONE |TODO: Erweiterung
+|Anne |DONE |TODO: Erweiterung
+|Bhargav |IN PROCESS| ???
+|===
+
+== TODO bis nächste Meeting
+- Erste Prototypen für Komponente:
+[option="headers"]
+|===
+|Name |Komponente |Status |Bemerkung
+|Hamza   |Login/Registrierung System |TO DO |
+|Eqbal |Personalverwaltung |TO DO |
+|Anton |Labor |TO DO |
+|Anne |Kasse |TO DO |
+|Bhargav |Berichte (nur Abrechnung) |TO DO |???
+|===
+
+
+== TODO für Meilenstein 1 
+- Abnahme
+
+=== Fragen
+- 
