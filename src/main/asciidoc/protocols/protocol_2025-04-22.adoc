@@ -23,11 +23,11 @@ Abgleichen Fortschritt Meilenstein 1.
 [option="headers"]
 |===
 |Name |Aufgabe |Status |Bemerkung
-|Hamza   |GUI    |DONE |...
-|Eqbal |Anwendungsfallbeschreibung |DONE |...
-|Anton |Zusammenführen, FA bearbeiten |DONE |...
-|Anne |GUI Beschreiben |DONE |...
-|Bhargav |Glossar |DONE |...
+|Hamza   |GUI    |DONE |
+|Eqbal |Anwendungsfallbeschreibung |DONE |
+|Anton |Zusammenführen, FA bearbeiten |DONE |
+|Anne |GUI Beschreiben |DONE |
+|Bhargav |Glossar |DONE |
 |===
 
 === Fortschritt Individuellen Aufgaben:
@@ -37,9 +37,9 @@ Abgleichen Fortschritt Meilenstein 1.
 |===
 |Name |Status |Bemerkung
 |Hamza |DONE |
-|Eqbal |DONE |TODO: Erweiterung
-|Anton |DONE |TODO: Erweiterung
-|Anne |DONE |TODO: Erweiterung
+|Eqbal |DONE |
+|Anton |DONE |
+|Anne |DONE |
 |Bhargav |IN PROCESS| ???
 |===
 
