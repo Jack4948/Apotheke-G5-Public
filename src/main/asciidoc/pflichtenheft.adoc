@@ -598,7 +598,7 @@ Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Kl
 // See http://asciidoctor.org/docs/user-manual/#tables
 [options="header", cols="1,7"]
 |===
-|Klasse/Enumeration|Beschreibung
+|[[Klasse-Enumeration]]Klasse/Enumeration|Beschreibung
 
 |User|Ein authentifizierter Nutzer der Anwendung. Kunden müssen sich nicht authentifizieren und sind somit keine User.
 
@@ -763,10 +763,101 @@ Anschließend wird automatisch eine Quittung erstellt.
 
 
 == Glossar
-Sämtliche Begriffe, die innerhalb des Projektes verwendet werden und deren gemeinsames Verständnis aller beteiligten
-Stakeholder essenziell ist, sollten hier aufgeführt werden.
-Insbesondere Begriffe der zu implementierenden Domäne wurden bereits beschrieben, jedoch gibt es meist mehr Begriffe, die einer Beschreibung bedürfen. +
-Beispiel: Was bedeutet "Kunde"? Ein Nutzer des Systems? Der Kunde des Projektes (Auftraggeber)?
 
-== Offene Punkte
-Offene Punkte werden entweder direkt in der Spezifikation notiert. Wenn das Pflichtenheft zum finalen Review vorgelegt wird, sollte es keine offenen Punkte mehr geben.
+Das Glossar dient als zentrale Begriffsübersicht für alle projektrelevanten Fachausdrücke. Es stellt sicher, dass alle Beteiligten – unabhängig von ihrem technischen Hintergrund – ein gemeinsames Verständnis wichtiger Begriffe haben. Dies ist besonders entscheidend bei domänenspezifischen Systemen wie der Apothekenverwaltung.
+
+[options="header"]
+[cols="1, 1, 4"]
+|=== 
+| Begriff (DE) | Term (EN) | Beschreibung  
+
+| Apothekerleiter
+| Head Pharmacist
+| Verantwortlich für den gesamten Betrieb der Apotheke, einschließlich Nachbestellungen und Personalverwaltung.
+
+| Apothekenmitarbeiter
+| Pharmacy Staff
+| Verantwortlich für Verkauf, Registrierung und Ausstellen von Kaufbelegen.
+
+| Arzt
+| Doctor
+| Erstellt Rezepte und kann Spezialpräparate anfordern.
+
+| Arzthelferin
+| Medical Assistant
+| Unterstützt den Arzt und entnimmt Medikamente für Patienten.
+
+| Bestellung
+| Order
+| Beschreibung siehe <<Klasse-Enumeration>> 
+
+| Kassensystem
+| POS System
+| Elektronisches Kassensystem zur Zahlungsabwicklung, inkl. Barcode-Erkennung, Abrechnungsautomatik etc.
+
+| Kasse
+| Cash Register
+| System zur Zahlungsabwicklung, entweder über Krankenkasse oder Barzahlung.
+
+| Kunde
+| Customer
+| Endnutzer, der Medikamente kauft oder bestellt.
+
+| 
+| LabOrder
+| Bestellung für eine Mixtur. Enthält Zutaten mit Mengenangaben.
+
+| Lieferdienst
+| Delivery Service
+| Liefert bestellte Medikamente an Kunden.
+
+| 
+| Medication
+| Beschreibung siehe <<Klasse-Enumeration>>
+
+| 
+| MedicationOrder
+| Beschreibung siehe <<Klasse-Enumeration>>
+
+| 
+| MixtureIngredient
+| Beschreibung siehe <<Klasse-Enumeration>>
+
+| 
+| MixtureItem / OrderItem
+| Beschreibung siehe <<Klasse-Enumeration>>
+
+| 
+| PaymentMethod
+| Beschreibung siehe <<Klasse-Enumeration>>
+
+| PIN-Verwaltung
+| PIN Management
+| System zur Authentifizierung für medizinisches Personal.
+
+| Rezept
+| Prescription
+| Ärztlich verordnete Medikation, einzulösen in der Apotheke.
+
+| Rezeptfreies Produkt
+| Over-the-Counter Product
+| Produkte, die ohne ärztliches Rezept erhältlich sind.
+
+| Spezialpräparat
+| Special preparation
+| Individuell hergestellte Mischung nach ärztlicher Anweisung.
+
+| 
+| User
+| Beschreibung siehe <<Klasse-Enumeration>>
+
+| 
+| UserRole
+| Beschreibung siehe <<Klasse-Enumeration>>
+
+|===
+
+
+
+== Offene punke
+
