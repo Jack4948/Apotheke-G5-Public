@@ -855,5 +855,9 @@ Das Glossar dient als zentrale Begriffsübersicht für alle projektrelevanten Fa
 | UserRole
 | Beschreibung siehe <<Klasse-Enumeration>>
 
+|===
 
+
+
+== Offene punke
 
