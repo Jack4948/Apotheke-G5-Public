@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout}"> <head>
+    <title>Dashboard</title>
+    <th:block layout:fragment="css">
+    </th:block>
+</head>
+<body> <section layout:fragment="content">
+    <h1 class="ui header">Dashboard</h1>
+    <div class="ui divider"></div>
+
+    <div th:if="${successMessage}" class="ui success message"><i class="close icon"></i><div class="header" th:text="${successMessage}"></div></div>
+    <div th:if="${errorMessage}" class="ui error message"><i class="close icon"></i><div class="header" th:text="${errorMessage}"></div></div>
+
+    <div class="ui four column doubling stackable grid container">
+        <div class="column">
+            <div class="ui raised card"> <div class="content">
+                <div class="ui small statistic">
+                    <div class="label"><i class="flask icon"></i> Offene Laboraufträge</div>
+                    <div class="value" th:text="${anzahlOffenerLaborauftraege ?: 0}">0</div>
+                </div>
+            </div>
+                <a th:href="@{/labor/liste}" class="ui bottom attached button small blue"><i class="list icon"></i> Zur Laborliste</a>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui raised card">
+                <div class="content">
+                    <div class="ui small statistic">
+                        <div class="label"><i class="cart arrow down icon"></i> Niedriger Bestand</div>
+                        <div class="value" th:text="${anzahlNiedrigerBestand ?: 0}">0</div>
+                    </div>
+                </div>
+                <a th:href="@{/inventar(filter='low')}" class="ui bottom attached button small orange"><i class="eye icon"></i> Inventar anzeigen</a>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui raised card">
+                <div class="content">
+                    <div class="ui small statistic">
+                        <div class="label"><i class="clock outline icon"></i> Verfällt bald</div>
+                        <div class="value" th:text="${anzahlBaldVerfallend ?: 0}">0</div>
+                    </div>
+                </div>
+                <a th:href="@{/berichte/verfall}" class="ui bottom attached button small yellow"><i class="calendar times outline icon"></i> Verfallsliste</a>
+            </div>
+        </div>
+        <div class="column" sec:authorize="hasAnyRole('ADMIN', 'CHEF')">
+            <div class="ui raised card">
+                <div class="content">
+                    <div class="ui small statistic">
+                        <div class="label"><i class="hospital user icon"></i> Praxis aktiv</div>
+                        <div class="value" th:text="${aktivePraxisName ?: 'Keine'}">Keine</div>
+                    </div>
+                </div>
+                <a th:href="@{/admin/praxen}" class="ui bottom attached button small grey"><i class=" Hdd outline icon"></i> Praxisverwaltung</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+    <h2 class="ui header">Schnellzugriff</h2>
+    <a th:href="@{/kasse}" class="ui primary button"><i class="cash register icon"></i> Kasse öffnen</a>
+    <a th:href="@{/labor/neu}" class="ui teal button"><i class="plus square outline icon"></i> Neuen Laborauftrag anlegen</a>
+</section>
+
+<th:block layout:fragment="scripts">
+</th:block>
+
+</body>
+</html>
