@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout}"> <head>
+    <title>Dashboard</title>
+    <th:block layout:fragment="css">
+    </th:block>
+</head>
+<body>
+    <section layout:fragment="content">
+        <h1 class="ui header">Neue Laborbestellung</h1>
+        <div class="ui divider"></div>
+
+        <div th:if="${successMessage}" class="ui success message"><i class="close icon"></i><div class="header" th:text="${successMessage}"></div></div>
+        <div th:if="${errorMessage}" class="ui error message"><i class="close icon"></i><div class="header" th:text="${errorMessage}"></div></div>
+
+        <div class="ui grid">
+            <div class="eight wide column">
+                <form class="ui form inline" method="get">
+                    <div class="fields inline">
+                        <div class="field">
+                            <label>Zutaten suchen</label>
+                            <input type="text" name="search" required>
+                        </div>
+            
+                        <button class="ui submit button" type="submit">Suchen</button>
+                    </div>
+                </form>
+        
+                <h2 class="ui header">Suchergebnisse</h2>
+                <table th:if="${!searchResults.isEmpty()}" class="ui celled table compact very basic">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Preis</th>
+                            <th>Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="ingredient: ${searchResults}">
+                            <td th:text="${ingredient.getName()}"></td>
+                            <td th:text="${{ingredient.getPrice()} + '/g'}"></td>
+                            <td>
+                                <form method="POST">
+                                    <input type="hidden" name="id" th:value="${ingredient.getId()}" />
+                                    <div class="ui right labeled input mini">
+                                        <input type="number" aria-label="Anzahl" value="1" min="0" length="3" style="width: 80px" name="qty" />
+                                        <div class="ui basic label">g</div>
+                                    </div>
+                                    <button class="ui button mini" type="submit">Übernehmen</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p th:if="${searchResults.isEmpty()}">Keine Zutaten gefunden</p>
+            </div>
+            <div class="eight wide column">
+                <table class="ui table very basic">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Menge</th>
+                            <th>Preis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item: ${cart}">
+                            <td th:text="${item.productName}"></td>
+                            <td th:text="${item.quantity + ' g'}"></td>
+                            <td th:text="${{item.price}}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <form method="post" th:action="@{/labor/bestellung}" th:unless="${cart.isEmpty()}">
+                    <button class="ui button fluid">Abschließen und bezahlen</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <th:block layout:fragment="scripts">
+    </th:block>
+</body>
+</html>
