@@ -53,19 +53,16 @@ public class UserController {
             return "registrieren";
         }
 
-        // Validierungsfehler
         if (bindingResult.hasErrors()) {
             return "registrieren";
         }
 
         try {
-            // Benutzer erstellen
             userService.createUser(form);
             // Erfolgsmeldung für Login-Seite
             redirectAttributes.addFlashAttribute("registrationSuccess", true);
             return "redirect:/login";
         } catch (Exception e) {
-            // Bei Fehler
             model.addAttribute("errorMessage", "Registrierung fehlgeschlagen: " + e.getMessage());
             return "registrieren";
         }
