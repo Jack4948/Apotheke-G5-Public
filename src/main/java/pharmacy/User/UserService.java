@@ -7,7 +7,6 @@ import org.salespointframework.useraccount.Password.UnencryptedPassword;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 @Transactional
@@ -15,15 +14,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserAccountManagement userAccounts;
-    private final PasswordEncoder passwordEncoder;
+    //private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, 
-                      UserAccountManagement userAccounts,
-                      PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, UserAccountManagement userAccounts) {
         
         this.userRepository = userRepository;
         this.userAccounts = userAccounts;
-        this.passwordEncoder = passwordEncoder;
     }
 
     public User createUser(RegistrierenForm form) {
@@ -34,12 +30,13 @@ public class UserService {
             UnencryptedPassword.of(form.getPassword()),
             role
         );
-        
+        userAccounts.save(userAccount);
+
         User user = new User(
             userAccount, 
             form.getFirstName() + " " + form.getLastName(), 
             form.getFirstName(), 
-            passwordEncoder.encode(form.getPassword()),
+            form.getPassword(),
             form.getEmail(),
             UserRole.valueOf(form.getRolle()),
             true
