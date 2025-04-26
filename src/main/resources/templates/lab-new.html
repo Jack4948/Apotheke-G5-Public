@@ -71,6 +71,11 @@
                             <td th:text="${item.quantity + ' g'}"></td>
                             <td th:text="${{item.price}}"></td>
                         </tr>
+                        <tr>
+                            <td>Marge</td>
+                            <td>10%</td>
+                            <td th:text="${{cart.getPrice().multiply(0.1)}}"></td>
+                        </tr>
                     </tbody>
                 </table>
 

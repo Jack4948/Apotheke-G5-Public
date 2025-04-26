@@ -75,6 +75,7 @@ public class LabController {
     cart.addItemsTo(order);
     cart.clear();
 
+    order.addChargeLine(order.getOrderLines().getTotal().multiply(0.1), "Marge");
     orderManagement.payOrder(order);
 
     return "redirect:/labor/liste";
