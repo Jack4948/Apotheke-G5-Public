@@ -46,8 +46,7 @@ public class UserController {
         if ("cancel".equals(action)) {
             return "redirect:/";
         }
-
-        // Passwort-Übereinstimmung prüfen
+        //passwort pruefen
         if (!form.getPassword().equals(form.getPasswordConfirm())) {
             model.addAttribute("passwordMismatch", true);
             return "registrieren";

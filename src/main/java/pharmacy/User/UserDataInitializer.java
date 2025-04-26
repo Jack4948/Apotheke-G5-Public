@@ -34,12 +34,10 @@ public class UserDataInitializer implements DataInitializer {
 
         LOG.info("Erstelle Standard-Benutzer");
         
-        // Erstelle den Boss-Benutzer
         userAccountManagement.create("boss", UnencryptedPassword.of("123"), Role.of("BOSS"));
 
         var password = "321";
 
-        // Erstelle Test-Benutzer
         List.of(
             new RegistrierenForm("test", "test", "test@gmail.com", "EMPLOYEE", password, password),
             new RegistrierenForm("test1", "tester", "test1@gmail.com", "EMPLOYEE", password, password)
