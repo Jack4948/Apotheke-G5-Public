@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Bestellzettel</title>
+    <th:block layout:fragment="css">
+        <style>
+            #bestellzettel-box { border: 1px dashed grey; padding: 20px; margin-top: 20px; background-color: #f9f9f9; }
+            #bestellzettel-box h2 { text-align: center; margin-bottom: 20px;}
+        </style>
+    </th:block>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 class="ui header">Bestellung aufgenommen</h1>
+
+    <div class="ui info message">
+        Der Artikel ist nicht vorrätig und wurde für Sie bestellt. Hier ist Ihr Bestellzettel.
+    </div>
+
+    <div id="bestellzettel-box">
+        <h2>Apotheke Unterbrunner Ärztehaus - Bestellzettel</h2>
+        <p>Datum: <span th:text="${#temporals.format(T(java.time.LocalDateTime).now(), 'dd.MM.yyyy HH:mm:ss')}">Datum</span></p>
+        <p><b>Bestellnummer: <span style="font-size: 1.2em; color: blue;" th:text="${backorderNumber}">B1234</span></b></p>
+        <p>Bestellter Artikel: <strong th:text="${backorderItem}">Produktname</strong></p>
+        <hr>
+        <p><b>Voraussichtlich abholbereit: Morgen</b></p>
+        <hr>
+        <p style="text-align: center;">Bitte bringen Sie diesen Zettel bei Abholung mit.</p>
+    </div>
+
+    <a th:href="@{/checkout}" class="ui primary button" style="margin-top: 20px;">
+        <i class="arrow left icon"></i> Zurück zur Kasse
+    </a>
+
+</section>
+</body>
+</html>

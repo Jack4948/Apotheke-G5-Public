@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout}">
+<head>
+    <title>Kasse</title>
+    <th:block layout:fragment="css">
+        <style>
+            /* Styling wie vorher */
+            .ui.grid + .grid { margin-top: 0; }
+            #cart-items .item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0 !important;}
+            #cart-items .content { flex-grow: 1; margin-left: 10px; margin-right: 10px; }
+            #cart-items .right.floated.content { flex-grow: 0; flex-shrink: 0; margin-left: auto; white-space: nowrap; /* Verhindert Umbruch */}
+            #cart-items .price { min-width: 70px; text-align: right;}
+            #cart-summary { margin-top: 1em; padding-top: 1em; border-top: 1px solid #eee;}
+            .quantity-input { width: 50px !important; text-align: center; margin: 0 5px !important;}
+        </style>
+    </th:block>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 class="ui header">Kasse</h1>
+
+    <div th:if="${successMessage}" class="ui success message"><i class="close icon"></i><div class="header" th:text="${successMessage}"></div></div>
+    <div th:if="${errorMessage}" class="ui error message"><i class="close icon"></i><div class="header" th:text="${errorMessage}"></div></div>
+    <div th:if="${infoMessage}" class="ui info message"><i class="close icon"></i><div class="header" th:text="${infoMessage}"></div></div>
+
+    <div th:if="${outOfStockItem}" class="ui orange message" id="bestellen">
+        <i class="icon shipping fast"></i>
+        Artikel <strong th:text="${outOfStockItem.name}">Produktname</strong> ist nicht in ausreichender Menge verfügbar.
+        <form th:action="@{/checkout/backorder}" method="post" style="display:inline; margin-left: 15px;">
+            <input type="hidden" name="productName" th:value="${outOfStockItem.name}" />
+            <input type="hidden" name="productId" th:value="${outOfStockItem.id}" />
+            <button type="submit" class="ui mini orange button">Jetzt bestellen (Abholung morgen)</button>
+        </form>
+    </div>
+
+
+    <div class="ui grid">
+        <div class="ten wide column">
+            <div class="ui segment">
+                <h3 class="ui header">Artikeleingabe</h3>
+                <form class="ui form" th:action="@{/checkout/add}" method="post">
+                    <div class="two fields">
+                        <div class="twelve wide field">
+                            <label>Barcode scannen oder eingeben</label>
+                            <input type="text" name="barcode" placeholder="Barcode..." autofocus required>
+                        </div>
+                        <div class="four wide field">
+                            <label>Menge</label>
+                            <input type="number" name="quantity" value="1" min="1" step="1" required>
+                        </div>
+                    </div>
+                    <button class="ui icon button primary fluid" type="submit">
+                        <i class="plus icon"></i> Hinzufügen
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="six wide column">
+            <div class="ui segment">
+                <h3 class="ui header"><i class="shopping cart icon"></i> Warenkorb</h3>
+                <div id="cart-items" class="ui middle aligned divided list">
+
+                    <div class="item" th:each="item : ${cart}">
+                        <div class="right floated content">
+                            <form th:action="@{/checkout/updateQuantity}" method="post" style="display:inline;">
+                                <input type="hidden" name="itemId" th:value="${item.id}"/> <input type="hidden" name="quantity" th:value="${item.quantity.amount.intValue() - 1}"/>
+                                <button class="ui icon mini button" type="submit" th:disabled="${item.quantity.amount.intValue() <= 1}">
+                                    <i class="minus icon"></i>
+                                </button>
+                            </form>
+                            <input type="number" class="quantity-input" name="quantity" th:value="${item.quantity.amount.intValue()}" min="0" step="1"
+                                   th:formaction="@{/checkout/updateQuantity}" formmethod="post"
+                                   onchange="this.form.submit()"> <input type="hidden" name="itemId" th:value="${item.id}" form="qtyForm-${item.id}"> <form th:id="'qtyForm-' + ${item.id}" style="display:none;"></form> <form th:action="@{/checkout/updateQuantity}" method="post" style="display:inline;">
+                            <input type="hidden" name="itemId" th:value="${item.id}"/>
+                            <input type="hidden" name="quantity" th:value="${item.quantity.amount.intValue() + 1}"/>
+                            <button class="ui icon mini button" type="submit">
+                                <i class="plus icon"></i>
+                            </button>
+                        </form>
+                            <form th:action="@{/checkout/remove}" method="post" style="display:inline; margin-left: 5px;">
+                                <input type="hidden" name="itemId" th:value="${item.id}"/>
+                                <button class="ui icon mini red button" type="submit" data-tooltip="Artikel entfernen">
+                                    <i class="trash alternate outline icon"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="content">
+                            <span th:text="${item.productName}">Produkt XY</span>
+                        </div>
+                        <div class="right floated content price">
+                            <span th:text="${#numbers.formatCurrency(item.price.number)} + ' ' + ${item.price.currency.currencyCode}">9.99 EUR</span>
+                        </div>
+                    </div>
+
+                    <div class="item" th:if="${cart.empty}">
+                        Warenkorb ist leer.
+                    </div>
+                </div>
+
+                <div id="cart-summary" th:if="${!cart.empty}">
+                    <div class="ui grid small">
+                        <div class="eight wide column right aligned">Zwischensumme:</div>
+                        <div class="eight wide column right aligned" th:text="${#numbers.formatCurrency(cart.price.number)}">0.00 EUR</div>
+
+                        <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}">Zuzahlung (Kasse):</div>
+                        <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}" th:text="${#numbers.formatCurrency(calculatedCoPayment.number)}">0.00 EUR</div>
+
+                        <div class="eight wide column right aligned"><b>Gesamt (Bar):</b></div>
+                        <div class="eight wide column right aligned"><b><span th:text="${#numbers.formatCurrency(gesamtPreisBar.number)}">0.00 EUR</span></b></div>
+
+                        <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}"><b>Gesamt (Kasse):</b></div>
+                        <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}"><b><span th:text="${#numbers.formatCurrency(totalPriceInsurance.number)}">0.00 EUR</span></b></div>
+                    </div>
+                    <div class="ui divider"></div>
+                    <form th:action="@{/checkout/finish}" method="post">
+                        <p>Zahlungsart wählen:</p>
+                        <div class="ui two buttons">
+                            <button name="paymentMethod" value="CASH" class="ui green button" type="submit"><i class="money bill alternate outline icon"></i> Barzahlung</button>
+                            <button name="paymentMethod" value="INSURANCE" class="ui blue button" type="submit"><i class="first aid icon"></i> Kassenrezept</button>
+                        </div>
+                    </form>
+                    <form th:action="@{/checkout/clear}" method="post" style="margin-top: 1em;">
+                        <button class="ui fluid button negative" type="submit">Warenkorb leeren</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<th:block layout:fragment="scripts">
+    <script>
+       // i dont know todo i guess
+    </script>
+</th:block>
+</body>
+</html>
