@@ -21,6 +21,7 @@
                     <th>ID</th>
                     <th>Zutaten</th>
                     <th>Preis</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody th:remove="all-but-first">
@@ -33,6 +34,15 @@
                         </span>
                     </td>
                     <td th:text="${{order.getTotal()}}">9,99 EUR</td>
+                    <td th:unless="${order.isCompleted()}">
+                        <form method="post" th:action="@{/labor/herstellen}">
+                            <input type="hidden" name="id" th:value="${order.getId()}" />
+                            <button class="ui button">Herstellen</button>
+                        </form>
+                    </td>
+                    <td th:if="${order.isCompleted()}">
+                        abholbereit
+                    </td>
                 </tr>
             </tbody>
         </table>

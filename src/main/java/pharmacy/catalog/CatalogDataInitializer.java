@@ -3,8 +3,11 @@ package pharmacy.catalog;
 import static org.salespointframework.core.Currencies.EURO;
 import org.javamoney.moneta.Money;
 import org.salespointframework.core.DataInitializer;
+import org.salespointframework.inventory.UniqueInventory;
+import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.order.OrderLine;
 import org.salespointframework.order.OrderManagement;
+import org.salespointframework.payment.Cash;
 import org.salespointframework.payment.PaymentMethod;
 import org.salespointframework.quantity.Quantity;
 import org.salespointframework.useraccount.UserAccount;
@@ -34,9 +37,11 @@ class CatalogDataInitializer implements DataInitializer {
   private final IngredientCatalog ingredientCatalog;
   private final OrderManagement<LabOrder> labOrderManagement;
   private final UserAccountManagement userAccountManagement;
+  private final UniqueInventory<UniqueInventoryItem> inventory;
 
   CatalogDataInitializer(MedicationCatalog medicationCatalog, IngredientCatalog ingredientCatalog,
-      OrderManagement<LabOrder> labOrderManagement, UserAccountManagement userAccountManagement) {
+      OrderManagement<LabOrder> labOrderManagement, UserAccountManagement userAccountManagement,
+      UniqueInventory<UniqueInventoryItem> inventory) {
 
     Assert.notNull(medicationCatalog, "MedicationCatalog must not be null!");
 
@@ -44,6 +49,7 @@ class CatalogDataInitializer implements DataInitializer {
     this.ingredientCatalog = ingredientCatalog;
     this.labOrderManagement = labOrderManagement;
     this.userAccountManagement = userAccountManagement;
+    this.inventory = inventory;
   }
 
   @Override
@@ -62,11 +68,10 @@ class CatalogDataInitializer implements DataInitializer {
     MixtureIngredient ingredient1 = ingredientCatalog.save(new MixtureIngredient("Lorem", Money.of(0.09, EURO), false));
     MixtureIngredient ingredient2 = ingredientCatalog.save(new MixtureIngredient("Ipsum", Money.of(0.05, EURO), true));
 
-    for (var medication : medicationCatalog.findAll()) {
-      System.out.println(medication);
-    }
+    inventory.save(new UniqueInventoryItem(ingredient1, Quantity.of(10000)));
+    inventory.save(new UniqueInventoryItem(ingredient2, Quantity.of(10000)));
 
-    LabOrder order1 = new LabOrder(anonymous.getId());
+    LabOrder order1 = new LabOrder(anonymous.getId(), Cash.CASH);
     order1.addOrderLine(ingredient1, Quantity.of(20));
     order1.addOrderLine(ingredient2, Quantity.of(50));
     labOrderManagement.save(order1);

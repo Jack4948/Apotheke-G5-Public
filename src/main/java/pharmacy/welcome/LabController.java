@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.salespointframework.catalog.Product.ProductIdentifier;
 import org.salespointframework.order.Cart;
 import org.salespointframework.order.OrderManagement;
+import org.salespointframework.order.Order.OrderIdentifier;
 import org.salespointframework.payment.Cash;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManagement;
@@ -78,6 +79,12 @@ public class LabController {
     order.addChargeLine(order.getOrderLines().getTotal().multiply(0.1), "Marge");
     orderManagement.payOrder(order);
 
+    return "redirect:/labor/liste";
+  }
+
+  @PostMapping("/labor/herstellen")
+  public String labManufacture(@RequestParam("id") LabOrder order) {
+    orderManagement.completeOrder(order);
     return "redirect:/labor/liste";
   }
 
