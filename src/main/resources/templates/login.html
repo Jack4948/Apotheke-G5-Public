@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"	
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Anmelden</title>
+    <th:block layout:fragment="css">
+    </th:block>
+</head>
+<body>
+    <section layout:fragment="content">
+    <form class="ui form" role="form" method="post" th:action="@{/login}">
+        <div>
+            <div>
+                <label th:text="#{login.username}" for="username">Benutzername</label>
+                <input id="username" name="username" type="text" required="required">
+            </div>
+            <div>
+                <label th:text="#{login.passwort}" for="password">Passwort</label>
+                <input id="password" name="password" type="password" required="required">
+            </div>
+            <div th:if="${param.error}" class="error">
+                <p>Benutzername oder Passwort ist falsch.</p>
+            </div>
+            <div th:if="${registrationSuccess}" class="success">
+                <p>Registrierung erfolgreich! Sie können sich jetzt anmelden.</p>
+            </div>
+        </div>
+        <input class="ui button" type="submit" value="Anmelden">
+    </form>
+    <p class="ui param">Noch kein Konto? <a th:href="@{/registrieren}">Registrieren</a></p>
+    </section>
+</body>
+</html>
