@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kassenbericht</title>
+</head>
+<body>
+    <h1>Krankenkassen Abrechnung</h1>
+    <table border="1" style="width:100%; border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th>Praxis</th>
+                <th>Produkt</th>
+                <th>Menge</th>
+                <th>Preis pro Stück</th>
+                <th>Gesamtpreis</th>
+                <th>Datum</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="entry : ${entries}">
+                <td th:text="${entry.practiceName}">Praxis Name</td>
+                <td th:text="${entry.medicineName}">Medikament Name</td>
+                <td th:text="${entry.quantity}">Anzahl</td>
+                <td th:text="${entry.pricePerUnit}">Preis</td>
+                <td th:text="${entry.totalPrice}">Gesamtpreis</td>
+                <td th:text="${entry.date}">Datum</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
