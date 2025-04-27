@@ -45,10 +45,14 @@ public class UserDataInitializer implements DataInitializer {
         LOG.info("Erstelle Standard-Benutzer");
         
         RegistrierenForm Chef = new RegistrierenForm("java", "java", "java@aposys.de","BOSS", "123", "123");
-        RegistrierenForm employee = new RegistrierenForm("emp", "emp", "emp@aposys.de","EMPLOYEE", "123", "123");
+        RegistrierenForm Employee = new RegistrierenForm("emp", "emp", "emp@aposys.de","EMPLOYEE", "123", "123");
+        RegistrierenForm Doctor = new RegistrierenForm("doctor", "doctor", "doctor@aposys.de","DOCTORS_OFFICE", "123", "123");
+        RegistrierenForm Driver = new RegistrierenForm("driver", "driver", "driver@aposys.de","DELIVERY_DRIVER", "123", "123");
         
         userService.createUser(Chef);
-        userService.createUser(employee);
+        userService.createUser(Employee);
+        userService.createUser(Doctor);
+        userService.createUser(Driver);
         
         // ChefAccount = userAccountManagement.create(Chef.getFirstName(), UnencryptedPassword.of("123"), Chef.getRolle());
         //UserAccount EmployeeAccount = userAccountManagement.create(employee.getFirstName(), UnencryptedPassword.of("123"), employee.getRolle());
