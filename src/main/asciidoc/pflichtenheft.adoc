@@ -763,35 +763,10 @@ Anschließend wird automatisch eine Quittung erstellt.
 
 
 == Glossar
-<<<<<<< HEAD
+
 [options="header"]
 [cols = "1 ,1 ,4"]
-|===
-|Begriff  |Term |Beschreibung
-| Apotheke | Pharmacy | Ein Ort, an dem Medikamente verkauft und Rezepte verarbeitet werden.
-| Apothekenschränke | Pharmacy Drawers | Schränke zur Medikamentenaufbewahrung, meist alphabetisch sortiert.
-| Ärztehaus | Medical Center | Ein Gebäudekomplex, in dem mehrere Ärzte praktizieren und sich auch die Apotheke befindet.
-| Bestellzettel | Order Slip | Dokument mit ID, das einem Kunden bei Nachbestellung eines Medikaments übergeben wird.
-| Chemisches Labor | Chemical Laboratory | Raum zur Herstellung individueller Mixturen auf ärztliche Anforderung.
-| Identifikationsnummer | Identification Number | Eindeutige Nummer zur Zuordnung einer Bestellung.
-| Kasse | Cash Register | Punkt des Verkaufsabschlusses in der Apotheke.
-| Mixtur | Mixture | Spezielle Anfertigung von Medikamenten im Labor, z. B. Salben oder Pulver.
-| Packungsgröße | Package Size | Gibt an, wie viele Einheiten ein Medikament enthält.
-| Rezept | Prescription | Ärztliche Anweisung zur Abgabe eines Medikaments.
-| Rezeptpflichtig | Prescription-only | Produkte, die nur gegen ein ärztliches Rezept abgegeben werden dürfen.
-| Selbstbedienungsabteilung | Self-Service Section | Bereich, in dem rezeptfreie Artikel vom Kunden selbst entnommen werden können.
-| Strichcode | Barcode | Maschinenlesbarer Code zur eindeutigen Identifikation von Medikamenten.
-| Verkaufsraum | Sales Area | Der Teil der Apotheke, in dem der direkte Verkauf stattfindet.
 
-|===
-== Technische Begriffe (alphabetisch sortiert)
-
-
-
-.editorconfig | Datei zur Definition einheitlicher Code-Formatierung für verschiedene Entwicklungsumgebungen.
-
-=======
->>>>>>> 171e9883317728ab4f97e214b23f98df1522d08d
 
 Das Glossar dient als zentrale Begriffsübersicht für alle projektrelevanten Fachausdrücke. Es stellt sicher, dass alle Beteiligten – unabhängig von ihrem technischen Hintergrund – ein gemeinsames Verständnis wichtiger Begriffe haben. Dies ist besonders entscheidend bei domänenspezifischen Systemen wie der Apothekenverwaltung.
 
