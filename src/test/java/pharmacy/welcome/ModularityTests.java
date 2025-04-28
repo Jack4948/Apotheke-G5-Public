@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package kickstart.welcome;
-
-import kickstart.Application;
+package pharmacy.welcome;
 
 import java.io.IOException;
 
@@ -25,6 +23,8 @@ import org.springframework.modulith.core.ApplicationModules;
 import org.springframework.modulith.docs.Documenter;
 import org.springframework.modulith.docs.Documenter.CanvasOptions;
 import org.springframework.modulith.docs.Documenter.DiagramOptions;
+
+import pharmacy.Application;
 
 /**
  * Test case to verify the modular structure of the application.
