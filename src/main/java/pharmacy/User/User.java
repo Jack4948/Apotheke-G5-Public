@@ -110,4 +110,3 @@ public class User extends AbstractAggregateRoot<pharmacy.User.User.UserIdentifie
 		}
     }
 }
-

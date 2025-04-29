@@ -4,13 +4,9 @@ import java.util.List;
 
 import org.salespointframework.core.DataInitializer;
 import org.salespointframework.useraccount.UserAccountManagement;
-import org.salespointframework.useraccount.Password.UnencryptedPassword;
-import org.salespointframework.useraccount.UserAccount;
-import org.salespointframework.useraccount.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
