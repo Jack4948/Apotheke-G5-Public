@@ -5,6 +5,9 @@ import org.salespointframework.inventory.*;
 import org.salespointframework.order.CartItem;
 import org.salespointframework.order.Order;
 import org.salespointframework.order.OrderManagement;
+import org.salespointframework.order.Cart;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.context.annotation.SessionScope;
 import pharmacy.catalog.Medication;
 import pharmacy.catalog.MedicationCatalog;
 
@@ -87,6 +90,7 @@ class CheckoutController {
 		}
 
 		Optional<Medication> medicationOpt = catalog.findByBarcode(barcode);
+		// TODO: name suchen
 
 		if (medicationOpt.isPresent()){
 			Medication medication = medicationOpt.get();
@@ -230,4 +234,12 @@ class CheckoutController {
 		return "backorderbill"; // name of html template
 	}
 
+	// idk if needed =============================================
+	@Bean
+	@SessionScope
+	public Cart cart() {
+		return new Cart();
+	}
+
 }
+
