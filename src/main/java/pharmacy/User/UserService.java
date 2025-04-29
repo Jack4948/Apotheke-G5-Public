@@ -24,7 +24,7 @@ public class UserService {
 
     public User createUser(RegistrierenForm form) {
         
-        Role role = Role.of(form.getRolle());
+        Role role = Role.of(form.getRole());
         UserAccount userAccount = userAccounts.create(
             form.getFirstName(),  // Benutze firstName als Benutzername
             UnencryptedPassword.of(form.getPassword()),
@@ -38,7 +38,7 @@ public class UserService {
             form.getFirstName(), 
             form.getPassword(),
             form.getEmail(),
-            UserRole.valueOf(form.getRolle()),
+            form.getRole(),
             true
         );
         

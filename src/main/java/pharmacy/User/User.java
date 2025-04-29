@@ -21,15 +21,15 @@ public class User extends AbstractAggregateRoot<pharmacy.User.User.UserIdentifie
     private String username;
     private String passwordHash;
     private String email;
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
+    //@Enumerated(EnumType.STRING)
+    private String role;
     
     private boolean enabled;
 
     @OneToOne
     private UserAccount userAccount;
 
-    public User(UserAccount userAccount, String name, String username, String passwordHash, String email, UserRole role, boolean enabled){
+    public User(UserAccount userAccount, String name, String username, String passwordHash, String email, String role, boolean enabled){
         this.userAccount = userAccount;
         this.name = name;
         this.username = username;
@@ -58,7 +58,7 @@ public class User extends AbstractAggregateRoot<pharmacy.User.User.UserIdentifie
         return email;
     }
 
-    public UserRole getRole(){
+    public String getRole(){
         return role;
     }
 

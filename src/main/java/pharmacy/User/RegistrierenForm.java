@@ -3,19 +3,17 @@ package pharmacy.User;
 import jakarta.validation.constraints.NotEmpty;
 
 public class RegistrierenForm {
-    private final @NotEmpty String firstName, lastName, email, rolle, password, passwordConfirm; 
+    private final @NotEmpty String firstName, lastName, email, role, password, passwordConfirm; 
 
     // Konstruktor für manuelle Erstellung
-    public RegistrierenForm(String firstName, String lastName, String email, String rolle, String password, String passwordConfirm){
+    public RegistrierenForm(String firstName, String lastName, String email, String role, String password, String passwordConfirm){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.rolle = rolle;
+        this.role = role;
         this.password = password;
         this.passwordConfirm = passwordConfirm;
-
     }
-    
     
     public String getFirstName(){
         return firstName;
@@ -29,8 +27,8 @@ public class RegistrierenForm {
         return email;
     }
 
-    public String getRolle(){
-        return rolle;
+    public String getRole(){
+        return role;
     }
 
     public String getPassword(){
