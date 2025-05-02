@@ -116,7 +116,7 @@ class CheckoutController {
 
 
 	// update/delete medication form cart ---------------------------------------
-	@PostMapping("/chekout/updateQuantity")
+	@PostMapping("/checkout/updateQuantity")
 	public String updateQuantity(@RequestParam String itemId, @RequestParam int quantity, RedirectAttributes redirectAttributes){
 		if (quantity < 0) {
 			redirectAttributes.addFlashAttribute("errorMessage", "Menge darf nicht negativ sein.");
@@ -135,8 +135,8 @@ class CheckoutController {
 				return "redirect:/checkout";
 			}
 
+			cart.removeItem(itemId);
 			if (quantity == 0){
-				cart.removeItem(itemId);
 				redirectAttributes.addFlashAttribute("infoMessage", item.getProductName() + " entfernt.");
 			} else {
 				cart.addOrUpdateItem(item.getProduct(), requestedQuantity);

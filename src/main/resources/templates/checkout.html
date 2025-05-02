@@ -72,15 +72,18 @@
                                     <i class="minus icon"></i>
                                 </button>
                             </form>
+
                             <input type="number" class="quantity-input" name="quantity" th:value="${item.quantity.amount.intValue()}" min="0" step="1"
                                    th:formaction="@{/checkout/updateQuantity}" formmethod="post"
-                                   onchange="this.form.submit()"> <input type="hidden" name="itemId" th:value="${item.id}" form="qtyForm-${item.id}"> <form th:id="'qtyForm-' + ${item.id}" style="display:none;"></form> <form th:action="@{/checkout/updateQuantity}" method="post" style="display:inline;">
-                            <input type="hidden" name="itemId" th:value="${item.id}"/>
-                            <input type="hidden" name="quantity" th:value="${item.quantity.amount.intValue() + 1}"/>
-                            <button class="ui icon mini button" type="submit">
-                                <i class="plus icon"></i>
-                            </button>
-                        </form>
+                                   onchange="this.form.submit()"> <input type="hidden" name="itemId" th:value="${item.id}" form="qtyForm-${item.id}"> <form th:id="'qtyForm-' + ${item.id}" style="display:none;"></form>
+                                   
+                            <form th:action="@{/checkout/updateQuantity}" method="post" style="display:inline;">
+                                <input type="hidden" name="itemId" th:value="${item.id}"/>
+                                <input type="hidden" name="quantity" th:value="${item.quantity.amount.intValue() + 1}"/>
+                                <button class="ui icon mini button" type="submit">
+                                    <i class="plus icon"></i>
+                                </button>
+                            </form>
                             <form th:action="@{/checkout/remove}" method="post" style="display:inline; margin-left: 5px;">
                                 <input type="hidden" name="itemId" th:value="${item.id}"/>
                                 <button class="ui icon mini red button" type="submit" data-tooltip="Artikel entfernen">
