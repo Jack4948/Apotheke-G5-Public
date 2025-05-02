@@ -92,7 +92,7 @@
                             <span th:text="${item.productName}">Produkt XY</span>
                         </div>
                         <div class="right floated content price">
-                            <span th:text="${#numbers.formatCurrency(item.price.number)} + ' ' + ${item.price.currency.currencyCode}">9.99 EUR</span>
+                            <span th:text="${{item.price}}">9.99 EUR</span>
                         </div>
                     </div>
 
@@ -104,16 +104,16 @@
                 <div id="cart-summary" th:if="${!cart.empty}">
                     <div class="ui grid small">
                         <div class="eight wide column right aligned">Zwischensumme:</div>
-                        <div class="eight wide column right aligned" th:text="${#numbers.formatCurrency(cart.price.number)}">0.00 EUR</div>
+                        <div class="eight wide column right aligned" th:text="${{cart.price}}">0.00 EUR</div>
 
                         <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}">Zuzahlung (Kasse):</div>
-                        <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}" th:text="${#numbers.formatCurrency(calculatedCoPayment.number)}">0.00 EUR</div>
+                        <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}" th:text="${{calculatedCoPayment}}">0.00 EUR</div>
 
                         <div class="eight wide column right aligned"><b>Gesamt (Bar):</b></div>
-                        <div class="eight wide column right aligned"><b><span th:text="${#numbers.formatCurrency(gesamtPreisBar.number)}">0.00 EUR</span></b></div>
+                        <div class="eight wide column right aligned"><b><span th:text="${{totalPriceCash}}">0.00 EUR</span></b></div>
 
                         <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}"><b>Gesamt (Kasse):</b></div>
-                        <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}"><b><span th:text="${#numbers.formatCurrency(totalPriceInsurance.number)}">0.00 EUR</span></b></div>
+                        <div class="eight wide column right aligned" th:if="${calculatedCoPayment != null and calculatedCoPayment.number > 0}"><b><span th:text="${{totalPriceInsurance}}">0.00 EUR</span></b></div>
                     </div>
                     <div class="ui divider"></div>
                     <form th:action="@{/checkout/finish}" method="post">

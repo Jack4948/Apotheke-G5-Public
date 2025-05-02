@@ -29,11 +29,11 @@
         <hr>
         <div class="total-line line-item" th:if="${billCoPayment.number > 0}">
             <span>Zuzahlung:</span>
-            <span th:text="${#numbers.formatCurrency(billCoPayment.number)} + ' ' + ${billCoPayment.currency.currencyCode}">5.00 EUR</span>
+            <span th:text="${{billCoPayment.number}}">5.00 EUR</span>
         </div>
         <div class="total-line line-item">
             <span>Gesamtbetrag:</span>
-            <span th:text="${#numbers.formatCurrency(billTotal.number)} + ' ' + ${billTotal.currency.currencyCode}">15.99 EUR</span>
+            <span th:text="${{billTotal}}">15.99 EUR</span>
         </div>
         <div class="line-item">
             <span>Zahlungsart:</span>
