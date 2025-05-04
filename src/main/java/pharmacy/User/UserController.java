@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
+
 import java.util.UUID;
 
 @Controller
@@ -76,28 +77,5 @@ public class UserController {
     public String dashboard() {
         return "dashboard";
     }
-
-    // Personalverwaltung :
-
-    @GetMapping("/admin/benutzer")
-    public String personal(Model model){
-        model.addAttribute("users", userService.findAll());
-        return "/admin/benutzer";
-    }
-
-    @GetMapping("/admin/benutzer/add")
-    public String addEmployee(Model model) {
-        RegistrierenForm form = new RegistrierenForm(null, null, null, null, null, null);
-        form.setIsFromPersonal(true);
-        model.addAttribute("registrierenForm", form);
-        return "registrieren";
-    }
-
-    @PostMapping("/admin/benutzer/loeschen/{id}")
-    public String deleteUser(@PathVariable("id") UUID id, RedirectAttributes redirectAttributes) {
-            userService.deleteById(id);
-            redirectAttributes.addFlashAttribute("successMessage", "Mitarbeiter erfolgreich gelöscht");
-        
-        return "redirect:/admin/benutzer";
-    }
+    
 }

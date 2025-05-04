@@ -3,8 +3,6 @@ package pharmacy.User;
 import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManagement;
-
-import java.util.Optional;
 import java.util.UUID;
 
 import org.salespointframework.useraccount.Password.UnencryptedPassword;
@@ -50,16 +48,5 @@ public class UserService {
 
     public Streamable<User> findAll() {
         return userRepository.findAll();
-    }
-
-    // Personalverwaltung:
-
-    public void deleteById(UUID id) {
-        try {
-            UserIdentifier userId = User.UserIdentifier.of(id.toString());
-            userRepository.deleteById(userId);
-        } catch (Exception e) {
-            throw new RuntimeException("Fehler beim Löschen des Benutzers: " + e.getMessage(), e);
-        }
     }
 }
