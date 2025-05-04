@@ -52,10 +52,37 @@ image::models/design/context.png[]
 
 == Lösungsstrategie
 === Erfüllung der Qualitätsziele
-[options="header"]
+[options="header", cols="1h,5"]
 |=== 
 |Qualitätsziel |Lösungsansatz
-|... |...
+
+|Korrektheit
+|Die Korrektheit der Berechnungen und Abläufen wird durch Unit-Tests sichergestellt. Hier kommt das Salespoint-Framework zum Einsatz, das einige Aufgaben (z.B. das Erfassen von Beständen) übernimmt.
+
+|Sicherheit
+a|
+* **Vertraulichkeit:** nur berechtigte Personen dürfen auf sensible Daten zugreifen. Dazu werden Spring Security (`@PreAuthorize`), Salespoint (`@LoggedIn`) sowie Thymeleaf (`sec:authorize`) verwendet.
+
+* **Integrität:** die Anwendung soll das unauthorisierte Ändern von Daten verhindern. Dazu werden ebenfalls Spring Security und Salespoint (siehe Vertraulichkeit) benutzt.
+
+|Nutzbarkeit
+a|
+* **Lernbarkeit:** die Anwendung soll für die Nutzer verständlich sein. Das wird u.a. durch eindeutige Beschreibungen von Textfeldern realisiert.
+
+* **Fehlerbehandlung:** die Anwendung soll ungültige Eingaben erkennen. Diese dürfen nicht zum ungültigen Systemzustand führen.
+
+* **Barrierefreiheit:** die Anwendung soll von möglichst vielen (potentiell eingeschränkten) Personen bedienbar sein. Dies wird u.a. durch angemessene Schriftgröße und ausreichenden Kontrast in der Nutzeroberfläche sichergestellt.
+
+|Performance
+a|
+Das System soll einen reibungslosen Workflow bei Standardvorgängen (Kasse, Bestandsabfrage) ermöglichen. Es muss Testfälle geben (automatisch oder manuell), die prüfen, ob dieses Ziel erfüllt ist.
+
+|Wartbarkeit / Erweiterbarkeit
+a|
+* **Modularität:** das System soll sich aus einzelnen Modulen zusammensetzen, sodass Änderungen an einer Stelle sich auf wenige Stellen auswirken.
+* **Wiederverwendbarkeit:** Teilkomponenten sollen durch andere Systeme und Komponenten wiederverwendbar sein.
+* **Modifizierbarkeit:** Die Anwendung soll ohne Fehler erweitert oder modifiziert werden können.
+
 |===
 
 === Softwarearchitektur
