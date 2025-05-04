@@ -15,12 +15,40 @@
 * Aufgabenstellung
 
 == Randbedingungen
-* Hardware-Vorgaben
-* Software-Vorgaben
-* Vorgaben zum Betrieb der Software
+=== Hardware-Vorgaben
+Eine Liste der erforderlichen Geräte/Hardware zur Ausführung und Verwendung der Anwendung:
+
+* **Server** (bzw. Apotheken-Computer)
+* **Desktop-System** mit Maus und Tastatur (für die drei Kassen und die SB-Kasse).
+  Die Kassen sind jeweils mit einem Strichcode-Scanner ausgestattet.
+
+
+=== Software-Vorgaben
+
+==== Server
+Auf dem Server ist die folgende (oder neuere) Java-Version erforderlich:
+- Java 24
+
+==== Client
+Auf dem Client ist eine der folgenden (oder neueren) Browser-Versionen erforderlich:
+
+- Google Chrome (oder Chromium-basiert) 131.0.0
+- Firefox 130.0.0
+- Safari 18.0
+- Opera 114.0.0
+
+Der Browser muss in der Lage sein, Cookies zu speichern.
+
+=== Vorgaben zum Betrieb der Software
+
+Das System wird zum Verkauf von Waren in der Apotheke eingesetzt. Die Software soll auf einem Server betrieben werden und durch die Nutzer über eine Weboberfläche bedienbar sein.
+
+Die Nutzer der Software sind Kunden, Arztpraxen, Apothekenmitarbeiter und der Apothekenchef. Die Nutzeroberfläche soll deswegen für Menschen ohne technischen Hintergrund intuitiv bedienbar sein.
+
+Die Anwendung muss Daten in einer Datenbank persistent speichern und für die Nutzer (je nach Rolle/Zugriffsberechtigung) zugänglich machen (d.h. die Nutzer sollen keine SQL-Anfragen schreiben müssen).
 
 == Kontextabgrenzung
-* Kontextdiagramm
+image::models/design/context.png[]
 
 == Lösungsstrategie
 === Erfüllung der Qualitätsziele
