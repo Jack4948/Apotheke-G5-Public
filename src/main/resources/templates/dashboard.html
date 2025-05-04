@@ -2,12 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      layout:decorate="~{layout}"> <head>
+      layout:decorate="~{layout}"> 
+<head>
     <title>Dashboard</title>
     <th:block layout:fragment="css">
     </th:block>
 </head>
-<body> <section layout:fragment="content">
+<body> 
+<section layout:fragment="content">
     <h1 class="ui header">Dashboard</h1>
     <div class="ui divider"></div>
 
@@ -16,12 +18,13 @@
 
     <div class="ui four column doubling stackable grid container">
         <div class="column">
-            <div class="ui raised card"> <div class="content">
-                <div class="ui small statistic">
-                    <div class="label"><i class="flask icon"></i> Offene Laboraufträge</div>
-                    <div class="value" th:text="${anzahlOffenerLaborauftraege ?: 0}">0</div>
+            <div class="ui raised card"> 
+                <div class="content">
+                    <div class="ui small statistic">
+                        <div class="label"><i class="flask icon"></i> Offene Laboraufträge</div>
+                        <div class="value" th:text="${anzahlOffenerLaborauftraege ?: 0}">0</div>
+                    </div>
                 </div>
-            </div>
                 <a th:href="@{/labor/liste}" class="ui bottom attached button small blue"><i class="list icon"></i> Zur Laborliste</a>
             </div>
         </div>
@@ -55,7 +58,7 @@
                         <div class="value" th:text="${aktivePraxisName ?: 'Keine'}">Keine</div>
                     </div>
                 </div>
-                <a th:href="@{/admin/praxen}" class="ui bottom attached button small grey"><i class=" Hdd outline icon"></i> Praxisverwaltung</a>
+                <a th:href="@{/admin/praxen}" class="ui bottom attached button small grey"><i class="hdd outline icon"></i> Praxisverwaltung</a>
             </div>
         </div>
     </div>

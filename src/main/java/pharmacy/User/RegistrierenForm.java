@@ -4,8 +4,11 @@ import jakarta.validation.constraints.NotEmpty;
 
 public class RegistrierenForm {
     private final @NotEmpty String firstName, lastName, email, role, password, passwordConfirm; 
+    private boolean isFromPersonal = false;
 
-    // Konstruktor für manuelle Erstellung
+    /*@SuppressWarnings("unused")
+    public RegistrierenForm(){}*/
+
     public RegistrierenForm(String firstName, String lastName, String email, String role, String password, String passwordConfirm){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -37,5 +40,14 @@ public class RegistrierenForm {
 
     public String getPasswordConfirm(){
         return passwordConfirm;
+    }
+
+    public Boolean getIsFromPersonal(){
+        return isFromPersonal;
+    }
+
+    public Boolean setIsFromPersonal(boolean isFromPersonal){
+        this.isFromPersonal = isFromPersonal;
+        return this.isFromPersonal;
     }
 }

@@ -30,13 +30,13 @@
                 <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
             </div>
             <div class="field">
-                <label th:text="#{Registrieren.Rolle}" for="rolle">Rolle</label>
-                <select id="rolle" name="rolle" th:field="*{rolle}" required="required">
-                    <option value="EMPLOYEE">Mitarbeiter</option>
-                    <option value="DOCTORS_OFFICE">Arztpraxis</option>
-                    <option value="DELIVERY_DRIVIER">Lieferfahrer</option>
+                <label th:text="#{Registrieren.Role}" for="role">Role</label>
+                <select id="role" name="role" th:field="*{role}" required="required">
+                    <option value="APOTHEKER">Apotheker</option>
+                    <option value="LABORANT">Laborant</option>
+                    <option value="LIEFERDIENST">Liererdienst</option>
                 </select>
-                <div class="error" th:if="${#fields.hasErrors('rolle')}" th:errors="*{rolle}"></div>
+                <div class="error" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
             </div>
             <div class="field">
                 <label th:text="#{Registrieren.Passwort}" for="password">Passwort</label>

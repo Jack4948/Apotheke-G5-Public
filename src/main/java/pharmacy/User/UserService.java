@@ -3,10 +3,16 @@ package pharmacy.User;
 import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManagement;
+
+import java.util.Optional;
+import java.util.UUID;
+
 import org.salespointframework.useraccount.Password.UnencryptedPassword;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import pharmacy.User.User.UserIdentifier;
 
 @Service
 @Transactional
@@ -14,16 +20,13 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserAccountManagement userAccounts;
-    //private final PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository, UserAccountManagement userAccounts) {
-        
         this.userRepository = userRepository;
         this.userAccounts = userAccounts;
     }
 
     public User createUser(RegistrierenForm form) {
-        
         Role role = Role.of(form.getRole());
         UserAccount userAccount = userAccounts.create(
             form.getFirstName(),  // Benutze firstName als Benutzername
@@ -47,5 +50,16 @@ public class UserService {
 
     public Streamable<User> findAll() {
         return userRepository.findAll();
+    }
+
+    // Personalverwaltung:
+
+    public void deleteById(UUID id) {
+        try {
+            UserIdentifier userId = User.UserIdentifier.of(id.toString());
+            userRepository.deleteById(userId);
+        } catch (Exception e) {
+            throw new RuntimeException("Fehler beim Löschen des Benutzers: " + e.getMessage(), e);
+        }
     }
 }

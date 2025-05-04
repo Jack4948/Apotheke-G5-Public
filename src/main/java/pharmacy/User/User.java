@@ -9,8 +9,6 @@ import org.salespointframework.useraccount.UserAccount;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -21,13 +19,16 @@ public class User extends AbstractAggregateRoot<pharmacy.User.User.UserIdentifie
     private String username;
     private String passwordHash;
     private String email;
-    //@Enumerated(EnumType.STRING)
     private String role;
     
     private boolean enabled;
 
     @OneToOne
     private UserAccount userAccount;
+
+    protected User(){
+        
+    }
 
     public User(UserAccount userAccount, String name, String username, String passwordHash, String email, String role, boolean enabled){
         this.userAccount = userAccount;
@@ -46,7 +47,7 @@ public class User extends AbstractAggregateRoot<pharmacy.User.User.UserIdentifie
         return name;
     }
 
-    public String GetUsername(){ //
+    public String getUsername(){
         return username;
     }
 
@@ -73,40 +74,45 @@ public class User extends AbstractAggregateRoot<pharmacy.User.User.UserIdentifie
 
     public static final class UserIdentifier implements Identifier, Serializable{
     
-        private static final long serialVersionUID = 7740660930809051850L;
-		private final UUID identifier;
+        private static final long serialVersionUID = 1L;
+        private UUID id;
 
-        UserIdentifier(){
-            this(UUID.randomUUID());
+        public UserIdentifier() {
+            this.id = UUID.randomUUID();
+        }
+        
+        private UserIdentifier(UUID id) {
+            this.id = id;
         }
 
-        public UserIdentifier(UUID identifier) {
-            this.identifier = identifier;
-        } 
+        public static UserIdentifier of(String id) {
+            return new UserIdentifier(UUID.fromString(id));
+        }
         
-        @Override
-		public int hashCode(){
-
-			final int prime = 31;
-			int result = 1;
-
-			result = prime * result + (identifier == null ? 0 : identifier.hashCode());
-
-			return result;
-		}
+        public static UserIdentifier of(UUID id) {
+            return new UserIdentifier(id);
+        }
 
         @Override
-		public boolean equals(Object obj){
+        public String toString() {
+            return id.toString();
+        }
 
-			if (obj == this) {
-				return true;
-			}
+        public UUID getId() {
+            return id;
+        }
 
-			if (!(obj instanceof UserIdentifier that)) {
-				return false;
-			}
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+            UserIdentifier that = (UserIdentifier) obj;
+            return id.equals(that.id);
+        }
 
-			return this.identifier.equals(that.identifier);
-		}
+        @Override
+        public int hashCode() {
+            return id.hashCode();
+        }
     }
 }

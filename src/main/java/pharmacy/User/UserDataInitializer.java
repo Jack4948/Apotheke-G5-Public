@@ -40,15 +40,17 @@ public class UserDataInitializer implements DataInitializer {
 
         LOG.info("Erstelle Standard-Benutzer");
         
-        RegistrierenForm Chef = new RegistrierenForm("java", "java", "java@aposys.de","BOSS", "123", "123");
-        RegistrierenForm Employee = new RegistrierenForm("emp", "emp", "emp@aposys.de","EMPLOYEE", "123", "123");
-        RegistrierenForm Doctor = new RegistrierenForm("doctor", "doctor", "doctor@aposys.de","DOCTORS_OFFICE", "123", "123");
-        RegistrierenForm Driver = new RegistrierenForm("driver", "driver", "driver@aposys.de","DELIVERY_DRIVER", "123", "123");
+        RegistrierenForm chef = new RegistrierenForm("chef", "chef", "chef@aposys.de", "CHEF", "123", "123");
+        RegistrierenForm apotheker = new RegistrierenForm("emp", "emp", "emp@aposys.de", "APOTHEKER", "123", "123");
+        RegistrierenForm laborant = new RegistrierenForm("doctor", "doctor", "doctor@aposys.de", "LABORANT", "123", "123");
+        RegistrierenForm admin = new RegistrierenForm("admin", "admin", "admin@aposys.de", "ADMIN", "123", "123");
+        RegistrierenForm lieferdienst = new RegistrierenForm("fahrer", "fahrer", "fahrer@aposys.de", "LIEFERDINST", "123", "123");
         
-        userService.createUser(Chef);
-        userService.createUser(Employee);
-        userService.createUser(Doctor);
-        userService.createUser(Driver);
+        userService.createUser(chef);
+        userService.createUser(apotheker);
+        userService.createUser(laborant);
+        userService.createUser(admin);
+        userService.createUser(lieferdienst);
         
         // ChefAccount = userAccountManagement.create(Chef.getFirstName(), UnencryptedPassword.of("123"), Chef.getRolle());
         //UserAccount EmployeeAccount = userAccountManagement.create(employee.getFirstName(), UnencryptedPassword.of("123"), employee.getRolle());
@@ -62,8 +64,8 @@ public class UserDataInitializer implements DataInitializer {
         var password = "321";
 
         List.of(
-            new RegistrierenForm("test", "test", "test@gmail.com", "EMPLOYEE", password, password),
-            new RegistrierenForm("test1", "tester", "test1@gmail.com", "EMPLOYEE", password, password)
+            new RegistrierenForm("test", "test", "test@gmail.com", "APOTHEKER", password, password),
+            new RegistrierenForm("test1", "tester", "test1@gmail.com", "LABORANT", password, password)
         ).forEach(userService::createUser);
     }
     
