@@ -1,4 +1,4 @@
-package pharmacy.User;
+package pharmacy.user;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -12,13 +12,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class User extends AbstractAggregateRoot<pharmacy.User.User.UserIdentifier>{
+public class User extends AbstractAggregateRoot<pharmacy.user.User.UserIdentifier>{
 
     private @EmbeddedId UserIdentifier id = new UserIdentifier();
     private String name;
     private String username;
     private String passwordHash;
-    private String email;
     private String role;
     
     private boolean enabled;
@@ -30,12 +29,11 @@ public class User extends AbstractAggregateRoot<pharmacy.User.User.UserIdentifie
         
     }
 
-    public User(UserAccount userAccount, String name, String username, String passwordHash, String email, String role, boolean enabled){
+    public User(UserAccount userAccount, String name, String username, String passwordHash, String role, boolean enabled){
         this.userAccount = userAccount;
         this.name = name;
         this.username = username;
         this.passwordHash = passwordHash;
-        this.email = email;
         this.role = role;
         this.enabled = enabled;
     }
@@ -53,10 +51,6 @@ public class User extends AbstractAggregateRoot<pharmacy.User.User.UserIdentifie
 
     public String getPasswordHash(){
         return passwordHash;
-    }
-
-    public String getEmail(){
-        return email;
     }
 
     public String getRole(){

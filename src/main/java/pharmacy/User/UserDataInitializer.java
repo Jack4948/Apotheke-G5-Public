@@ -1,4 +1,4 @@
-package pharmacy.User;
+package pharmacy.user;
 
 import java.util.List;
 
@@ -40,16 +40,16 @@ public class UserDataInitializer implements DataInitializer {
 
         LOG.info("Erstelle Standard-Benutzer");
         
-        RegistrierenForm chef = new RegistrierenForm("chef", "chef", "chef@aposys.de", "CHEF", "123", "123");
-        RegistrierenForm apotheker = new RegistrierenForm("emp", "emp", "emp@aposys.de", "APOTHEKER", "123", "123");
-        RegistrierenForm laborant = new RegistrierenForm("doctor", "doctor", "doctor@aposys.de", "LABORANT", "123", "123");
-        RegistrierenForm admin = new RegistrierenForm("admin", "admin", "admin@aposys.de", "ADMIN", "123", "123");
-        RegistrierenForm lieferdienst = new RegistrierenForm("fahrer", "fahrer", "fahrer@aposys.de", "LIEFERDINST", "123", "123");
+        RegistrationForm chef = new RegistrationForm("chef", "chef", "BOSS", "123", "123");
+        RegistrationForm apotheker = new RegistrationForm("emp", "emp", "EMPLOYEE", "123", "123");
+       // RegistrierenForm laborant = new RegistrierenForm("doctor", "doctor", "LABORANT", "123", "123");
+       // RegistrierenForm admin = new RegistrierenForm("admin", "admin", "ADMIN", "123", "123");
+       RegistrationForm lieferdienst = new RegistrationForm("fahrer", "fahrer", "DELIVERY_DRIVER", "123", "123");
         
         userService.createUser(chef);
         userService.createUser(apotheker);
-        userService.createUser(laborant);
-        userService.createUser(admin);
+        //userService.createUser(laborant);
+        //userService.createUser(admin);
         userService.createUser(lieferdienst);
         
         // ChefAccount = userAccountManagement.create(Chef.getFirstName(), UnencryptedPassword.of("123"), Chef.getRolle());
@@ -64,8 +64,8 @@ public class UserDataInitializer implements DataInitializer {
         var password = "321";
 
         List.of(
-            new RegistrierenForm("test", "test", "test@gmail.com", "APOTHEKER", password, password),
-            new RegistrierenForm("test1", "tester", "test1@gmail.com", "LABORANT", password, password)
+            new RegistrationForm("test", "test", "EMPLOYEE", password, password),
+            new RegistrationForm("test1", "tester", "EMPLOYEE", password, password)
         ).forEach(userService::createUser);
     }
     

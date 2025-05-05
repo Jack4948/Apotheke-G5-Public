@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pharmacy.User.RegistrierenForm;
-import pharmacy.User.UserService;
+import pharmacy.user.RegistrationForm;
+import pharmacy.user.UserService;
 
 @Controller
 public class PesonalController {
@@ -34,7 +34,7 @@ public class PesonalController {
 
     @GetMapping("/admin/benutzer/add")
     public String addEmployee(Model model) {
-        RegistrierenForm form = new RegistrierenForm(null, null, null, null, null, null);
+        RegistrationForm form = new RegistrationForm(null, null, null, null, null);
         form.setIsFromPersonal(true);
         model.addAttribute("registrierenForm", form);
         return "registrieren";

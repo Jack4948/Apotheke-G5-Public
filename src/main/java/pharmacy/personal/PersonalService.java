@@ -6,9 +6,9 @@ import org.salespointframework.useraccount.UserAccountManagement;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pharmacy.User.User;
-import pharmacy.User.User.UserIdentifier;
-import pharmacy.User.UserRepository;
+import pharmacy.user.User;
+import pharmacy.user.UserRepository;
+import pharmacy.user.User.UserIdentifier;
 
 @Service
 @Transactional
