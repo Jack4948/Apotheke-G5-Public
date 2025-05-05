@@ -1,0 +1,49 @@
+= Protokoll Gruppe Apotheke
+
+Treffen am 05.05.2025
+
+Ort:      Bibo +
+Beginn:   12:30 Uhr +
+Ende:     13:30 Uhr
+
+__Schriftführer:__ Anne
+
+__Teilnehmer:__ Anton, Eqbal, Hamza, Anne
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+
+== Bemerkungen
+Abgleichen Fortschritt Meilenstein 2. 
+
+== Aktueller Stand
+*Wir klähren fragen zu Prototypen. Eventuell wollen wir die Prototypen zusammenführen. Insgesammt zwei: Kasse + Labor, Login/Register + Personalverwaltung, (Berichte)*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+- Erste Prototypen für Komponente:
+[option="headers"]
+|===
+|Name |Komponente |Status |Bemerkung
+|Hamza   |Login/Registrierung System |DONE | Mergen
+|Eqbal |Personalverwaltung |IN PROGRESS |
+|Anton |Labor |DONE |
+|Anne |Kasse |IN PROGRESS | Orders zusammenführen?
+|Bhargav |Berichte (nur Abrechnung) |IN PROGRESS | ???
+|===
+
+
+== TODO für Meilenstein 2 
+- Entwicklerdoku:
+[option="headers"]
+|===
+|Name |Teil |Status |Bemerkung
+|Hamza   |5.-6. für Komponente |IN PROGRESS | 
+|Eqbal |5.-6. für Komponente |IN PROGRESS |
+|Anton |1.-4., 5.-6. für Komponente |IN PROGRESS | DONE: 1.-4.
+|Anne |5.-6. für Komponente |IN PROGRESS | 
+|Bhargav |5.-6. für Komponente |??? |
+|===
+
+- Welcome Seite (nach login soll Dashboard kommen)
+
+=== Fragen
+- 
