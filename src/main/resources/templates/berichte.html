@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"  >
   <head>
     <title>Kassenabrechnung</title>
+    <th:block layout:fragment="css">  </th:block>
   </head>
   <body>
    
-    <div th:replace="fragments/navigation :: navigation"></div> // includes the navigation bar
-
-    <div class="ui container" style="margin-top: 2em;">
+   <!---- <div th:replace="fragments/navigation :: navigation"></div>--> <!--includes the navigation bar-->
+   <section layout:fragment="content">
+    <div class="ui container">
       <h1>Kassenabrechnung</h1>
 
+      <div class="ui blue segment">
+        <h2>Bericht für den Zeitraum vom <span th:text="${startDate}">2025-04-01</span> bis <span th:text="${endDate}">2025-04-30</span></h2>
+        <p>Bericht erstellt am <span th:text="${reportDate}">2025-05-01</span></p>
       <h3>Bar-Zahlungen</h3>
-      <table class="ui celled table" border="3px solid black" style="border-collapse: collapse;">
+      <table class="ui red celled striped very padded table" >
         <thead>
-          <tr><th>Datum</th><th>Beschreibung</th><th class="right aligned">Betrag (€)</th></tr>
+          <tr>
+            <th>Datum</th>
+            <th>Beschreibung</th>
+            <th class="right aligned">Betrag (€)</th>
+          </tr>
         </thead>
         <tbody>
           <tr th:each="tx : ${cashTx}">
@@ -29,26 +39,36 @@
             </tr>
           </tfoot>
       </table>
+      </div>
+     
 
+      <div class="ui green segment">
       <h3>GKV-Erstattungen</h3>
-      <table class="ui celled table" border="3px solid black" style="border-collapse: collapse;">
+      <table class="ui yellow celled very padded table">
         <thead>
-          <tr><th>Datum</th><th>Beschreibung</th><th class="right aligned">Betrag (€)</th></tr>
+          <tr>
+            <th>Datum</th>
+            <th>Beschreibung</th>
+            <th class="right aligned">Betrag (€)</th>
+          </tr>
         </thead>
-        <tbody>
+        <tbody >
           <tr th:each="tx : ${insuranceTx}">
             <td th:text="${tx.date}">2025-04-26</td>
             <td th:text="${tx.description}">…</td>
             <td class="right aligned" th:text="${tx.amount}">0.00</td>
           </tr>
         </tbody>
-        <tfoot>
+          <tfoot>
             <tr class="positive">
               <th colspan="2">Summe</th>
               <th class="right aligned" th:text="${insuranceTotal}">0.00</th>
             </tr>
           </tfoot>
-      </table>
-    </div>
+        </table>
+       
+      </div>
+    </section>
+    
   </body>
 </html>

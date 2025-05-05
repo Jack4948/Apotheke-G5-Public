@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Component  // Spring will pick this up as a bean
-@Order(21)   // after your CatalogDataInitializer (which is @Order(20))
+@Component 
+@Order(21)   
 public class TransactionDataInitializer implements DataInitializer {
 
     private final TransactionRepository repo;
@@ -34,3 +34,4 @@ public class TransactionDataInitializer implements DataInitializer {
             "Rx #1236 – Bar", new BigDecimal("8.75")));
     }
 }
+
