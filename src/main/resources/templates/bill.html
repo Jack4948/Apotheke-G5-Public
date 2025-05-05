@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Quittung</title>
+    <th:block layout:fragment="css">
+        <style>
+            #quittung-box { border: 1px dashed grey; padding: 20px; margin-top: 20px; background-color: #f9f9f9; font-family: monospace;}
+            #quittung-box h2 { text-align: center; margin-bottom: 20px;}
+            #quittung-box .line-item { display: flex; justify-content: space-between; margin-bottom: 5px; }
+            #quittung-box .total-line { font-weight: bold; border-top: 1px solid #ccc; padding-top: 10px; margin-top: 10px;}
+        </style>
+    </th:block>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 class="ui header">Bezahlvorgang abgeschlossen</h1>
+
+    <div class="ui success message">
+        Der Kauf wurde erfolgreich verbucht. Hier ist Ihre Quittung (einfache Simulation).
+    </div>
+
+    <div id="quittung-box">
+        <h2>Apotheke Ärztehaus - Quittung</h2>
+        <p>Datum: <span th:text="${#temporals.format(T(java.time.LocalDateTime).now(), 'dd.MM.yyyy HH:mm:ss')}">Datum</span></p>
+        <p>Vorgang: V-12345</p> <hr>
+        <p><i>(Detaillierte Artikelpositionen hier anzeigen)</i></p>
+        <hr>
+        <div class="total-line line-item" th:if="${billCoPayment.number > 0}">
+            <span>Zuzahlung:</span>
+            <span th:text="${{billCoPayment.number}}">5.00 EUR</span>
+        </div>
+        <div class="total-line line-item">
+            <span>Gesamtbetrag:</span>
+            <span th:text="${{billTotal}}">15.99 EUR</span>
+        </div>
+        <div class="line-item">
+            <span>Zahlungsart:</span>
+            <span th:text="${billPaymentMethod}">BAR</span>
+        </div>
+        <hr>
+        <p style="text-align: center;">Vielen Dank für Ihren Einkauf!</p>
+    </div>
+
+    <a th:href="@{/checkout}" class="ui primary button" style="margin-top: 20px;">
+        <i class="redo icon"></i> Nächste Kasse / Neuer Vorgang
+    </a>
+
+</section>
+</body>
+</html>

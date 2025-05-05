@@ -3,6 +3,7 @@ package pharmacy.catalog;
 import org.salespointframework.catalog.Catalog;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.util.Streamable;
+import java.util.Optional;
 
 public interface MedicationCatalog extends Catalog<Medication> {
 
@@ -24,4 +25,7 @@ public interface MedicationCatalog extends Catalog<Medication> {
 	default Streamable<Medication> findAll() {
 		return findAll(DEFAULT_SORT);
 	}
+
+	// finding zero or one medication specifically by barcode
+	Optional<Medication> findByBarcode(String barcode);
 }
