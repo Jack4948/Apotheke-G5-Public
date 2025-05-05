@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout}"> <head>
+    <title>Dashboard</title>
+    <th:block layout:fragment="css">
+    </th:block>
+</head>
+<body>
+    <section layout:fragment="content">
+        <h1 class="ui header">Laborbestellungen</h1>
+        <div class="ui divider"></div>
+
+        <div th:if="${successMessage}" class="ui success message"><i class="close icon"></i><div class="header" th:text="${successMessage}"></div></div>
+        <div th:if="${errorMessage}" class="ui error message"><i class="close icon"></i><div class="header" th:text="${errorMessage}"></div></div>
+
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Zutaten</th>
+                    <th>Preis</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody th:remove="all-but-first">
+                <tr th:each="order : ${orderList}">
+                    <td th:text="${order.id}">1234567</td>
+                    <td>
+                        <span th:each="line: ${order.getOrderLines()}">
+                            <span th:text="${line.getQuantity() + ' g ' + line.getProductName()}">100 g Lorem ipsum</span>
+                            <br />
+                        </span>
+                    </td>
+                    <td th:text="${{order.getTotal()}}">9,99 EUR</td>
+                    <td th:unless="${order.isCompleted()}">
+                        <form method="post" th:action="@{/labor/herstellen}">
+                            <input type="hidden" name="id" th:value="${order.getId()}" />
+                            <button class="ui button">Herstellen</button>
+                        </form>
+                    </td>
+                    <td th:if="${order.isCompleted()}">
+                        abholbereit
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a th:href="@{/labor/neu}" class="ui teal button">
+            <i class="plus square outline icon"></i>
+            Neue Laborbestellung
+        </a>
+    </section>
+
+    <th:block layout:fragment="scripts">
+    </th:block>
+
+</body>
+</html>
