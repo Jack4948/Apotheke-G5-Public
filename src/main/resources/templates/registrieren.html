@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Registrieren</title>
+    <th:block layout:fragment="css">
+    </th:block>
+</head>
+<body>
+    <section layout:fragment="content">
+    <fieldset>
+        <legend>Registrieren</legend>
+        <form class="ui form" role="form" id="form" th:action="@{/registrieren}" method="post" th:object="${registrierenForm}">
+            <div class="field">
+                <label th:text="#{Registrieren.Vorname}" for="firstName">Vorname</label>
+                <input id="firstName" type="text" name="firstName" th:field="*{firstName}" required="required">
+                <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+            </div>
+            <div class="field">
+                <label th:text="#{Registrieren.Nachname}" for="lastName">Nachname</label>
+                <input id="lastName" type="text" name="lastName" th:field="*{lastName}" required="required">
+                <div class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+            </div>
+            <div class="field">
+                <label th:text="#{Registrieren.E-mail}" for="email">Email</label>
+                <input id="email" type="email" name="email" th:field="*{email}" required="required">
+                <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+            <div class="field">
+                <label th:text="#{Registrieren.Role}" for="role">Role</label>
+                <select id="role" name="role" th:field="*{role}" required="required">
+                    <option value="APOTHEKER">Apotheker</option>
+                    <option value="LABORANT">Laborant</option>
+                    <option value="LIEFERDIENST">Liererdienst</option>
+                </select>
+                <div class="error" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+            </div>
+            <div class="field">
+                <label th:text="#{Registrieren.Passwort}" for="password">Passwort</label>
+                <input id="password" type="password" name="password" th:field="*{password}" required="required">
+                <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            </div>
+            <div class="field">
+                <label th:text="#{Registrieren.PruefPasswort}" for="passwordConfirm">Passwort bestätigen</label>
+                <input id="passwordConfirm" type="password" name="passwordConfirm" th:field="*{passwordConfirm}" required="required">
+                <div class="error" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></div>
+            </div>
+            <div class="error" th:if="${passwordMismatch}">
+                <p>Die Passwörter stimmen nicht überein.</p>
+            </div>
+            <div class="error" th:if="${errorMessage}" th:text="${errorMessage}">
+                Fehlermeldung
+            </div>
+            <button class="ui button" type="submit" name="action" value="register">Registrieren</button>
+            <button class="ui button" type="submit" name="action" value="cancel">Abbrechen</button>
+        </form>
+    </fieldset>
+</section>
+</body>
+</html>
