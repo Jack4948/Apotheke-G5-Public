@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Umsatzbericht</title>
+</head>
+<body>
+  <section layout:fragment="content">
+    <div class="ui container">
+
+      <!-- === CASH LAB ORDERS === -->
+      <h2 class="ui header">Bar Zahlungen</h2>
+      <table class="ui celled table">
+        <thead>
+          <tr><th>ID</th><th class="right aligned">Betrag (€)</th></tr>
+        </thead>
+        <tbody>
+          <tr th:each="o : ${cashOrders}">
+            <td th:text="${o.id}">1</td>
+            <td class="right aligned" th:text="${o.orderLines.total}">0.00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="positive">
+            <th>Summe</th>
+            <th class="right aligned" th:text="${cashTotal}">0.00</th>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- === INSURANCE LAB ORDERS === -->
+      <h2 class="ui header">GKV-Erstattungen</h2>
+      <table class="ui celled table">
+        <thead>
+          <tr><th>ID</th><th class="right aligned">Betrag (€)</th></tr>
+        </thead>
+        <tbody>
+          <tr th:each="o : ${insuranceOrders}">
+            <td th:text="${o.id}">2</td>
+            <td class="right aligned" th:text="${o.orderLines.total}">0.00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="positive">
+            <th>Summe</th>
+            <th class="right aligned" th:text="${insuranceTotal}">0.00</th>
+          </tr>
+        </tfoot>
+      </table>
+
+    </div>
+  </section>
+</body>
+</html>
