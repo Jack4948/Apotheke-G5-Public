@@ -1,0 +1,39 @@
+= Protokoll Gruppe Apotheke
+
+Treffen am 29.04.2025
+
+Ort:      HG C/3/16 +
+Beginn:   12:30 Uhr +
+Ende:     13:30 Uhr
+
+__Schriftführer:__ Anne
+
+__Teilnehmer:__ Anton, Eqbal, Hamza, Anne, Bhargav
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+
+== Bemerkungen
+Wir arbeiten an Prototypen Meilenstein 2.
+
+== Aktueller Stand
+*Abgleichen.*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+- Erste Prototypen für Komponente:
+[option="headers"]
+|===
+|Name |Komponente |Status |Bemerkung
+|Hamza   |Login/Registrierung System |DONE |
+|Eqbal |Personalverwaltung |IN PROGRESS |
+|Anton |Labor |DONE |
+|Anne |Kasse |IN PROGRESS | TODO: Bean
+|Bhargav |Berichte (nur Abrechnung) |IN PROGRESS |
+|===
+
+
+== TODO für Meilenstein 2 
+- Prototypen
+- Entwicklerdoku
+
+=== Fragen
+- 
