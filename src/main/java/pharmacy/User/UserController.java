@@ -1,4 +1,4 @@
-package pharmacy.User;
+package pharmacy.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
+import pharmacy.user.UserService;
 
 import java.util.UUID;
 
@@ -25,7 +26,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login() {
         return "login";
     }
@@ -33,13 +34,13 @@ public class UserController {
     @GetMapping("/registrieren")
     public String registerForm(Model model) {
         if (!model.containsAttribute("registrierenForm")) {
-            model.addAttribute("registrierenForm", new RegistrierenForm(null, null, null, null, null, null));
+            model.addAttribute("registrierenForm", new RegistrationForm(null, null, null, null, null));
         }
         return "registrieren";
     }
 
     @PostMapping("/registrieren")
-    public String registerPost(@Valid @ModelAttribute("registrierenForm") RegistrierenForm form,
+    public String registerPost(@Valid @ModelAttribute("registrierenForm") RegistrationForm form,
                               BindingResult bindingResult,
                               @RequestParam(name = "action", defaultValue = "") String action,
                               Model model,
@@ -66,7 +67,7 @@ public class UserController {
                 return "redirect:/admin/benutzer";
             }
             else
-                return "redirect:/login";
+                return "redirect:/";
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Registrierung fehlgeschlagen: " + e.getMessage());
             return "registrieren";
@@ -75,6 +76,11 @@ public class UserController {
 
     @GetMapping("/dashboard")
     public String dashboard() {
+        return "dashboard";
+    }
+
+    @GetMapping("/login")
+    public String afterLogin(){
         return "dashboard";
     }
     

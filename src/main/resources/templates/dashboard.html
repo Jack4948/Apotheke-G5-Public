@@ -50,7 +50,7 @@
                 <a th:href="@{/berichte/verfall}" class="ui bottom attached button small yellow"><i class="calendar times outline icon"></i> Verfallsliste</a>
             </div>
         </div>
-        <div class="column" sec:authorize="hasAnyRole('ADMIN', 'CHEF')">
+        <div class="column" sec:authorize="hasAnyRole('BOSS')">
             <div class="ui raised card">
                 <div class="content">
                     <div class="ui small statistic">

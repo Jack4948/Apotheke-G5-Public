@@ -1,4 +1,4 @@
-package pharmacy.User;
+package pharmacy.user;
 
 import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccount;
@@ -10,7 +10,7 @@ import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pharmacy.User.User.UserIdentifier;
+import pharmacy.user.User.UserIdentifier;
 
 @Service
 @Transactional
@@ -24,7 +24,7 @@ public class UserService {
         this.userAccounts = userAccounts;
     }
 
-    public User createUser(RegistrierenForm form) {
+    public User createUser(RegistrationForm form) {
         Role role = Role.of(form.getRole());
         UserAccount userAccount = userAccounts.create(
             form.getFirstName(),  // Benutze firstName als Benutzername
@@ -38,9 +38,8 @@ public class UserService {
             form.getFirstName() + " " + form.getLastName(), 
             form.getFirstName(), 
             form.getPassword(),
-            form.getEmail(),
             form.getRole(),
-            true
+            false
         );
         
         return userRepository.save(user);
