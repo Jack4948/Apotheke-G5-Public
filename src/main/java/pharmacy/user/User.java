@@ -19,7 +19,6 @@ public class User extends AbstractAggregateRoot<pharmacy.user.User.UserIdentifie
     private String username;
     private String passwordHash;
     private String role;
-    
     private boolean enabled;
 
     @OneToOne
@@ -61,6 +60,10 @@ public class User extends AbstractAggregateRoot<pharmacy.user.User.UserIdentifie
         return enabled;
     }
 
+    public boolean setEnabled(boolean enabled){
+        return this.enabled = enabled;
+    }
+
     @Override
     public UserIdentifier getId(){
         return id;
@@ -68,7 +71,7 @@ public class User extends AbstractAggregateRoot<pharmacy.user.User.UserIdentifie
 
     public static final class UserIdentifier implements Identifier, Serializable{
     
-        private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 7740660930809051850L;
         private UUID id;
 
         public UserIdentifier() {

@@ -17,13 +17,13 @@ import pharmacy.user.UserService;
 public class PesonalController {
     
     private final UserService userService;
-    private final PersonalService per;
+    private final PersonalService personalService;
 
-    public PesonalController(UserService userService, PersonalService per) {
+    public PesonalController(UserService userService, PersonalService personalService) {
         Assert.notNull(userService, "UserService darf nicht null sein!");
-        Assert.notNull(per, "UserService darf nicht null sein!");
+        Assert.notNull(personalService, "UserService darf nicht null sein!");
         this.userService = userService;
-        this.per = per;
+        this.personalService = personalService;
     }
 
     @GetMapping("/admin/benutzer")
@@ -32,7 +32,7 @@ public class PesonalController {
         return "admin/benutzer";
     }
 
-    @GetMapping("/admin/benutzer/add")
+    @GetMapping("/admin/benutzer/hinzufuegen")
     public String addEmployee(Model model) {
         RegistrationForm form = new RegistrationForm(null, null, null, null, null);
         form.setIsFromPersonal(true);
@@ -42,7 +42,7 @@ public class PesonalController {
 
     @PostMapping("/admin/benutzer/loeschen/{id}")
     public String deleteUser(@PathVariable("id") UUID id, RedirectAttributes redirectAttributes) {
-            per.deleteById(id);
+            personalService.deleteById(id);
             redirectAttributes.addFlashAttribute("successMessage", "Mitarbeiter erfolgreich gelöscht");
         
         return "redirect:/admin/benutzer";
