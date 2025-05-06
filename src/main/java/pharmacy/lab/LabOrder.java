@@ -1,4 +1,4 @@
-package pharmacy.order;
+package pharmacy.lab;
 
 import org.salespointframework.order.Order;
 import org.salespointframework.payment.PaymentMethod;

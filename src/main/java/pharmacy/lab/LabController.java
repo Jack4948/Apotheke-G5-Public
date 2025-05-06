@@ -1,11 +1,10 @@
-package pharmacy.welcome;
+package pharmacy.lab;
 
 import java.util.Optional;
 
 import org.salespointframework.catalog.Product.ProductIdentifier;
 import org.salespointframework.order.Cart;
 import org.salespointframework.order.OrderManagement;
-import org.salespointframework.order.Order.OrderIdentifier;
 import org.salespointframework.payment.Cash;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManagement;
@@ -19,11 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import pharmacy.catalog.IngredientCatalog;
 import pharmacy.catalog.MixtureIngredient;
-import pharmacy.order.LabOrder;
 
 @Controller
 @SessionAttributes("cart")
