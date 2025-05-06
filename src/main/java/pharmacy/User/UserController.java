@@ -62,7 +62,7 @@ public class UserController {
         try {
             userService.createUser(form);
             redirectAttributes.addFlashAttribute("registrationSuccess", true);
-            if (form.getIsFromPersonal()){ // soll noch verarbeitet werden
+            if (form.getIsFromPersonal()){
                 redirectAttributes.addFlashAttribute("successMessage", "Benutzer wurde erfolgreich erstellt");
                 return "redirect:/admin/benutzer";
             }
@@ -78,10 +78,5 @@ public class UserController {
     public String dashboard() {
         return "dashboard";
     }
-
-    /*@GetMapping("/login")
-    public String afterLogin(){
-        return "redirect:/dashboard";
-    }*/
     
 }
