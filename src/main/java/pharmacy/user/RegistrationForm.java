@@ -3,7 +3,11 @@ package pharmacy.user;
 import jakarta.validation.constraints.NotEmpty;
 
 public class RegistrationForm {
-    private final @NotEmpty String firstName, lastName, role, password, passwordConfirm; 
+    private final @NotEmpty String firstName;
+    private final @NotEmpty String lastName;
+    private @NotEmpty String role;
+    private final @NotEmpty String password;
+    private final @NotEmpty String passwordConfirm;
     private boolean isFromPersonal = false;
 
     /*@SuppressWarnings("unused")
@@ -41,8 +45,12 @@ public class RegistrationForm {
         return isFromPersonal;
     }
 
-    public Boolean setIsFromPersonal(boolean isFromPersonal){
+    public void setIsFromPersonal(boolean isFromPersonal){
         this.isFromPersonal = isFromPersonal;
-        return this.isFromPersonal;
+
+    }
+
+    public void setRole(String role){
+        this.role = role;
     }
 }
