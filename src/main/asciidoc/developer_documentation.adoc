@@ -147,8 +147,13 @@ a|
 |===
 
 == Bausteinsicht
-* Package-Diagramm
-* Entwurfsklassendiagramme der einzelnen Packages
+
+=== Package-Diagramm
+image::./models/design/package.png[]
+
+
+=== Entwurfsklassendiagramme der einzelnen Packages
+
 
 [options="header"]
 |=== 
