@@ -12,7 +12,7 @@ import org.salespointframework.payment.Cash;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import pharmacy.order.LabOrder;
+import pharmacy.lab.LabOrder;
 
 @Service
 public class ReportService {
@@ -26,15 +26,16 @@ public class ReportService {
     /** All lab orders paid in cash. */
     public List<LabOrder> getCashOrders() {
         return toList().stream()
-                .filter(o -> o.getPaymentMethod() == Cash.CASH)
-                .collect(Collectors.toList());
+            .filter(o -> Cash.CASH.equals(o.getPaymentMethod()))
+            .filter(LabOrder::isPaid)
+            .collect(Collectors.toList());
     }
 
     /** All lab orders paid by insurance. */
     public List<LabOrder> getInsuranceOrders() {
         return toList().stream()
-                .filter(o -> o.getPaymentMethod() != Cash.CASH)
-                .collect(Collectors.toList());
+            .filter(o -> !Cash.CASH.equals(o.getPaymentMethod()))
+            .collect(Collectors.toList());
     }
 
     /** Total sum of cash‐paid lab orders. */

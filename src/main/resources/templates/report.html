@@ -7,43 +7,76 @@
 </head>
 <body>
   <section layout:fragment="content">
-    <div class="ui container">
+    
+    <form class="ui form" method="get" th:action="@{/report}">
+      <div class="field">
+        <label>Zeige</label>
+        <select name="type" class="ui dropdown">
+          <option th:value="ALL" 
+                  th:selected="${filterType == 'ALL'}">Beide</option>
+          <option th:value="CASH" 
+                  th:selected="${filterType == 'CASH'}">Barzahlungen</option>
+          <option th:value="INSURANCE" 
+                  th:selected="${filterType == 'INSURANCE'}">
+            GKV-Erstattungen
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="ui primary button">
+        Anwenden
+      </button>
+    </form>
 
-      <!-- === CASH LAB ORDERS === -->
+    <div th:if="${filterType == 'ALL' or filterType == 'CASH'}">
+
       <h2 class="ui header">Bar Zahlungen</h2>
       <table class="ui celled table">
         <thead>
-          <tr><th>ID</th><th class="right aligned">Betrag (€)</th></tr>
+          <tr>
+            <th>ID</th>
+            <th>Datum</th>
+            <th class="right aligned">Betrag (€)</th></tr>
         </thead>
         <tbody>
           <tr th:each="o : ${cashOrders}">
             <td th:text="${o.id}">1</td>
+            <td></td>
+            <!-- <td th:text="${#temporals.format(o.createdDate, 'yyyy-MM-dd')}"></td> -->
+
             <td class="right aligned" th:text="${o.orderLines.total}">0.00</td>
           </tr>
         </tbody>
         <tfoot>
           <tr class="positive">
-            <th>Summe</th>
+            <th colspan="2">Summe</th>
             <th class="right aligned" th:text="${cashTotal}">0.00</th>
           </tr>
         </tfoot>
       </table>
+    </div>
 
-      <!-- === INSURANCE LAB ORDERS === -->
+    <div th:if="${filterType == 'ALL' or filterType == 'INSURANCE'}">
       <h2 class="ui header">GKV-Erstattungen</h2>
       <table class="ui celled table">
         <thead>
-          <tr><th>ID</th><th class="right aligned">Betrag (€)</th></tr>
+          <tr>
+            <th>ID</th>
+            <th>Datum</th>
+            <th class="right aligned">Betrag (€)</th></tr>
         </thead>
         <tbody>
           <tr th:each="o : ${insuranceOrders}">
             <td th:text="${o.id}">2</td>
+            <td></td>
+            <!-- <td th:text="${#temporals.format(o.createdDate, 'yyyy-MM-dd')}"></td> -->
+
+
             <td class="right aligned" th:text="${o.orderLines.total}">0.00</td>
           </tr>
         </tbody>
         <tfoot>
           <tr class="positive">
-            <th>Summe</th>
+            <th colspan="2">Summe</th>
             <th class="right aligned" th:text="${insuranceTotal}">0.00</th>
           </tr>
         </tfoot>
@@ -51,5 +84,6 @@
 
     </div>
   </section>
+ 
 </body>
 </html>
