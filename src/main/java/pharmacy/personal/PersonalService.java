@@ -29,7 +29,7 @@ public class PersonalService {
         this.userAccounts = userAccounts;
     }
 
-    // Registrierung normaler Benutzer
+    // Registrierung  Benutzer
     public User createUser(RegistrationForm form) {
         Role role = Role.of(form.getRole());
         UserAccount userAccount = userAccounts.create(
@@ -65,31 +65,7 @@ public class PersonalService {
         return userRepository.save(user);
     }
 
-    // Registrierung für Klinik
-    public User createClinic(ClinicRegistrierenForm form) {
-        Role role = Role.of("DOCTORS_OFFICE");
 
-        UserAccount userAccount = userAccounts.create(
-                form.getFirstName(),
-                Password.UnencryptedPassword.of(form.getPassword()),
-                role
-        );
-
-        userAccount.setEnabled(true);
-        userAccounts.save(userAccount);
-
-        User user = new User(
-                userAccount,
-                form.getFirstName() + " " + form.getLastName(),
-                form.getFirstName(),
-                form.getPassword(),
-                "DOCTORS_OFFICE",
-                true
-        );
-
-
-        return userRepository.save(user);
-    }
 
     // Benutzer aktivieren
     public void enableUser(UUID id) {
