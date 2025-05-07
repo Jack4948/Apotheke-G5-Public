@@ -7,6 +7,7 @@ import org.salespointframework.inventory.UniqueInventory;
 import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.order.OrderManagement;
 import org.salespointframework.payment.Cash;
+import org.salespointframework.payment.PaymentMethod;
 import org.salespointframework.quantity.Quantity;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManagement;
@@ -74,5 +75,32 @@ class CatalogDataInitializer implements DataInitializer {
     order1.addOrderLine(ingredient2, Quantity.of(50));
     labOrderManagement.save(order1);
     labOrderManagement.payOrder(order1);
+
+    LabOrder order2 = new LabOrder(anonymous.getId(), Cash.CASH);
+    order2.addOrderLine(ingredient1, Quantity.of(10));       // 10g Lorem
+    labOrderManagement.save(order2);
+    labOrderManagement.payOrder(order2);
+    labOrderManagement.completeOrder(order2);
+
+    LabOrder cashPaid = new LabOrder(anonymous.getId(), Cash.CASH);
+    cashPaid.addOrderLine(ingredient2, Quantity.of(5));
+    labOrderManagement.save(cashPaid);
+    labOrderManagement.payOrder(cashPaid);
+
+    LabOrder cashUnpaid = new LabOrder(anonymous.getId(), Cash.CASH);
+    cashUnpaid.addOrderLine(ingredient1, Quantity.of(15));
+    labOrderManagement.save(cashUnpaid);
+
+    LabOrder insPaid = new LabOrder(anonymous.getId());
+    insPaid.addOrderLine(ingredient1, Quantity.of(8));
+    labOrderManagement.save(insPaid);
+    labOrderManagement.payOrder(insPaid);
+
+    LabOrder insPaid2 = new LabOrder(anonymous.getId());
+    insPaid2.addOrderLine(ingredient1, Quantity.of(50));
+    labOrderManagement.save(insPaid2);
+    labOrderManagement.payOrder(insPaid2);
+
   }
+
 }
