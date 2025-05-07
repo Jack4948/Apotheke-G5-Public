@@ -164,24 +164,37 @@ image::./models/design/package.png[]
 
 
 === Entwurfsklassendiagramme der einzelnen Packages
+** personal
+
+image::models/design/personal.png[]
 
 
 [options="header"]
-|=== 
-|Klasse/Enumeration |Description
-|... |...
+|===
+|Klasse/Enumeration |Beschreibung
+|PersonalService | Eine Serviceklasse, die die Verwaltung von Personal übernimmt. Bietet Methoden zum Erstellen, Aktivieren, Löschen und Abfragen von Benutzern.
+|PesonalController | Ein Spring MVC Controller zur Verwaltung von Personal. Ermöglicht das Hinzufügen, Löschen und Aktivieren von Benutzern.
 |===
 
 === Rückverfolgbarkeit zwischen Analyse- und Entwurfsmodell
+
+
+
+
 _Die folgende Tabelle zeigt die Rückverfolgbarkeit zwischen Entwurfs- und Analysemodell._
 
+** personal
 [options="header"]
 |===
 |Klasse/Enumeration (Analysemodell) |Klasse/Enumeration (Entwurfsmodell)
-|... |...
+|Personal | pharmacy.personal.PersonalService, pharmacy.personal.PesonalController
+|Mitarbeiter | pharmacy.user.User, salespointframework.UserAccount
+|Klinik | pharmacy.user.User (mit Rolle 'DOCTORS_OFFICE')
+|Benutzer | pharmacy.user.User, pharmacy.user.BaseUser
 |===
 
+
 == Laufzeitsicht
-* Darstellung der Komponenteninteraktion anhand eines Sequenzdiagramms, welches die relevantesten Interaktionen darstellt.
+** personal
 
-
+image::models/design/personal2.png[]

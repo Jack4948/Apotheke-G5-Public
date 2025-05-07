@@ -1,0 +1,29 @@
+@startuml
+actor Admin
+participant "PesonalController" as PC
+participant "PersonalService" as PS
+participant "UserService" as US
+participant "UserRepository" as UR
+
+Admin -> PC:  Hinzufügen eines Mitarbeiters
+PC -> PS: createUser(form)
+PS -> UR:    Speichern des Benutzers
+UR --> PS: Benutzer gespeichert
+PS --> PC:   Benutzer erstellt
+PC --> Admin: Mitarbeiter hinzugefügt
+
+Admin -> PC: Klinik hinzufügen
+PC -> PS: clinicExists()
+PS -> UR:    Abfragen vorhandener Klinik
+UR --> PS: Klinik gefunden/nicht gefunden
+PS --> PC:     Klinikstatus zurückgeben
+PC --> Admin: Klinik hinzugefügt
+
+Admin -> PC: Benutzer löschen
+PC -> PS:    deleteById(id)
+PS -> UR:Benutzer löschen
+UR --> PS: Benutzer gelöscht
+PS --> PC:    Bestätigung
+PC --> Admin: Benutzer gelöscht
+
+@enduml
