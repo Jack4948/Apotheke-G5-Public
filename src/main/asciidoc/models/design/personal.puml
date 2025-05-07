@@ -1,0 +1,54 @@
+@startuml
+
+package pharmacy.personal {
+  class PersonalService {
+      - UserRepository userRepository
+    - UserAccountManagement userAccounts
+    + createUser(form: RegistrationForm): User
+    + enableUser(id: UUID)
+    + deleteById(id: UUID)
+    + clinicExists(): boolean
+    + getClinicIfExists(): User
+  }
+
+  class PesonalController {
+    - UserService userService
+    - PersonalService personalService
+    + personal(model: Model): String
+       + addEmployee(model: Model): String
+    + addClinic(model: Model): String
+    + deleteUser(id: UUID, redirectAttributes: RedirectAttributes): String
+      + enableUser(id: UUID, redirectAttributes: RedirectAttributes): String
+  }
+}
+
+package pharmacy.user {
+  class RegistrationForm {
+    - String firstName
+     - String lastName
+    - String password
+      - String role
+    - boolean isFromPersonal
+  }
+
+  class User {
+    - UserAccount userAccount
+     - String fullName
+    - String firstName
+    - String password
+      - String role
+     - boolean isChef
+  }
+
+  class UserService {
+    + findAll(): List<User>
+  }
+}
+
+PersonalService --> User : uses
+PesonalController -->  PersonalService
+PesonalController --> UserService
+PersonalService -->  UserService
+RegistrationForm --> User
+
+@enduml
