@@ -9,11 +9,13 @@
             <i class="pills icon"></i>
             ApoSys
         </a>
+        
         <a class="item" th:href="@{/dashboard}" sec:authorize="isAuthenticated()">Dashboard</a>
-        <a class="item" th:href="@{/kasse}" sec:authorize="hasAnyRole('ADMIN', 'CHEF', 'APOTHEKER')">Kasse</a>
-        <a class="item" th:href="@{/inventar}" sec:authorize="hasAnyRole('ADMIN', 'CHEF', 'APOTHEKER', 'LABORANT')">Inventar</a> <a class="item" th:href="@{/labor/liste}" sec:authorize="hasAnyRole('ADMIN', 'CHEF', 'APOTHEKER', 'LABORANT')">Labor</a>
+        <a class="item" th:href="@{/checkout}" sec:authorize="hasAnyRole('BOSS', 'EMPLOYEE')">Kasse</a>
+        <a class="item" th:href="@{/inventar}" sec:authorize="hasAnyRole('BOSS', 'EMPLOYEE')">Inventar</a> 
+        <a class="item" th:href="@{/labor/liste}" sec:authorize="hasAnyRole('BOSS', 'EMPLOYEE')">Labor</a>
 
-        <div class="ui dropdown item" sec:authorize="hasAnyRole('ADMIN', 'CHEF')">
+        <div class="ui dropdown item" sec:authorize="hasAnyRole('BOSS')">
             Verwaltung <i class="dropdown icon"></i>
             <div class="menu">
                 <div class="header">Berichte</div>
@@ -23,7 +25,7 @@
                 <a class="item" th:href="@{/berichte/praxisabrechnung}">Praxisabrechnung</a>
                 <div class="divider"></div>
                 <div class="header">Administration</div>
-                <a class="item" th:href="@{/admin/praxen}">Praxisverwaltung</a>
+               <!--<a class="item" th:href="@{/admin/praxen}">Praxisverwaltung</a>-->
                 <a class="item" th:href="@{/admin/benutzer}">Benutzerverwaltung</a>
                 <a class="item" th:href="@{/admin/rezepturen}">Rezepturverwaltung</a>
             </div>

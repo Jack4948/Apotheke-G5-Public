@@ -132,23 +132,39 @@ a|
 |===
 
 === Softwarearchitektur
-* Beschreibung der Architektur anhand der Top-Level-Architektur oder eines Client-Server-Diagramms
+image::./models/design/architecture.png[]
 
 === Entwurfsentscheidungen
-* Verwendete Muster
-* Persistenz
-* Benutzeroberfläche
-* Verwendung externer Frameworks
+==== Verwendete Muster
+Spring MVC, https://en.wikipedia.org/wiki/Post/Redirect/Get[Post-Redirect-Get]
+
+==== Persistenz
+Es wird eine H2-Datenbank (über JPA) verwendet.
+
+==== Benutzeroberfläche
+TODO
+
+==== Verwendung externer Frameworks
+
 
 [options="header", cols="1,2,3"]
 |===
 |Externes Package |Verwendet von |Warum
-|... |... |...
+|Spring Boot|Allgemeine Nutzung|vorgegeben
+|Spring Data JPA|Persistenz|vorgegeben
+|Spring Security|Sicherheit|vorgegeben
+|Salespoint|Allgemeine Nutzung|vorgegeben
+|Semantic UI|UI|Semantic UI ist eine CSS-Bibliothek, die die Entwicklung der Benutzeroberfläche vereinfacht.
 |===
 
 == Bausteinsicht
-* Package-Diagramm
-* Entwurfsklassendiagramme der einzelnen Packages
+
+=== Package-Diagramm
+image::./models/design/package.png[]
+
+
+=== Entwurfsklassendiagramme der einzelnen Packages
+
 
 [options="header"]
 |=== 

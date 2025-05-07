@@ -95,7 +95,7 @@ diskutiert.
 === Kontextdiagramm
 image::models/images/UpdatedKontextdiagramm.png[]
 === Top-Level-Architektur
-image::models/images/UbdatedTopLevelArchitektur.png[]
+image::models/images/TopLevelArchitektur.png[]
 
 == Anwendungsfälle
 
