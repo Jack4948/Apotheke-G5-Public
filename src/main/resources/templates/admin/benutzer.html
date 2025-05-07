@@ -1,72 +1,90 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"	
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <title>Benutzerverwaltung</title>
 </head>
 <body>
-    <section layout:fragment="content">
-        <h1 class="ui header">
-            <i class="users icon"></i>
-            <div class="content">
-                Benutzerverwaltung
-            </div>
-        </h1>
-        
-        <div th:if="${successMessage}" class="ui success message">
-            <i class="close icon"></i>
-            <div class="header">Erfolg</div>
-            <p th:text="${successMessage}"></p>
-        </div>
-        
-        <div th:if="${errorMessage}" class="ui error message">
-            <i class="close icon"></i>
-            <div class="header">Fehler</div>
-            <p th:text="${errorMessage}"></p>
-        </div>
-        <div class="ui segment basic">
-            <a class="ui teal button" th:href="@{/admin/benutzer/hinzufuegen}">
-                <i class="plus icon"></i> Neuen Benutzer hinzufügen
-            </a>
-        </div>
-        
-        <table class="ui table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Rolle</th>
-                    <th>Status</th>
-                    <th>Aktionen</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.name}"></td>
-                    <td th:text="${user.role}"></td>
-                    <td>
-                        <div class="ui label" th:class="${user.enabled} ? 'ui label' : 'ui label'">
-                            <i th:class="${user.enabled} ? 'check icon' : 'times icon'"></i>
-                            <span th:text="${user.enabled} ? 'Aktiv' : 'Inaktiv'"></span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="ui mini buttons">
-                            <form th:action="@{/admin/benutzer/loeschen/{id}(id=${user.id.id})}" method="post" style="display:inline;">
-                                <button type="submit" class="ui mini button" 
-                                        onclick="return confirm('Möchten Sie diesen Benutzer wirklich löschen?')">
-                                    <i class="trash icon"></i> Loeschen
-                                </button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr th:if="${users.isEmpty()}">
-                    <td colspan="5" class="center aligned">Keine Benutzer gefunden</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+<section layout:fragment="content">
+    <h1 class="ui header">
+        <i class="users icon"></i>
+        <div class="content">Benutzerverwaltung</div>
+    </h1>
+
+    <div th:if="${successMessage}" class="ui success message">
+        <i class="close icon"></i>
+        <div class="header">Erfolg</div>
+        <p th:text="${successMessage}"></p>
+    </div>
+
+    <div th:if="${errorMessage}" class="ui error message">
+        <i class="close icon"></i>
+        <div class="header">Fehler</div>
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <div class="ui segment basic">
+        <a class="ui button" th:href="@{/admin/benutzer/add}">
+            <i class="plus icon"></i> Neuen Benutzer hinzufügen
+        </a>
+        <a class="ui blue button" th:href="@{/admin/benutzer/clinic/add}">
+            <i class="plus icon"></i> Klinik hinzufügen
+        </a>
+    </div>
+
+    <table class="ui table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Rolle</th>
+            <th>Status</th>
+            <th>Aktionen</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:if="${clinicUser != null}">
+            <td th:text="${clinicUser.name}">Klinik Name</td>
+            <td>DOCTORS_OFFICE</td>
+            <td>
+                <span th:class="${clinicUser.enabled} ? 'ui green label' : 'ui red label'"
+                      th:text="${clinicUser.enabled} ? 'Aktiv' : 'Inaktiv'">Status</span>
+            </td>
+            <td>
+                <form th:action="@{'/benutzer/loeschen/' + ${clinicUser.id.id}}" method="post">
+                    <button type="submit" class="ui red button">Löschen</button>
+                </form>
+            </td>
+        </tr>
+
+        <tr th:each="user : ${users}" th:if="${user.role != 'DOCTORS_OFFICE'}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.role}"></td>
+            <td>
+                <div class="ui label" th:class="${user.enabled} ? 'ui green label' : 'ui red label'">
+                    <i th:class="${user.enabled} ? 'check icon' : 'times icon'"></i>
+                    <span th:text="${user.enabled} ? 'Aktiv' : 'Inaktiv'"></span>
+                </div>
+            </td>
+            <td>
+                <div class="ui mini buttons">
+                    <form th:action="@{'/benutzer/loeschen/' + ${user.id.id}}" method="post">
+                        <button type="submit" class="ui red mini button">Löschen</button>
+                    </form>
+                    <form th:action="@{'/admin/benutzer/freischalten/' + ${user.id.id}}" method="post" th:if="${!user.enabled}" style="margin-left: 5px;">
+                        <button type="submit" class="ui green mini button">Freischalten</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+
+        <tr th:if="${users.isEmpty()}">
+            <td colspan="4" class="center aligned">Keine Benutzer gefunden</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
 </body>
 </html>
