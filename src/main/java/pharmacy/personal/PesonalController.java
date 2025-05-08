@@ -41,13 +41,13 @@ public class PesonalController {
 		return "registrieren";
 	}
 
-	@GetMapping("/admin/benutzer/clinic/add")
-	public String addClinic(Model model) {
-		RegistrationForm form = new RegistrationForm(null, null, null, "DOCTORS_OFFICE", null);
-		form.setIsFromPersonal(true);
-		model.addAttribute("registrierenForm", form);
-		return "registrieren";
-	}
+	//@GetMapping("/admin/benutzer/clinic/add")
+//	public String addClinic(Model model) {
+	//	RegistrationForm form = new RegistrationForm(null, null, null, "DOCTORS_OFFICE", null);
+		//form.setIsFromPersonal(true);
+		//model.addAttribute("registrierenForm", form);
+		//return "registrieren";
+	//}
 
 	@PostMapping("/benutzer/loeschen/{id}")
 	public String deleteUser(@PathVariable("id") UUID id, RedirectAttributes redirectAttributes) {

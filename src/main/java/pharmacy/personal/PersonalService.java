@@ -45,9 +45,13 @@ public class PersonalService {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             isChef = auth.getAuthorities().stream()
                     .map(GrantedAuthority::getAuthority)
-                    .anyMatch(authority -> authority.equals("ROLE_BOSS"));
+                    .anyMatch(authority -> authority.equals("BOSS"));
         } catch (Exception ignored) {
         }
+		//aktiviert den chef direkt
+		if (form.getRole().equalsIgnoreCase("BOSS")){
+			isChef= true;
+		}
 
         userAccount.setEnabled(isChef);
         userAccounts.save(userAccount);

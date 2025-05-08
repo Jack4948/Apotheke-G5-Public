@@ -28,14 +28,16 @@ public class UserDataInitializer implements DataInitializer {
         
         this.userAccountManagement = userAccountManagement;
         this.userService = userService;
-        
+
+
     }
 
     @Override
     public void initialize() {
 
-        if (userAccountManagement.findAll().iterator().hasNext()) {
+      if (userAccountManagement.findAll().iterator().hasNext()) {
 			return;
+
 		}
 
         LOG.info("Erstelle Standard-Benutzer");
