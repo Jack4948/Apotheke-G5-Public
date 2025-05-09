@@ -34,14 +34,30 @@
                         </span>
                     </td>
                     <td th:text="${{order.getTotal()}}">9,99 EUR</td>
-                    <td th:unless="${order.isCompleted()}">
-                        <form method="post" th:action="@{/labor/herstellen}">
+
+                    <td th:if="${order.isOpenLab()}">
+                        <form method="post" th:action="@{/labor/starten}">
                             <input type="hidden" name="id" th:value="${order.getId()}" />
-                            <button class="ui button">Herstellen</button>
+                            <button class="ui button">Herstellung starten</button>
                         </form>
                     </td>
-                    <td th:if="${order.isCompleted()}">
-                        abholbereit
+
+                    <td th:if="${order.isInProgress()}">
+                        <form method="post" th:action="@{/labor/herstellen}">
+                            <input type="hidden" name="id" th:value="${order.getId()}" />
+                            <button class="ui button">Herstellung beenden</button>
+                        </form>
+                    </td>
+
+                    <td th:if="${order.isReadyForPickup()}">
+                        <form method="post" th:action="@{/labor/abholen}">
+                            <input type="hidden" name="id" th:value="${order.getId()}" />
+                            <button class="ui button">Als abgeholt markieren</button>
+                        </form>
+                    </td>
+
+                    <td th:if="${order.isPickedUp()}">
+                        abgeholt
                     </td>
                 </tr>
             </tbody>

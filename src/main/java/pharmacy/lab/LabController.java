@@ -25,11 +25,11 @@ import pharmacy.catalog.MixtureIngredient;
 @Controller
 @SessionAttributes("cart")
 public class LabController {
-  private final OrderManagement<LabOrder> orderManagement;
+  private final LabOrderManagement orderManagement;
   private final IngredientCatalog ingredientCatalog;
   private final UserAccountManagement userAccountManagement;
 
-  LabController(OrderManagement<LabOrder> orderManagement, IngredientCatalog ingredientCatalog,
+  LabController(LabOrderManagement orderManagement, IngredientCatalog ingredientCatalog,
       UserAccountManagement userAccountManagement) {
     this.orderManagement = orderManagement;
     this.ingredientCatalog = ingredientCatalog;
@@ -79,9 +79,21 @@ public class LabController {
     return "redirect:/labor/liste";
   }
 
+  @PostMapping("/labor/starten")
+  public String labStart(@RequestParam("id") LabOrder order) {
+    orderManagement.startOrder(order);
+    return "redirect:/labor/liste";
+  }
+
   @PostMapping("/labor/herstellen")
   public String labManufacture(@RequestParam("id") LabOrder order) {
     orderManagement.completeOrder(order);
+    return "redirect:/labor/liste";
+  }
+
+  @PostMapping("/labor/abholen")
+  public String labPickup(@RequestParam("id") LabOrder order) {
+    orderManagement.pickupOrder(order);
     return "redirect:/labor/liste";
   }
 
