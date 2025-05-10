@@ -180,11 +180,6 @@ image::models/design/personal.png[]
 === Rückverfolgbarkeit zwischen Analyse- und Entwurfsmodell
 
 
-
-
-_Die folgende Tabelle zeigt die Rückverfolgbarkeit zwischen Entwurfs- und Analysemodell._
-
-
 _Die folgende Tabelle zeigt die Rückverfolgbarkeit zwischen Entwurfs- und Analysemodell._
 
 5.3.1 personal
