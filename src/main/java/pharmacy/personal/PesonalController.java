@@ -28,8 +28,13 @@ public class PesonalController {
 
 	@GetMapping("/admin/benutzer")
 	public String personal(Model model) {
+
 		model.addAttribute("users", userService.findAll());
-		model.addAttribute("clinicUser", personalService.getClinicIfExists());
+	//	model.addAttribute("Docktor", personalService.getClinicIfExists());
+		boolean anotherActiveDoctorOffice = personalService.isAnotherDoctorOfficeActive();
+		model.addAttribute("isAnotherDoctorOfficeActive", anotherActiveDoctorOffice);
+
+
 		return "admin/benutzer";
 	}
 
@@ -41,13 +46,7 @@ public class PesonalController {
 		return "registrieren";
 	}
 
-	//@GetMapping("/admin/benutzer/clinic/add")
-//	public String addClinic(Model model) {
-	//	RegistrationForm form = new RegistrationForm(null, null, null, "DOCTORS_OFFICE", null);
-		//form.setIsFromPersonal(true);
-		//model.addAttribute("registrierenForm", form);
-		//return "registrieren";
-	//}
+
 
 	@PostMapping("/benutzer/loeschen/{id}")
 	public String deleteUser(@PathVariable("id") UUID id, RedirectAttributes redirectAttributes) {
@@ -64,7 +63,10 @@ public class PesonalController {
 	public String enableUser(@PathVariable("id") UUID id, RedirectAttributes redirectAttributes) {
 		personalService.enableUser(id);
 		redirectAttributes.addFlashAttribute("successMessage", "Benutzer wurde freigeschaltet.");
+
 		return "redirect:/admin/benutzer";
 	}
+
+
 
 }

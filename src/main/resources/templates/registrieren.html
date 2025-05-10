@@ -27,9 +27,9 @@
             <div class="field">
                 <label th:text="#{Registrieren.Role}" for="role">Role</label>
                 <select id="role" name="role" th:field="*{role}" required="required">
-                    <option value="EMPLOYEE">Apotheker</option>
-                    <option value="DOCTORS_OFFICE">Arzt</option>
-                    <option value="DELIVERY_DRIVER">Liererdienst</option>
+                    <option value="EMPLOYEE">EMPLOYEE</option>
+                    <option value="DOCTORS_OFFICE">DOCTORS_OFFICE</option>
+                    <option value="DELIVERY_DRIVER">DELIVERY_DRIVER</option>
                 </select>
                 <div class="error" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
             </div>
