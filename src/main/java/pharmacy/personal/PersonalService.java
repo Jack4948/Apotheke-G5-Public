@@ -22,15 +22,15 @@ import org.springframework.security.core.GrantedAuthority;
 @Transactional
 public class PersonalService {
 
-    private final UserRepository userRepository;
-    private final UserAccountManagement userAccounts;
+	private final UserRepository userRepository;
+	private final UserAccountManagement userAccounts;
 
-    public PersonalService(UserRepository userRepository, UserAccountManagement userAccounts) {
-        this.userRepository = userRepository;
-        this.userAccounts = userAccounts;
-    }
+	public PersonalService(UserRepository userRepository, UserAccountManagement userAccounts) {
+		this.userRepository = userRepository;
+		this.userAccounts = userAccounts;
+	}
 
-     //aktiviert inizialuser
+	//aktiviert inizialuser
 	public void activateInitialUsers() {
 
 		List<String> initialRoles = List.of("BOSS", "EMPLOYEE", "DELIVERY_DRIVER");
@@ -46,54 +46,22 @@ public class PersonalService {
 			});
 	}
 
+
 	private boolean isInitialUser(String role) {
 		List<String> initialRoles = List.of("BOSS", "EMPLOYEE", "DELIVERY_DRIVER");
 		return initialRoles.contains(role);
 	}
 
-
-
-
-	// Registrierung  Benutzer
-    public User createUser(RegistrationForm form) {
-
-        Role role = Role.of(form.getRole());
-        UserAccount userAccount = userAccounts.create(
-                form.getFirstName(),
-                Password.UnencryptedPassword.of(form.getPassword()),
-                role
-
-        );
-//aktiviert den chef direkt
-      //  userAccount.setEnabled(isChef);
-        userAccounts.save(userAccount);
-
-        User user = new User(
-                userAccount,
-                form.getFirstName() + " " + form.getLastName(),
-                form.getFirstName(),
-                form.getPassword(),
-                form.getRole(),
-				false
-                //isChef
-        );
-
-
-        return userRepository.save(user);
-    }
-
-
-
-    // Benutzer aktivieren
-    public void enableUser(UUID id) {
-        UserIdentifier userId = User.UserIdentifier.of(id);
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("Benutzer nicht gefunden"));
-        user.setEnabled(true);
-        user.getUserAccount().setEnabled(true);
-        userAccounts.save(user.getUserAccount());
-        userRepository.save(user);
-    }
+	// Benutzer aktivieren
+	public void enableUser(UUID id) {
+		UserIdentifier userId = User.UserIdentifier.of(id);
+		User user = userRepository.findById(userId)
+			.orElseThrow(() -> new IllegalArgumentException("Benutzer nicht gefunden"));
+		user.setEnabled(true);
+		user.getUserAccount().setEnabled(true);
+		userAccounts.save(user.getUserAccount());
+		userRepository.save(user);
+	}
 
 
 	public boolean isAnotherDoctorOfficeActive() {
@@ -101,9 +69,7 @@ public class PersonalService {
 			.anyMatch(user -> "DOCTORS_OFFICE".equalsIgnoreCase(user.getRole()) && user.getEnabled());
 	}
 
-
-
-    // löschen
+	// löschen
 	public void deleteById(UUID id) {
 		try {
 			UserIdentifier userId = User.UserIdentifier.of(id.toString());
@@ -125,11 +91,6 @@ public class PersonalService {
 			throw new RuntimeException("Fehler beim Löschen des Benutzers: " + e.getMessage(), e);
 		}
 	}
-
-
-
-
-
 
 
 }

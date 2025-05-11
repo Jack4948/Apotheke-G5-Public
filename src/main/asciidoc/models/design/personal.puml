@@ -6,7 +6,6 @@ package pharmacy.personal {
       - UserRepository userRepository
       - UserAccountManagement userAccounts
       + activateInitialUsers()
-      + createUser(form: RegistrationForm): User
       + enableUser(id: UUID)
       + disableDoctorsOffice(id: UUID)
       + deleteById(id: UUID)

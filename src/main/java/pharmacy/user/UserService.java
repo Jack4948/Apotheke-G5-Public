@@ -25,43 +25,43 @@ import pharmacy.user.User.UserIdentifier;
 @Transactional
 public class UserService {
 
-    private final UserRepository userRepository;
-    private final UserAccountManagement userAccounts;
+	private final UserRepository userRepository;
+	private final UserAccountManagement userAccounts;
 
-    public UserService(UserRepository userRepository, UserAccountManagement userAccounts) {
-        this.userRepository = userRepository;
-        this.userAccounts = userAccounts;
-    }
+	public UserService(UserRepository userRepository, UserAccountManagement userAccounts) {
+		this.userRepository = userRepository;
+		this.userAccounts = userAccounts;
+	}
 
-    public User createUser(RegistrationForm form) {
-        Role role = Role.of(form.getRole());
-        UserAccount userAccount = userAccounts.create(
-            form.getFirstName(),  // Benutze firstName als Benutzername
-            UnencryptedPassword.of(form.getPassword()),
-            role
-        );
+	public User createUser(RegistrationForm form) {
+		Role role = Role.of(form.getRole());
+		UserAccount userAccount = userAccounts.create(
+			form.getFirstName(),  // Benutze firstName als Benutzername
+			UnencryptedPassword.of(form.getPassword()),
+			role
+		);
 
 		// Standard nicht aktiviert
 		boolean isEnabled = false;
 
 
 		userAccount.setEnabled(isEnabled);
-        userAccounts.save(userAccount);
+		userAccounts.save(userAccount);
 
-        User user = new User(
-            userAccount, 
-            form.getFirstName() + " " + form.getLastName(), 
-            form.getFirstName(), 
-            form.getPassword(),
-            form.getRole(),
+		User user = new User(
+			userAccount,
+			form.getFirstName() + " " + form.getLastName(),
+			form.getFirstName(),
+			form.getPassword(),
+			form.getRole(),
 			isEnabled
 
-        );
-        
-        return userRepository.save(user);
-    }
+		);
 
-    public Streamable<User> findAll() {
-        return userRepository.findAll();
-    }
+		return userRepository.save(user);
+	}
+
+	public Streamable<User> findAll() {
+		return userRepository.findAll();
+	}
 }

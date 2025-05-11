@@ -17,49 +17,49 @@ import pharmacy.personal.PersonalService;
 @Order(10)
 public class UserDataInitializer implements DataInitializer {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserDataInitializer.class);
+	private static final Logger LOG = LoggerFactory.getLogger(UserDataInitializer.class);
 
-    private final UserAccountManagement userAccountManagement;
-    //private final UserService userService;
-    private final PersonalService personlService;
+	private final UserAccountManagement userAccountManagement;
+	private final UserService userService;
+	private final PersonalService personlService;
 
-    public UserDataInitializer(UserAccountManagement userAccountManagement, PersonalService personlService ) {
-        Assert.notNull(userAccountManagement, "UserAccount muss nicht null sein");
-      //  Assert.notNull(userService, "UserService muss nicht null sein");
-		Assert.notNull(personlService,"PersonalService muss nicht null sein ");
-        this.personlService = personlService;
-        this.userAccountManagement = userAccountManagement;
-      //  this.userService = userService;
+	public UserDataInitializer(UserAccountManagement userAccountManagement, PersonalService personlService, UserService userService) {
+		Assert.notNull(userAccountManagement, "UserAccount muss nicht null sein");
+		Assert.notNull(userService, "UserService muss nicht null sein");
+		Assert.notNull(personlService, "PersonalService muss nicht null sein ");
+		this.personlService = personlService;
+		this.userAccountManagement = userAccountManagement;
+		this.userService = userService;
 
-    }
+	}
 
-    @Override
-    public void initialize() {
+	@Override
+	public void initialize() {
 
-      if (userAccountManagement.findAll().iterator().hasNext()) {
+		if (userAccountManagement.findAll().iterator().hasNext()) {
 			return;
 
 		}
-        LOG.info("Erstelle Standard-Benutzer");
-        
-        RegistrationForm chef = new RegistrationForm("chef", "chef", "BOSS", "123", "123");
-        RegistrationForm apotheker = new RegistrationForm("emp", "emp", "EMPLOYEE", "123", "123");
+		LOG.info("Erstelle Standard-Benutzer");
 
-       RegistrationForm lieferdienst = new RegistrationForm("fahrer", "fahrer", "DELIVERY_DRIVER", "123", "123");
+		RegistrationForm chef = new RegistrationForm("chef", "chef", "BOSS", "123", "123");
+		RegistrationForm apotheker = new RegistrationForm("emp", "emp", "EMPLOYEE", "123", "123");
 
-		personlService.createUser(chef);
-		personlService.createUser(apotheker);
+		RegistrationForm lieferdienst = new RegistrationForm("fahrer", "fahrer", "DELIVERY_DRIVER", "123", "123");
 
-		personlService.createUser(lieferdienst);
+		userService.createUser(chef);
+		userService.createUser(apotheker);
 
-        var password = "321";
+		userService.createUser(lieferdienst);
 
-        List.of(
-            new RegistrationForm("test", "test", "EMPLOYEE", password, password),
-            new RegistrationForm("test1", "tester", "EMPLOYEE", password, password)
-		).forEach(personlService::createUser);
+		var password = "321";
+
+		List.of(
+			new RegistrationForm("test", "test", "EMPLOYEE", password, password),
+			new RegistrationForm("test1", "tester", "EMPLOYEE", password, password)
+		).forEach(userService::createUser);
 		// aktiviere initiale Benutzer
 		personlService.activateInitialUsers();
-    }
-    
+	}
+
 }
