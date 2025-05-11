@@ -1,29 +1,54 @@
 @startuml
 actor Admin
-participant "PesonalController" as PC
+participant "PersonalController" as PC
 participant "PersonalService" as PS
 participant "UserService" as US
 participant "UserRepository" as UR
 
-Admin -> PC:  Hinzufügen eines Mitarbeiters
+Admin -> PC: Hinzufügen eines Mitarbeiters
 PC -> PS: createUser(form)
-PS -> UR:    Speichern des Benutzers
+PS -> UR: Benutzer speichern
 UR --> PS: Benutzer gespeichert
-PS --> PC:   Benutzer erstellt
+PS --> PC: Benutzer erstellt
 PC --> Admin: Mitarbeiter hinzugefügt
 
+== Klinik hinzufügen ==
 Admin -> PC: Klinik hinzufügen
 PC -> PS: clinicExists()
-PS -> UR:    Abfragen vorhandener Klinik
+PS -> UR: Abfragen vorhandener Klinik
 UR --> PS: Klinik gefunden/nicht gefunden
-PS --> PC:     Klinikstatus zurückgeben
-PC --> Admin: Klinik hinzugefügt
+PS --> PC: Klinikstatus zurückgeben
+PC --> Admin: Klinikstatus übermitteln
 
+== Benutzer löschen ==
 Admin -> PC: Benutzer löschen
-PC -> PS:    deleteById(id)
-PS -> UR:Benutzer löschen
+PC -> PS: deleteById(id)
+PS -> UR: Benutzer löschen
 UR --> PS: Benutzer gelöscht
-PS --> PC:    Bestätigung
+PS --> PC: Bestätigung
 PC --> Admin: Benutzer gelöscht
+
+== Benutzer freischalten ==
+Admin -> PC: Benutzer freischalten
+PC -> PS: enableUser(id)
+PS -> UR: Abfragen anderer DOCTORS_OFFICE Benutzer
+UR --> PS: Aktiver DOCTORS_OFFICE gefunden/nicht gefunden
+alt Aktiver DOCTORS_OFFICE vorhanden
+    PS --> PC: Fehler: Nur ein aktiver DOCTORS_OFFICE erlaubt
+    PC --> Admin: Fehlermeldung anzeigen
+else Kein aktiver DOCTORS_OFFICE
+    PS -> UR: Benutzer aktivieren
+    UR --> PS: Benutzer aktiviert
+    PS --> PC: Bestätigung
+    PC --> Admin: Benutzer freigeschaltet
+end
+
+== Benutzer deaktivieren ==
+Admin -> PC: Benutzer deaktivieren
+PC -> PS: disableDoctorsOffice(id)
+PS -> UR: Benutzer deaktivieren
+UR --> PS: Benutzer deaktiviert
+PS --> PC: Bestätigung
+PC --> Admin: Benutzer deaktiviert
 
 @enduml

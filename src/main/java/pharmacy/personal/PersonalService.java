@@ -1,5 +1,6 @@
 package pharmacy.personal;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.salespointframework.useraccount.Password;
@@ -29,27 +30,42 @@ public class PersonalService {
         this.userAccounts = userAccounts;
     }
 
-    // Registrierung  Benutzer
+     //aktiviert inizialuser
+	public void activateInitialUsers() {
+
+		List<String> initialRoles = List.of("BOSS", "EMPLOYEE", "DELIVERY_DRIVER");
+
+		userRepository.findAll().stream()
+			.filter(user -> initialRoles.contains(user.getRole()))
+			.forEach(user -> {
+				System.out.println("Aktiviere Benutzer mit Rolle: " + user.getRole());
+				user.setEnabled(true);
+				user.getUserAccount().setEnabled(true);
+				userAccounts.save(user.getUserAccount());
+				userRepository.save(user);
+			});
+	}
+
+	private boolean isInitialUser(String role) {
+		List<String> initialRoles = List.of("BOSS", "EMPLOYEE", "DELIVERY_DRIVER");
+		return initialRoles.contains(role);
+	}
+
+
+
+
+	// Registrierung  Benutzer
     public User createUser(RegistrationForm form) {
+
         Role role = Role.of(form.getRole());
         UserAccount userAccount = userAccounts.create(
                 form.getFirstName(),
                 Password.UnencryptedPassword.of(form.getPassword()),
                 role
+
         );
-
-
-
-        boolean isChef = false;
-        try {
-            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            isChef = auth.getAuthorities().stream()
-                    .map(GrantedAuthority::getAuthority)
-                    .anyMatch(authority -> authority.equals("ROLE_BOSS"));
-        } catch (Exception ignored) {
-        }
-
-        userAccount.setEnabled(isChef);
+//aktiviert den chef direkt
+      //  userAccount.setEnabled(isChef);
         userAccounts.save(userAccount);
 
         User user = new User(
@@ -58,7 +74,8 @@ public class PersonalService {
                 form.getFirstName(),
                 form.getPassword(),
                 form.getRole(),
-                isChef
+				false
+                //isChef
         );
 
 
@@ -72,39 +89,47 @@ public class PersonalService {
         UserIdentifier userId = User.UserIdentifier.of(id);
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Benutzer nicht gefunden"));
-
         user.setEnabled(true);
         user.getUserAccount().setEnabled(true);
         userAccounts.save(user.getUserAccount());
         userRepository.save(user);
     }
 
-    // Benutzer löschen
-    public void deleteById(UUID id) {
-        try {
-            UserIdentifier userId = User.UserIdentifier.of(id.toString());
-            userRepository.deleteById(userId);
-        } catch (Exception e) {
-            throw new RuntimeException("Fehler beim Löschen des Benutzers: " + e.getMessage(), e);
-        }
-    }
 
-    // ist Klinik schon registriert
-    public boolean clinicExists() {
-        return userRepository.findAll()
-                .stream()
-                .anyMatch(user -> "DOCTORS_OFFICE".equalsIgnoreCase(user.getRole()));
-    }
+	public boolean isAnotherDoctorOfficeActive() {
+		return userRepository.findAll().stream()
+			.anyMatch(user -> "DOCTORS_OFFICE".equalsIgnoreCase(user.getRole()) && user.getEnabled());
+	}
 
-    // erste gefundene Klinik zurückgeben
-    public User getClinicIfExists() {
-        var list = userRepository.findAll().toList();
 
-        list.forEach(u -> System.out.println(u.getRole()));
 
-        return list.stream()
-                .filter(u -> u.getRole() != null && u.getRole().trim().equalsIgnoreCase("DOCTORS_OFFICE"))
-                .findFirst()
-                .orElse(null);
-    }
+    // löschen
+	public void deleteById(UUID id) {
+		try {
+			UserIdentifier userId = User.UserIdentifier.of(id.toString());
+			User user = userRepository.findById(userId)
+				.orElseThrow(() -> new IllegalArgumentException("Benutzer nicht gefunden"));
+
+			//  UserAccount deaktivieren
+			UserAccount userAccount = user.getUserAccount();
+			if (userAccount != null) {
+				userAccount.setEnabled(false);
+				userAccounts.save(userAccount);
+			}
+
+			//  User löschen
+			userRepository.deleteById(userId);
+
+
+		} catch (Exception e) {
+			throw new RuntimeException("Fehler beim Löschen des Benutzers: " + e.getMessage(), e);
+		}
+	}
+
+
+
+
+
+
+
 }

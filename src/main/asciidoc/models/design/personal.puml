@@ -1,43 +1,46 @@
 @startuml
 
 package pharmacy.personal {
+
   class PersonalService {
       - UserRepository userRepository
-    - UserAccountManagement userAccounts
-    + createUser(form: RegistrationForm): User
-    + enableUser(id: UUID)
-    + deleteById(id: UUID)
-    + clinicExists(): boolean
-    + getClinicIfExists(): User
+      - UserAccountManagement userAccounts
+      + activateInitialUsers()
+      + createUser(form: RegistrationForm): User
+      + enableUser(id: UUID)
+      + disableDoctorsOffice(id: UUID)
+      + deleteById(id: UUID)
+      + isAnotherDoctorOfficeActive(): boolean
   }
 
-  class PesonalController {
+  class PersonalController {
     - UserService userService
     - PersonalService personalService
     + personal(model: Model): String
-       + addEmployee(model: Model): String
-    + addClinic(model: Model): String
+    + addEmployee(model: Model): String
     + deleteUser(id: UUID, redirectAttributes: RedirectAttributes): String
-      + enableUser(id: UUID, redirectAttributes: RedirectAttributes): String
+    + enableUser(id: UUID, redirectAttributes: RedirectAttributes): String
+    + deactivateUser(id: UUID, redirectAttributes: RedirectAttributes): String
   }
 }
 
 package pharmacy.user {
+
   class RegistrationForm {
     - String firstName
-     - String lastName
+    - String lastName
     - String password
-      - String role
+    - String role
     - boolean isFromPersonal
   }
 
   class User {
     - UserAccount userAccount
-     - String fullName
+    - String fullName
     - String firstName
     - String password
-      - String role
-     - boolean isChef
+    - String role
+    - boolean enabled
   }
 
   class UserService {
@@ -46,9 +49,14 @@ package pharmacy.user {
 }
 
 PersonalService --> User : uses
-PesonalController -->  PersonalService
-PesonalController --> UserService
-PersonalService -->  UserService
+PersonalService --> UserService : uses
+PersonalService --> RegistrationForm : uses
+PersonalService --> UserAccount : uses
+
+PersonalController --> PersonalService
+PersonalController --> UserService
+
 RegistrationForm --> User
+UserService --> User
 
 @enduml

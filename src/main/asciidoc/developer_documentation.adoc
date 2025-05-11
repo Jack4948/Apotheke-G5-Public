@@ -164,7 +164,7 @@ image::./models/design/package.png[]
 
 
 === Entwurfsklassendiagramme der einzelnen Packages
-** personal
+5.2.1personal
 
 image::models/design/personal.png[]
 
@@ -172,29 +172,28 @@ image::models/design/personal.png[]
 [options="header"]
 |===
 |Klasse/Enumeration |Beschreibung
-|PersonalService | Eine Serviceklasse, die die Verwaltung von Personal übernimmt. Bietet Methoden zum Erstellen, Aktivieren, Löschen und Abfragen von Benutzern.
-|PesonalController | Ein Spring MVC Controller zur Verwaltung von Personal. Ermöglicht das Hinzufügen, Löschen und Aktivieren von Benutzern.
+|PersonalService | Eine Serviceklasse zur Verwaltung von Personalbenutzern. Bietet Methoden zum Erstellen, Aktivieren, Deaktivieren und Löschen von Benutzern sowie zur Überprüfung aktiver `DOCTORS_OFFICE` Benutzer.
+|PersonalController | Ein Spring MVC Controller zur Verwaltung von Personalbenutzern. Ermöglicht das Hinzufügen, Löschen und Aktivieren/Deaktivieren von Benutzern und Kliniken (`DOCTORS_OFFICE`).
 |===
+
 
 === Rückverfolgbarkeit zwischen Analyse- und Entwurfsmodell
 
 
-
-
 _Die folgende Tabelle zeigt die Rückverfolgbarkeit zwischen Entwurfs- und Analysemodell._
 
-** personal
+5.3.1 personal
 [options="header"]
 |===
 |Klasse/Enumeration (Analysemodell) |Klasse/Enumeration (Entwurfsmodell)
-|Personal | pharmacy.personal.PersonalService, pharmacy.personal.PesonalController
+|Personal | pharmacy.personal.PersonalService, pharmacy.personal.PersonalController
 |Mitarbeiter | pharmacy.user.User, salespointframework.UserAccount
-|Klinik | pharmacy.user.User (mit Rolle 'DOCTORS_OFFICE')
-|Benutzer | pharmacy.user.User, pharmacy.user.BaseUser
+|Klinik (DOCTORS_OFFICE) | pharmacy.user.User (mit Rolle `DOCTORS_OFFICE`)
+|Benutzer | pharmacy.user.User, salespointframework.UserAccount
 |===
 
 
 == Laufzeitsicht
-** personal
+6.1 personal
 
 image::models/design/personal2.png[]

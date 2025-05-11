@@ -31,9 +31,7 @@
         <a class="ui button" th:href="@{/admin/benutzer/add}">
             <i class="plus icon"></i> Neuen Benutzer hinzufügen
         </a>
-        <a class="ui blue button" th:href="@{/admin/benutzer/clinic/add}">
-            <i class="plus icon"></i> Klinik hinzufügen
-        </a>
+
     </div>
 
     <table class="ui table">
@@ -47,21 +45,8 @@
         </thead>
         <tbody>
 
-        <tr th:if="${clinicUser != null}">
-            <td th:text="${clinicUser.name}">Klinik Name</td>
-            <td>DOCTORS_OFFICE</td>
-            <td>
-                <span th:class="${clinicUser.enabled} ? 'ui green label' : 'ui red label'"
-                      th:text="${clinicUser.enabled} ? 'Aktiv' : 'Inaktiv'">Status</span>
-            </td>
-            <td>
-                <form th:action="@{'/benutzer/loeschen/' + ${clinicUser.id.id}}" method="post">
-                    <button type="submit" class="ui red button">Löschen</button>
-                </form>
-            </td>
-        </tr>
 
-        <tr th:each="user : ${users}" th:if="${user.role != 'DOCTORS_OFFICE'}">
+        <tr th:each="user : ${users}" th:if="${user.role }">
             <td th:text="${user.name}"></td>
             <td th:text="${user.role}"></td>
             <td>
@@ -75,7 +60,12 @@
                     <form th:action="@{'/benutzer/loeschen/' + ${user.id.id}}" method="post">
                         <button type="submit" class="ui red mini button">Löschen</button>
                     </form>
-                    <form th:action="@{'/admin/benutzer/freischalten/' + ${user.id.id}}" method="post" th:if="${!user.enabled}" style="margin-left: 5px;">
+                    <form th:action="@{'/admin/benutzer/freischalten/' + ${user.id.id}}" method="post"
+                          th:if="${(user.role.equals('DOCTORS_OFFICE') && !isAnotherDoctorOfficeActive)
+                       || (!user.enabled && !user.role.equals('DOCTORS_OFFICE'))}"
+                          style="margin-left: 5px;">
+
+
                         <button type="submit" class="ui green mini button">Freischalten</button>
                     </form>
                 </div>

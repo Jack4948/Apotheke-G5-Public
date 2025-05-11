@@ -3,10 +3,19 @@ package pharmacy.user;
 import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManagement;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
+
+
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.salespointframework.useraccount.Password.UnencryptedPassword;
 import org.springframework.data.util.Streamable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +40,12 @@ public class UserService {
             UnencryptedPassword.of(form.getPassword()),
             role
         );
+
+		// Standard nicht aktiviert
+		boolean isEnabled = false;
+
+
+		userAccount.setEnabled(isEnabled);
         userAccounts.save(userAccount);
 
         User user = new User(
@@ -39,7 +54,8 @@ public class UserService {
             form.getFirstName(), 
             form.getPassword(),
             form.getRole(),
-            false
+			isEnabled
+
         );
         
         return userRepository.save(user);

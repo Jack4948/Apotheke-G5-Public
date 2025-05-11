@@ -19,7 +19,7 @@ public class User extends AbstractAggregateRoot<pharmacy.user.User.UserIdentifie
     private String username;
     private String passwordHash;
     private String role;
-    private boolean enabled;
+    private boolean enabled ;
 
     @OneToOne
     private UserAccount userAccount;
@@ -36,7 +36,12 @@ public class User extends AbstractAggregateRoot<pharmacy.user.User.UserIdentifie
         this.role = role;
         this.enabled = enabled;
     }
-    public UserAccount getUserAccount(){
+
+	public User(UserAccount userAccount, String administration) {
+
+	}
+
+	public UserAccount getUserAccount(){
         return userAccount;
     }
 
@@ -60,8 +65,8 @@ public class User extends AbstractAggregateRoot<pharmacy.user.User.UserIdentifie
         return enabled;
     }
 
-    public boolean setEnabled(boolean enabled){
-        return this.enabled = enabled;
+    public void setEnabled(boolean enabled){
+		this.enabled = enabled;
     }
 
     @Override
