@@ -30,7 +30,6 @@ public class PesonalController {
 	public String personal(Model model) {
 
 		model.addAttribute("users", userService.findAll());
-	//	model.addAttribute("Docktor", personalService.getClinicIfExists());
 		boolean anotherActiveDoctorOffice = personalService.isAnotherDoctorOfficeActive();
 		model.addAttribute("isAnotherDoctorOfficeActive", anotherActiveDoctorOffice);
 
@@ -45,7 +44,6 @@ public class PesonalController {
 		model.addAttribute("registrierenForm", form);
 		return "registrieren";
 	}
-
 
 
 	@PostMapping("/benutzer/loeschen/{id}")
@@ -63,10 +61,8 @@ public class PesonalController {
 	public String enableUser(@PathVariable("id") UUID id, RedirectAttributes redirectAttributes) {
 		personalService.enableUser(id);
 		redirectAttributes.addFlashAttribute("successMessage", "Benutzer wurde freigeschaltet.");
-
 		return "redirect:/admin/benutzer";
 	}
-
 
 
 }
