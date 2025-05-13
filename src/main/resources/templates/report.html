@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -9,6 +10,7 @@
   <section layout:fragment="content">
     
     <form class="ui form" method="get" th:action="@{/report}">
+    <div class="two fields">
       <div class="field">
         <label>Zeige</label>
         <select name="type" class="ui dropdown">
@@ -22,6 +24,19 @@
           </option>
         </select>
       </div>
+
+      <div class="field">
+        <label>Status</label>
+        <select name="status" class="ui dropdown">
+          <option th:value="ALL" 
+                  th:selected="${filterStatus=='ALL'}">Alle Status</option>
+          <option th:value="PAID" 
+                  th:selected="${filterStatus=='PAID'}">Bezahlt/Erstattet</option>
+          <option th:value="UNPAID" 
+                  th:selected="${filterStatus=='UNPAID'}">Offen</option>
+        </select>
+      </div>
+    </div>
       <button type="submit" class="ui primary button">
         Anwenden
       </button>
@@ -35,7 +50,9 @@
           <tr>
             <th>ID</th>
             <th>Datum</th>
-            <th class="right aligned">Betrag (€)</th></tr>
+            <th class="right aligned">Betrag (€)</th>
+            <th>Betzahlt</th>
+          </tr>
         </thead>
         <tbody>
           <tr th:each="o : ${cashOrders}">
@@ -44,12 +61,25 @@
             <!-- <td th:text="${#temporals.format(o.createdDate, 'yyyy-MM-dd')}"></td> -->
 
             <td class="right aligned" th:text="${o.orderLines.total}">0.00</td>
+
+            <!-- Checkbox for paid status -->
+
+             <td class="center aligned">
+              <div class="ui checkbox">
+                <input type="checkbox"
+                       th:checked="${o.paid}"    
+                       disabled />
+                <label></label>
+              </div>
+            </td>
+
           </tr>
         </tbody>
         <tfoot>
           <tr class="positive">
             <th colspan="2">Summe</th>
             <th class="right aligned" th:text="${cashTotal}">0.00</th>
+            <th></th>
           </tr>
         </tfoot>
       </table>
@@ -62,7 +92,9 @@
           <tr>
             <th>ID</th>
             <th>Datum</th>
-            <th class="right aligned">Betrag (€)</th></tr>
+            <th class="right aligned">Betrag (€)</th>
+            <th>Erstattet</th>
+          </tr>
         </thead>
         <tbody>
           <tr th:each="o : ${insuranceOrders}">
@@ -70,14 +102,23 @@
             <td></td>
             <!-- <td th:text="${#temporals.format(o.createdDate, 'yyyy-MM-dd')}"></td> -->
 
-
             <td class="right aligned" th:text="${o.orderLines.total}">0.00</td>
+
+             <td class="center aligned">
+              <div class="ui checkbox">
+                <input type="checkbox"
+                       th:checked="${o.paid}"
+                       disabled />
+                <label></label>
+              </div>
+            </td>
           </tr>
         </tbody>
         <tfoot>
           <tr class="positive">
             <th colspan="2">Summe</th>
             <th class="right aligned" th:text="${insuranceTotal}">0.00</th>
+            <th></th>
           </tr>
         </tfoot>
       </table>

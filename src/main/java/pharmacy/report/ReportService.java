@@ -1,3 +1,4 @@
+// Service
 package pharmacy.report;
 
 import java.math.BigDecimal;
@@ -27,7 +28,7 @@ public class ReportService {
     public List<LabOrder> getCashOrders() {
         return toList().stream()
             .filter(o -> Cash.CASH.equals(o.getPaymentMethod()))
-            .filter(LabOrder::isPaid)
+            // .filter(LabOrder::isPaid)
             .collect(Collectors.toList());
     }
 
@@ -38,19 +39,24 @@ public class ReportService {
             .collect(Collectors.toList());
     }
 
-    /** Total sum of cash‐paid lab orders. */
-    public BigDecimal getCashTotal() {
-        return getCashOrders().stream()
-                .map(o -> toBigDecimal(o.getOrderLines().getTotal()))
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+       public BigDecimal sumOrders(List<LabOrder> list) {
+        return list.stream()
+            .map(o -> toBigDecimal(o.getOrderLines().getTotal()))
+            .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
+    // /** Total sum of cash‐paid lab orders. */
+    // public BigDecimal getCashTotal() {
+    //     return getCashOrders().stream()
+    //             .map(o -> toBigDecimal(o.getOrderLines().getTotal()))
+    //             .reduce(BigDecimal.ZERO, BigDecimal::add);
+    // }
 
-    /** Total sum of insurance‐paid lab orders. */
-    public BigDecimal getInsuranceTotal() {
-        return getInsuranceOrders().stream()
-                .map(o -> toBigDecimal(o.getOrderLines().getTotal()))
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
+    // /** Total sum of insurance‐paid lab orders. */
+    // public BigDecimal getInsuranceTotal() {
+    //     return getInsuranceOrders().stream()
+    //             .map(o -> toBigDecimal(o.getOrderLines().getTotal()))
+    //             .reduce(BigDecimal.ZERO, BigDecimal::add);
+    // }
 
     // helpers:
 
@@ -63,4 +69,6 @@ public class ReportService {
     private BigDecimal toBigDecimal(MonetaryAmount amt) {
         return amt.getNumber().numberValue(BigDecimal.class);
     }
+
+   
 }
