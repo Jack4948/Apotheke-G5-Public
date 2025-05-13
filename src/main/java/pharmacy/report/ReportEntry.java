@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
 /**
  * JPA entity to track refunded (erstattet) status per LabOrder ID.
  */
@@ -12,17 +13,17 @@ import jakarta.persistence.Table;
 public class ReportEntry {
 
     @Id
-    private Long id;                // matches LabOrder.getId()
+     private String id;
 
     private boolean refunded = false;
 
     protected ReportEntry() { }
 
-    public ReportEntry(Long id) {
+    public ReportEntry(String id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 

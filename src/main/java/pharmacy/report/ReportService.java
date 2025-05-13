@@ -45,14 +45,14 @@ public class ReportService {
             .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public boolean isRefunded(Long orderId) {
-        return entryRepo.findById(orderId)
+    public boolean isRefunded(String id) {
+        return entryRepo.findById(id)
                         .map(ReportEntry::isRefunded)
                         .orElse(false);
     }
 
-    public void setRefunded(Long orderId, boolean refunded) {
-        ReportEntry entry = entryRepo.findById(orderId)\n            .orElse(new ReportEntry(orderId));
+    public void setRefunded(String id, boolean refunded) {
+        ReportEntry entry = entryRepo.findById(id).orElse(new ReportEntry(id));
         entry.setRefunded(refunded);
         entryRepo.save(entry);
     }

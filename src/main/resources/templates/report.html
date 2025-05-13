@@ -13,16 +13,16 @@
         <div class="field">
           <label>Zeige</label>
           <select name="type" class="ui dropdown">
-            <option th:value="ALL"      th:selected="${filterType=='ALL'}">Beide</option>
-            <option th:value="CASH"     th:selected="${filterType=='CASH'}">Barzahlungen</option>
-            <option th:value="INSURANCE"th:selected="${filterType=='INSURANCE'}">GKV-Erstattungen</option>
+            <option th:value="ALL" th:selected="${filterType=='ALL'}">Beide</option>
+            <option th:value="CASH" th:selected="${filterType=='CASH'}">Barzahlungen</option>
+            <option th:value="INSURANCE" th:selected="${filterType=='INSURANCE'}">GKV-Erstattungen</option>
           </select>
         </div>
         <div class="field">
           <label>Status</label>
           <select name="status" class="ui dropdown">
-            <option th:value="ALL"    th:selected="${filterStatus=='ALL'}">Alle Status</option>
-            <option th:value="PAID"   th:selected="${filterStatus=='PAID'}">Bezahlt/Erstattet</option>
+            <option th:value="ALL" th:selected="${filterStatus=='ALL'}">Alle Status</option>
+            <option th:value="PAID" th:selected="${filterStatus=='PAID'}">Bezahlt/Erstattet</option>
             <option th:value="UNPAID" th:selected="${filterStatus=='UNPAID'}">Offen</option>
           </select>
         </div>
@@ -30,26 +30,31 @@
       <button type="submit" class="ui primary button">Anwenden</button>
     </form>
 
-    <!-- CASH ORDERS -->
+    <!-- BARZAHLUNGEN -->
     <div th:if="${filterType=='ALL' or filterType=='CASH'}">
       <h2 class="ui header">Bar Zahlungen</h2>
       <table class="ui celled table">
         <thead>
-          <tr><th>ID</th><th>Datum</th><th class="right aligned">Betrag (€)</th><th>Erstattet?</th></tr>
+          <tr>
+            <th>ID</th>
+            <th>Datum</th>
+            <th class="right aligned">Betrag (€)</th>
+            <th>Erstattet?</th>
+          </tr>
         </thead>
         <tbody>
           <tr th:each="o : ${cashOrders}">
-            <td th:text="${o.id}">1</td>
-            <td th:text="${#temporals.format(o.createdDate,'yyyy-MM-dd')}">2025-05-13</td>
-            <td class="right aligned" th:text="${o.orderLines.total}">0.00</td>
+            <td th:text="${o.id}">ID</td>
+            <!-- <td th:text="${#temporals.format(o.date,'yyyy-MM-dd')}">Datum</td> -->
+            <td class="right aligned" th:text="${o.amount}">0.00</td>
             <td class="center aligned">
               <form th:action="@{/report/{id}/refund(id=${o.id})}" method="post">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                <input type="hidden" name="value" value="false"/>
+                <input type="hidden" name="value" value="false" />
                 <div class="ui checkbox">
                   <input type="checkbox" name="value" th:value="true"
-                         th:checked="${@reportService.isRefunded(o.id)}"
-                         onchange="this.form.submit()"/>
+                         th:checked="${o.refunded}"
+                         onchange="this.form.submit()" />
                   <label></label>
                 </div>
               </form>
@@ -66,29 +71,34 @@
       </table>
     </div>
 
-    <!-- INSURANCE ORDERS -->
+    <!-- GKV-ERSTATTUNGEN -->
     <div th:if="${filterType=='ALL' or filterType=='INSURANCE'}">
       <h2 class="ui header">GKV-Erstattungen</h2>
       <table class="ui celled table">
         <thead>
-          <tr><th>ID</th><th>Datum</th><th class="right aligned">Betrag (€)</th><th>Erstattet?</th></tr>
+          <tr>
+            <th>ID</th>
+            <th>Datum</th>
+            <th class="right aligned">Betrag (€)</th>
+            <th>Erstattet?</th>
+          </tr>
         </thead>
         <tbody>
           <tr th:each="o : ${insuranceOrders}">
-            <td th:text="${o.id}">2</td>
-            <td th:text="${#temporals.format(o.createdDate,'yyyy-MM-dd')}">2025-05-13</td>
-            <td class="right aligned" th:text="${o.orderLines.total}">0.00</td>
+            <td th:text="${o.id}">ID</td>
+            <!-- <td th:text="${#temporals.format(o.date,'yyyy-MM-dd')}">Datum</td> -->
+            <td class="right aligned" th:text="${o.amount}">0.00</td>
             <td class="center aligned">
-              <form th:action="@{/report/{id}/refund(id=${o.id})}" method="post">
+              <!-- <form th:action="@{/report/{id}/refund(id=${o.id})}" method="post">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                <input type="hidden" name="value" value="false"/>
+                <input type="hidden" name="value" value="false" />
                 <div class="ui checkbox">
                   <input type="checkbox" name="value" th:value="true"
-                         th:checked="${@reportService.isRefunded(o.id)}"
-                         onchange="this.form.submit()"/>
+                         th:checked="${o.refunded}"
+                         onchange="this.form.submit()" />
                   <label></label>
                 </div>
-              </form>
+              </form> -->
             </td>
           </tr>
         </tbody>
