@@ -1,7 +1,7 @@
-// Service
 package pharmacy.report;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -19,56 +19,51 @@ import pharmacy.lab.LabOrder;
 public class ReportService {
 
     private final OrderManagement<LabOrder> orders;
+    private final ReportEntryRepository entryRepo;
 
-    public ReportService(OrderManagement<LabOrder> orders) {
+    public ReportService(OrderManagement<LabOrder> orders,
+                         ReportEntryRepository entryRepo) {
         this.orders = orders;
+        this.entryRepo = entryRepo;
     }
 
-    /** All lab orders paid in cash. */
     public List<LabOrder> getCashOrders() {
         return toList().stream()
             .filter(o -> Cash.CASH.equals(o.getPaymentMethod()))
-            // .filter(LabOrder::isPaid)
             .collect(Collectors.toList());
     }
 
-    /** All lab orders paid by insurance. */
     public List<LabOrder> getInsuranceOrders() {
         return toList().stream()
             .filter(o -> !Cash.CASH.equals(o.getPaymentMethod()))
             .collect(Collectors.toList());
     }
 
-       public BigDecimal sumOrders(List<LabOrder> list) {
+    public BigDecimal sumOrders(List<LabOrder> list) {
         return list.stream()
             .map(o -> toBigDecimal(o.getOrderLines().getTotal()))
             .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
-    // /** Total sum of cash‐paid lab orders. */
-    // public BigDecimal getCashTotal() {
-    //     return getCashOrders().stream()
-    //             .map(o -> toBigDecimal(o.getOrderLines().getTotal()))
-    //             .reduce(BigDecimal.ZERO, BigDecimal::add);
-    // }
 
-    // /** Total sum of insurance‐paid lab orders. */
-    // public BigDecimal getInsuranceTotal() {
-    //     return getInsuranceOrders().stream()
-    //             .map(o -> toBigDecimal(o.getOrderLines().getTotal()))
-    //             .reduce(BigDecimal.ZERO, BigDecimal::add);
-    // }
+    public boolean isRefunded(Long orderId) {
+        return entryRepo.findById(orderId)
+                        .map(ReportEntry::isRefunded)
+                        .orElse(false);
+    }
 
-    // helpers:
+    public void setRefunded(Long orderId, boolean refunded) {
+        ReportEntry entry = entryRepo.findById(orderId)\n            .orElse(new ReportEntry(orderId));
+        entry.setRefunded(refunded);
+        entryRepo.save(entry);
+    }
 
     private List<LabOrder> toList() {
-        return StreamSupport
-            .stream(orders.findAll(Pageable.unpaged()).spliterator(), false)
+        return StreamSupport.stream(
+                orders.findAll(Pageable.unpaged()).spliterator(), false)
             .collect(Collectors.toList());
     }
 
     private BigDecimal toBigDecimal(MonetaryAmount amt) {
         return amt.getNumber().numberValue(BigDecimal.class);
     }
-
-   
 }
