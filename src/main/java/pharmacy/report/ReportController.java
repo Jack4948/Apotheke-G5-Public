@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pharmacy.lab.LabOrder;
+import pharmacy.report.DataTransferObject.ReorderItem;
+import pharmacy.report.DataTransferObject.ReportOrder;
 
 @Controller
 public class ReportController {
@@ -22,17 +24,17 @@ public class ReportController {
         this.reportService = reportService;
     }
 
-    @GetMapping("/report")
+    @GetMapping("/berichte/kassenabrechnung")
     public String report(
         @RequestParam(name = "type",   defaultValue = "ALL") String type,
         @RequestParam(name = "status", defaultValue = "ALL") String status,
         Model model) {
 
-        // 1) Fetch raw LabOrder lists
+        //  Fetch raw LabOrder lists
         List<LabOrder> labCash      = reportService.getCashOrders();
         List<LabOrder> labInsurance = reportService.getInsuranceOrders();
 
-        // 2) Apply paid/unpaid filter
+        //  Apply paid/unpaid filter
         if (!"ALL".equals(status)) {
             boolean wantPaid = "PAID".equals(status);
             labCash      = labCash.stream()
@@ -43,7 +45,7 @@ public class ReportController {
                                   .collect(Collectors.toList());
         }
 
-        // 3) Map each LabOrder to a ReportOrder DTO
+        //  Map each LabOrder to a ReportOrder DTO
         List<ReportOrder> cashVM = labCash.stream()
             .map(this::toReportOrder)
             .collect(Collectors.toList());
@@ -52,7 +54,7 @@ public class ReportController {
             .map(this::toReportOrder)
             .collect(Collectors.toList());
 
-        // 4) Compute totals over the DTO lists
+        //  Compute totals over the DTO lists
         BigDecimal cashTotal = cashVM.stream() // view model 
             .map(ReportOrder::getAmount)
             .reduce(BigDecimal.ZERO, BigDecimal::add);
@@ -61,7 +63,7 @@ public class ReportController {
             .map(ReportOrder::getAmount)
             .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        // 5) Expose everything to Thymeleaf
+        // Expose everything to Thymeleaf
         model.addAttribute("filterType",       type);
         model.addAttribute("filterStatus",     status);
         model.addAttribute("cashOrders",       cashVM);
@@ -72,7 +74,7 @@ public class ReportController {
         return "report";
     }
 
-    /** Helper: convert a LabOrder into our simple DTO for the view */
+    // Helper: convert a LabOrder into our simple DTO for the view 
    private ReportOrder toReportOrder(LabOrder o) {
     String   id       = o.getId().toString();
     LocalDate date    = o.getDateCreated().toLocalDate();
@@ -84,16 +86,29 @@ public class ReportController {
     boolean  refunded = reportService.isRefunded(id);
 
     return new ReportOrder(id, date, amount, paid, refunded);
-}
-
-
-    @PostMapping("/report/{id}/refund")
-    public String toggleRefund(
-        @PathVariable("id") String id,
-        @RequestParam("value") boolean refunded) {
-
-        reportService.setRefunded(id, refunded);
-        // preserve filters? e.g. ?type=…&status=… if you want
-        return "redirect:/report";
     }
+
+
+    // @PostMapping("/report/{id}/refund")
+    // public String toggleRefund(
+    //     @PathVariable("id") String id,
+    //     @RequestParam("value") boolean refunded) {
+
+    //     reportService.setRefunded(id, refunded);
+        
+    //     return "redirect:/report";
+    // }
+
+   @GetMapping("/berichte/nachbestellung")
+    public String showReorderList(Model model) {
+        List<ReorderItem> list = reportService.findToReorder();
+        model.addAttribute("reorderList", list);
+        return "reorder";
+    }
+
+    
+
+  
 }
+
+

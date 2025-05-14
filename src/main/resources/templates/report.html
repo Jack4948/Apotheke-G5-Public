@@ -3,12 +3,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
-  <title>Umsatzbericht</title>
+  <title>kassenabrechnung</title>
 </head>
 <body>
   <section layout:fragment="content">
 
-    <form class="ui form" method="get" th:action="@{/report}">
+    <form class="ui form" method="get" th:action="@{/berichte/kassenabrechnung}">
       <div class="two fields">
         <div class="field">
           <label>Zeige</label>
@@ -39,26 +39,35 @@
             <th>ID</th>
             <th>Datum</th>
             <th class="right aligned">Betrag (€)</th>
-            <th>Erstattet?</th>
+            <th class="center aligned">Betzahlt</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="o : ${cashOrders}">
             <td th:text="${o.id}">ID</td>
+            <td> </td>
             <!-- <td th:text="${#temporals.format(o.date,'yyyy-MM-dd')}">Datum</td> -->
             <td class="right aligned" th:text="${o.amount}">0.00</td>
+
             <td class="center aligned">
-              <form th:action="@{/report/{id}/refund(id=${o.id})}" method="post">
+                 <div class="ui checkbox">
+                <input type="checkbox"
+                       th:checked="${o.paid}"    
+                />
+                <label></label>
+              </div>
+      
+        <!-- <form th:action="@{/report/{id}/paid(id=${o.id})}" method="post">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <input type="hidden" name="value" value="false" />
                 <div class="ui checkbox">
                   <input type="checkbox" name="value" th:value="true"
-                         th:checked="${o.refunded}"
+                         th:checked="${o.paid}"
                          onchange="this.form.submit()" />
                   <label></label>
                 </div>
-              </form>
-            </td>
+              </form> -->
+</td>
           </tr>
         </tbody>
         <tfoot>
@@ -80,15 +89,22 @@
             <th>ID</th>
             <th>Datum</th>
             <th class="right aligned">Betrag (€)</th>
-            <th>Erstattet?</th>
+            <th class="center aligned">Erstattet</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="o : ${insuranceOrders}">
             <td th:text="${o.id}">ID</td>
+            <td></td>
             <!-- <td th:text="${#temporals.format(o.date,'yyyy-MM-dd')}">Datum</td> -->
             <td class="right aligned" th:text="${o.amount}">0.00</td>
             <td class="center aligned">
+               <div class="ui checkbox">
+                <input type="checkbox"
+                       th:checked="${o.paid}"
+                        />
+                <label></label>
+              </div>
               <!-- <form th:action="@{/report/{id}/refund(id=${o.id})}" method="post">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <input type="hidden" name="value" value="false" />

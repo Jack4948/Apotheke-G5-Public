@@ -56,7 +56,7 @@ public class UserDataInitializer implements DataInitializer {
 
 		List.of(
 			new RegistrationForm("test", "test", "EMPLOYEE", password, password),
-			new RegistrationForm("test1", "tester", "EMPLOYEE", password, password)
+			new RegistrationForm("test1", "tester", "BOSS", password, password)
 		).forEach(userService::createUser);
 		// aktiviere initiale Benutzer
 		personlService.activateInitialUsers();
