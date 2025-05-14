@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title layout:title="Nachbestellungsliste">Nachbestellungsliste</title>
+</head>
+<body>
+  <section layout:fragment="content">
+    <h2 class="ui header">Tägliche Nachbestellungen</h2>
+
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th class="right aligned">Lagerbestand</th>
+          <th class="right aligned">Mindestmengen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="item : ${reorderList}">
+          <td th:text="${item.id}">1234567890</td>
+          <td th:text="${item.name}">Ibuprofen 400mg</td>
+          <td class="right aligned" th:text="${item.currentStock}">5</td>
+          <td class="right aligned" th:text="${item.reorderThreshold}">7</td>
+        </tr>
+        <!-- show a row if nothing needs reordering -->
+        <tr th:if="${#lists.isEmpty(reorderList)}">
+          <td colspan="4" class="center aligned">Keine Nachbestellungen nötig.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</body>
+</html>

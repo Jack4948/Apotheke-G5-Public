@@ -14,16 +14,18 @@ public class Medication extends Product {
 	private String barcode;
 	private String packaging;
 	private boolean needsPrescription;
+	private int reorderThreshold;
 
 	@SuppressWarnings({ "unused", "deprecation" })
 	private Medication() {}
 
-	public Medication(String barcode, String name, Money price, String packaging, boolean needsPrescription) {
+	public Medication(String barcode, String name, Money price, String packaging, boolean needsPrescription, int reorderThreshold) {
 
 		super(name, price);
 		this.barcode = barcode;
 		this.packaging = packaging;
 		this.needsPrescription = needsPrescription;
+		this.reorderThreshold = reorderThreshold;
 	}
 
 	public String getBarcode() {
@@ -36,5 +38,9 @@ public class Medication extends Product {
 
 	public boolean getNeedsPrescription() {
 		return this.needsPrescription;
+	}
+
+	public int getReorderThreshold() {
+		return this.reorderThreshold;
 	}
 }

@@ -1,4 +1,4 @@
-package pharmacy.report;
+package pharmacy.report.DataTransferObject;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

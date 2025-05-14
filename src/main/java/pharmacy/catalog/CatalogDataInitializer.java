@@ -61,8 +61,8 @@ class CatalogDataInitializer implements DataInitializer {
 
     LOG.info("Creating default catalog entries.");
 
-    medicationCatalog.save(new Medication("1234567890", "Ibuprofen 400mg", Money.of(9.99, EURO), "20 Tabletten", true));
-    medicationCatalog.save(new Medication("0987654321", "Paracetamol", Money.of(5.99, EURO), "30 Tabletten", false));
+    Medication ibuprofen =  medicationCatalog.save(new Medication("1234567890", "Ibuprofen 400mg", Money.of(9.99, EURO), "20 Tabletten", true, 11));
+    Medication paracetamol = medicationCatalog.save(new Medication("0987654321", "Paracetamol", Money.of(5.99, EURO), "30 Tabletten", false, 25));
 
     MixtureIngredient ingredient1 = ingredientCatalog.save(new MixtureIngredient("Lorem", Money.of(0.09, EURO), false));
     MixtureIngredient ingredient2 = ingredientCatalog.save(new MixtureIngredient("Ipsum", Money.of(0.05, EURO), true));
@@ -100,6 +100,19 @@ class CatalogDataInitializer implements DataInitializer {
     insPaid2.addOrderLine(ingredient1, Quantity.of(50));
     labOrderManagement.save(insPaid2);
     labOrderManagement.payOrder(insPaid2);
+
+    LabOrder medOrder1 = new LabOrder(anonymous.getId(), Cash.CASH);
+    medOrder1.addOrderLine(ibuprofen, Quantity.of(5));
+    labOrderManagement.save(medOrder1);
+    labOrderManagement.payOrder(medOrder1);
+
+    LabOrder medOrder2 = new LabOrder(anonymous.getId());
+    medOrder2.addOrderLine(paracetamol, Quantity.of(3));
+    labOrderManagement.save(medOrder2);
+    //   LabOrder insPaid3 = new LabOrder(anonymous.getId());
+    // insPaid3.addOrderLine(ingredient2, Quantity.of(20));
+    // labOrderManagement.save(insPaid3);
+    // labOrderManagement.payOrder(insPaid3);
 
   }
 
